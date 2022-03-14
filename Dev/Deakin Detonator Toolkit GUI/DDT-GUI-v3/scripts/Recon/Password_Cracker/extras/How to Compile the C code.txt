@@ -1,0 +1,10 @@
+C Version
+
+Compile:
+gcc cryptC.c -o crypto -lcrypt
+
+Run:
+./crypto
+
+wordlist made with
+crunch 3 3 -f /usr/share/crunch/charset.lst mixalpha-numeric -o words.txt

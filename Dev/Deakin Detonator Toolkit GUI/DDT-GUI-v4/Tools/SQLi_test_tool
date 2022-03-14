@@ -1,0 +1,20 @@
+#installin libraries
+pip3 install requests bs4
+import requests
+from pprint import pprint
+from bs4 import BeautifulSoup as bs
+from urllib.parse import urljoin
+import tkinter.messagebox
+from socket import *
+from threading import Thread,Lock
+import sys,re,random, requests, os
+import tkinter as tk 
+from tkinter import font  as tkfont  
+from tkinter import font as tkfont
+from tkinter import font, messagebox
+import PySimpleGUI as sg
+from nav_bar import *
+
+#!/usr/bin/env/ python
+import subprocess
+import re

@@ -1,0 +1,238 @@
+Afghanistan	4	AF
+Albania	8	AL
+Algeria	12	DZ
+American Samoa	16	AS
+Andorra	20	AD
+Angola	24	AO
+Anguilla	660	AI
+Antarctica	10	AQ
+Antigua and Barbuda	28	AG
+Argentina	32	AR
+Armenia	51	AM
+Aruba	533	AW
+Australia	36	AU
+Austria	40	AT
+Azerbaijan	31	AZ
+Bahamas, The	44	BS
+Bahrain	48	BH
+Bangladesh	50	BD
+Barbados	52	BB
+Belarus	112	BY
+Belgium	56	BE
+Belize	84	BZ
+Benin	204	BJ
+Bermuda	60	BM
+Bhutan	64	BT
+Bolivia	68	BO
+Bosnia and Herzegovina	70	BA
+Botswana	72	BW
+Bouvet Island	74	BV
+Brazil	76	BR
+British Indian Ocean Territory	86	IO
+Brunei	96	BN
+Bulgaria	100	BG
+Burkina Faso	854	BF
+Burundi	108	BI
+Côte d'Ivoire	384	CI
+Cambodia	116	KH
+Cameroon	120	CM
+Canada	124	CA
+Cape Verde	132	CV
+Cayman Islands	136	KY
+Central African Republic	140	CF
+Chad	148	TD
+Chile	152	CL
+China	156	CN
+Christmas Island	162	CX
+Cocos (Keeling) Islands	166	CC
+Colombia	170	CO
+Comoros	174	KM
+Congo	178	CG
+Congo (DRC)	180	CD
+Cook Islands	184	CK
+Costa Rica	188	CR
+Croatia	191	HR
+Cuba	192	CU
+Cyprus	196	CY
+Czech Republic	203	CZ
+Denmark	208	DK
+Djibouti	262	DJ
+Dominica	212	DM
+Dominican Republic	214	DO
+East Timor	626	TP
+Ecuador	218	EC
+Egypt	818	EG
+El Salvador	222	SV
+Equatorial Guinea	226	GQ
+Eritrea	232	ER
+Estonia	233	EE
+Ethiopia	231	ET
+Falkland Islands (Islas Malvinas)	238	FK
+Faroe Islands	234	FO
+Fiji Islands	242	FJ
+Finland	246	FI
+France	250	FR
+France, Metropolitan	249	FX
+French Guiana	254	GF
+French Polynesia	258	PF
+French Southern and Antarctic Lands	260	TF
+Gabon	266	GA
+Gambia, The	270	GM
+Georgia	268	GE
+Germany	276	DE
+Ghana	288	GH
+Gibraltar	292	GI
+Greece	300	GR
+Greenland	304	GL
+Grenada	308	GD
+Guadeloupe	312	GP
+Guam	316	GU
+Guatemala	320	GT
+Guinea	324	GN
+Guinea-Bissau	624	GW
+Guyana	328	GY
+Haiti	332	HT
+Heard Island and McDonald Islands	334	HM
+Honduras	340	HN
+Hong Kong SAR	344	HK
+Hungary	348	HU
+Iceland	352	IS
+India	356	IN
+Indonesia	360	ID
+Iran	364	IR
+Iraq	368	IQ
+Ireland	372	IE
+Israel	376	IL
+Italy	380	IT
+Jamaica	388	JM
+Japan	392	JP
+Jordan	400	JO
+Kazakhstan	398	KZ
+Kenya	404	KE
+Kiribati	296	KI
+Korea	410	KR
+Kuwait	414	KW
+Kyrgyzstan	417	KG
+Laos	418	LA
+Latvia	428	LV
+Lebanon	422	LB
+Lesotho	426	LS
+Liberia	430	LR
+Libya	434	LY
+Liechtenstein	438	LI
+Lithuania	440	LT
+Luxembourg	442	LU
+Macau SAR	446	MO
+Macedonia, Former Yugoslav Republic of	807	MK
+Madagascar	450	MG
+Malawi	454	MW
+Malaysia	458	MY
+Maldives	462	MV
+Mali	466	ML
+Malta	470	MT
+Marshall Islands	584	MH
+Martinique	474	MQ
+Mauritania	478	MR
+Mauritius	480	MU
+Mayotte	175	YT
+Mexico	484	MX
+Micronesia	583	FM
+Moldova	498	MD
+Monaco	492	MC
+Mongolia	496	MN
+Montserrat	500	MS
+Morocco	504	MA
+Mozambique	508	MZ
+Myanmar	104	MM
+Namibia	516	NA
+Nauru	520	NR
+Nepal	524	NP
+Netherlands Antilles	530	AN
+Netherlands, The	528	NL
+New Caledonia	540	NC
+New Zealand	554	NZ
+Nicaragua	558	NI
+Niger	562	NE
+Nigeria	566	NG
+Niue	570	NU
+Norfolk Island	574	NF
+North Korea	408	KP
+Northern Mariana Islands	580	MP
+Norway	578	NO
+Oman	512	OM
+Pakistan	586	PK
+Palau	585	PW
+Panama	591	PA
+Papua New Guinea	598	PG
+Paraguay	600	PY
+Peru	604	PE
+Philippines	608	PH
+Pitcairn Islands	612	PN
+Poland	616	PL
+Portugal	620	PT
+Puerto Rico	630	PR
+Qatar	634	QA
+Reunion	638	RE
+Romania	642	RO
+Russia	643	RU
+Rwanda	646	RW
+Sao Tomé and Príncipe	678	ST
+Samoa	882	WS
+San Marino	674	SM
+Saudi Arabia	682	SA
+Senegal	686	SN
+Seychelles	690	SC
+Sierra Leone	694	SL
+Singapore	702	SG
+Slovakia	703	SK
+Slovenia	705	SI
+Solomon Islands	90	SB
+Somalia	706	SO
+South Africa	710	ZA
+South Georgia and the South Sandwich Islands	239	GS
+Spain	724	ES
+Sri Lanka	144	LK
+St. Helena	654	SH
+St. Kitts and Nevis	659	KN
+St. Lucia	662	LC
+St. Pierre and Miquelon	666	PM
+St. Vincent and the Grenadines	670	VC
+Sudan	736	SD
+Suriname	740	SR
+Svalbard and Jan Mayen	744	SJ
+Swaziland	748	SZ
+Sweden	752	SE
+Switzerland	756	CH
+Syria	760	SY
+Taiwan	158	TW
+Tajikistan	762	TJ
+Tanzania	834	TZ
+Thailand	764	TH
+Togo	768	TG
+Tokelau	772	TK
+Tonga	776	TO
+Trinidad and Tobago	780	TT
+Tunisia	788	TN
+Turkey	792	TR
+Turkmenistan	795	TM
+Turks and Caicos Islands	796	TC
+Tuvalu	798	TV
+U.S. Minor Outlying Islands	581	UM
+Uganda	800	UG
+Ukraine	804	UA
+United Arab Emirates	784	AE
+United Kingdom	826	GB
+United States	840	US
+Uruguay	858	UY
+Uzbekistan	860	UZ
+Vanuatu	548	VU
+Vatican City	336	VA
+Venezuela	862	VE
+Viet Nam	704	VN
+Virgin Islands	850	VI
+Virgin Islands, British	92	VG
+Wallis and Futuna	876	WF
+Yemen	887	YE
+Yugoslavia	891	YU
+Zambia	894	ZM
+Zimbabwe	716	ZW

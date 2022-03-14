@@ -1,0 +1,8 @@
+Scripting Hack the Box tasks allows you to perform an automated attack.
+
+Creating your own enumeration tool that can interact with these scripts that you have created. 
+
+Enumerate target, suggest attack, perform attack.
+
+The script is 1 of many that can be created for a future catalogue of attacks that interact directly with self made enumeration tool.
+

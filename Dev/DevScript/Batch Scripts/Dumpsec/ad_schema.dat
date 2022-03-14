@@ -1,0 +1,148 @@
+121	ADSI Path	adspath	300	0
+121	When Changed	whenchanged	100	0
+121	When Created	whencreated	100	0
+121	DN	distinguishedname	200	0
+121	GUID	objectguid	200	0
+121	USN Created	usncreated	50	0
+121	USN Changed	usnchanged	50	0
+121	Object Category	objectcategory	200	0
+121	Managed By	managedby	200	1
+121	Description	description	300	1
+121	Display Name	displayname	100	1
+121	Object Class	objectclass	100	0
+121	Directory Name	name	100	0
+121	Canonical Name	canonicalname	200	0
+112	Description	description	300	1
+112	Display Name	displayname	100	1
+112	DNS Name	dnshostname	100	1
+112	Location	location	100	1
+112	Directory Name	name	100	0
+112	Member of	memberof	100	0
+112	SID	objectsid	200	0
+112	OS	operatingsystem	100	1
+112	Service Pack	operatingsystemservicepack	100	1
+112	Version	operatingsystemversion	100	1
+112	Primary Group	primarygroupid	100	1
+112	Pwd Last Set	pwdlastset	100	0
+112	Pre-W2K Name	samaccountname	100	1
+112	Role	useraccountcontrol	100	1
+110	Directory Name	name	100	0
+110	Description	description	300	1
+110	Display Name	displayname	200	1
+110	Group Type	grouptype	100	1
+110	Notes	info	300	1
+110	E-Mail	mail	100	1
+110	Members	member	100	1
+110	Member of	memberof	100	0
+110	SID	objectsid	200	0
+110	Pre-W2K Name	samaccountname	100	1
+102	Directory Name	name	100	0
+102	Expires	accountexpires	100	1
+102	Region	c	200	1
+102	Comment	comment	100	1
+102	Company	company	200	1
+102	Department	department	100	1
+102	Description	description	300	1
+102	Direct Reports	directreports	200	1
+102	Display Name	displayname	100	1
+102	Division	division	100	1
+102	employeeid	employeeid	100	1
+102	Fax	facsimiletelephonenumber	100	1
+102	First Name	givenname	100	1
+102	Home Directory	homedirectory	100	1
+102	Home Drive	homedrive	100	1
+102	Notes	info	300	1
+102	Initials	initials	100	1
+102	IP phone	ipphone	100	1
+102	City	l	200	1
+102	Lockout Time	lockouttime	100	1
+102	Logon Hours	logonhours	100	0
+102	E-Mail	mail	100	1
+102	Manager	manager	200	1
+102	Groups	memberof	100	0
+102	Middle Name	middlename	50	1
+102	Mobile	mobile	100	1
+102	Allow Dialin	msnpallowdialin	100	1
+102	Callback	msradiuscallbacknumber	150	1
+102	SID	objectsid	200	0
+102	SID History	sidHistory	200	0
+102	Fax: Other	otherfacsimiletelephonenumber	100	1
+102	IP phone: Other	otheripphone	100	1
+102	Mobile: Other	othermobile	100	1
+102	Phone: Other	othertelephone	100	1
+102	Pager	pager	100	1
+102	Pager: Other	otherpager	100	1
+102	Delivery Office	physicaldeliveryofficename	200	1
+102	Postal Code	postalcode	100	1
+102	P.O. Box	postofficebox	100	1
+102	Primary Group	primarygroupid	100	1
+102	Profile	profilepath	100	1
+102	Pwd Last Set	pwdlastset	100	1
+102	Pre-W2K Logon	samaccountname	100	1
+102	Script	scriptpath	100	1
+102	Last Name	sn	100	1
+102	State/Province	st	200	1
+102	Street	streetaddress	200	1
+102	Phone	telephonenumber	100	1
+102	Title	title	100	1
+102	Web Page: Other	url	100	1
+102	Account Flags	useraccountcontrol	150	1
+102	Logon	userprincipalname	100	1
+102	Workstations	userworkstations	100	1
+102	Web Page	wwwhomepage	100	1
+102	Home Phone	homephone	150	1
+102	Home Phone: Other	otherhomephone	150	1
+102	E-Mail: Other	othermailbox	200	1
+102	Last Logon	lastlogon	150	0
+102	Last Logoff	lastlogoff	150	0
+102	Last Logon Time Stamp	lastLogonTimestamp	200	0
+102	Country Code	countryCode	75	1
+102	Country	co	150	1
+122	Exchange Mailbox Store	homemdb	300	1
+122	Exchange Alias	mailnickname	200	1
+122	ILS	autoreplymessage	200	1
+122	Simple Display Name	displaynameprintable	300	1
+122	Hide from AB	msexchhidefromaddresslists	150	1
+122	Custom 1	extensionattribute1	200	1
+122	Custom 2	extensionattribute2	200	1
+122	Custom 3	extensionattribute3	200	1
+122	Custom 4	extensionattribute4	200	1
+122	Custom 5	extensionattribute5	200	1
+122	Custom 6	extensionattribute6	200	1
+122	Custom 7	extensionattribute7	200	1
+122	Custom 8	extensionattribute8	200	1
+122	Custom 9	extensionattribute9	200	1
+122	Custom 10	extensionattribute10	200	1
+122	Custom 11	extensionattribute11	200	1
+122	Custom 12	extensionattribute12	200	1
+122	Custom 13	extensionattribute13	200	1
+122	Custom 14	extensionattribute14	200	1
+122	Custom 15	extensionattribute15	200	1
+122	Send Limit	submissioncontlength	100	1
+122	Receive Limit	delivcontlength	150	1
+122	Recip Limit	msexchreciplimit	150	1
+122	Email Addresses	proxyaddresses	300	1
+122	Use Defaults	mdbusedefaults	150	1
+122	Deleted Flags	deleteditemflags	150	1
+122	Warning Limit	mdbstoragequota	150	1
+122	Send Limit	mdboverquotalimit	150	1
+122	Hard Limit	mdboverhardquotalimit	150	1
+122	Garbage Period	garbagecollperiod	150	1
+124	TSE Initial Program	tse_initial_program	200	1
+124	TSE Working Directory	tse_work_dir	200	1
+124	TSE Inherit Program	tse_inherit_program	200	1
+124	TSE Allow	tse_allow_logon	75	1
+124	TSE CxOut	tse_connection_xout	75	1
+124	TSE DxOut	tse_disconnection_xout	75	1
+124	TSE IxOut	tse_idle_xout	75	1
+124	TSE Drives	tse_connect_drives	75	1
+124	TSE Printers	tse_connect_printers	75	1
+124	TSE Def Prn	tse_default_printers	75	1
+124	TSE Broken	tse_broken_xout	75	1
+124	TSE Reconn	tse_reconnect	75	1
+124	TSE CallBack	tse_callback	75	1
+124	TSE Callback Phone	tse_callback_phone	150	1
+124	TSE Shadow	tse_shadow	75	1
+124	TSE Profile	tse_profile	200	1
+124	TSE Home Directory	tse_home_dir	200	1
+124	TSE HDrive	tse_home_dir_drive	75	1

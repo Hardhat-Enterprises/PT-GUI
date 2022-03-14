@@ -1,0 +1,33 @@
+# Nmap 7.91 scan initiated Mon Apr 26 02:14:38 2021 as: nmap -sV --script /home/adrian/SIT378/Nmap_Gui/scipag_vulscan/vulscan.nse -oN results.txt -T3 --stats-every 5s 10.0.2.1
+Nmap scan report for 10.0.2.1
+Host is up (0.00026s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE VERSION
+53/tcp open  domain  dnsmasq 2.67
+| vulscan: VulDB - https://vuldb.com:
+| No findings
+| 
+| MITRE CVE - https://cve.mitre.org:
+| No findings
+| 
+| SecurityFocus - https://www.securityfocus.com/bid/:
+| No findings
+| 
+| IBM X-Force - https://exchange.xforce.ibmcloud.com:
+| No findings
+| 
+| Exploit-DB - https://www.exploit-db.com:
+| No findings
+| 
+| OpenVAS (Nessus) - http://www.openvas.org:
+| No findings
+| 
+| SecurityTracker - https://www.securitytracker.com:
+| No findings
+| 
+| OSVDB - http://www.osvdb.org:
+| No findings
+|_
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Apr 26 02:14:46 2021 -- 1 IP address (1 host up) scanned in 7.83 seconds

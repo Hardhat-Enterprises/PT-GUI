@@ -1,0 +1,410 @@
+[Search for Users]
+Attributes=name,EmployeeNumber,givenname,mail,displayname
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(ANR=%%))
+Level=1
+[Users Expiring 30 days after Today]
+Attributes=name,displayname,description,accountexpires
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(accountExpires>=%[TODAY]%)(accountExpires<=%[TODAY+30]%)(!accountExpires=9223372036854775807))
+Level=1
+[Users Expiring After Today]
+Attributes=name,displayname,description,accountexpires
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(accountExpires>=[TODAY])(!accountExpires=9223372036854775807))
+Level=1
+[Users Expiring After Specified Date]
+Attributes=name,displayname,description,accountexpires
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(accountExpires>=%%)(!accountExpires=9223372036854775807))
+Level=1
+[Users Expiring on Specified Date]
+Attributes=name,displayname,description,accountexpires
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(accountExpires=%%))
+Level=1
+[Users w/o Expiring Accounts]
+Attributes=name,displayname,description,EmployeeNumber
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(!(accountExpires=0)(accountExpires=9223372036854775807)))
+Level=1
+[Users with Expiring Accounts]
+Attributes=name,displayname,description,accountexpires
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(accountexpires>=1)(accountexpires<=9223372036854775806))
+Level=1
+[Enabled Users]
+Attributes=name,displayname,description,lastLogonTimestamp
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))
+Level=1
+[Disabled Users]
+Attributes=name,displayname,description,lastLogonTimestamp,%SYM_AD_FLAGS_DISABLED%
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))
+Level=1
+[Locked out Users]
+Attributes=name,displayname,description,lastLogonTimestamp,lockouttime
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(lockouttime>=1))
+Level=1
+[Users that Must Change Password at Next Logon]
+Attributes=name,displayname,pwdlastset,%SYM_AD_PWD_MUST_CHG%
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(pwdLastSet=0))
+Level=1
+[Users in Specified Division and Department]
+Attributes=cn,displayname,company,department,division
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(Department=%%)(Division=%%))
+Level=1
+[Users in Specified Division]
+Attributes=cn,displayname,company,department,division
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(Division=%%))
+Level=1
+[Users in Specified Department]
+Attributes=cn,displayname,company,department,division
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(Department=%%))
+Level=1
+[Users in Specified Company]
+Attributes=cn,displayname,company,department,division
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(Company=%%))
+Level=1
+[Users Modified in last 30 days]
+Attributes=name,displayname,whencreated,whenchanged
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(WhenChanged>=[TODAY-30]))
+Level=1
+[Users Created in last 30 days]
+Attributes=name,displayname,whencreated,whenchanged
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(WhenCreated>=[TODAY-30]))
+Level=1
+[Users Modified After Specified Date]
+Attributes=name,displayname,whencreated,whenchanged
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(WhenChanged>=%%))
+Level=1
+[Users Created After Specified Date]
+Attributes=name,displayname,whencreated,whenchanged
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(WhenCreated>=%%))
+Level=1
+[Users Assigned a Manager]
+Attributes=name,displayname,manager,mail
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(manager=*))
+Level=1
+[Users NOT Assigned a Manager]
+Attributes=name,displayname,mail
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(!manager=*))
+Level=1
+[Users Without a Logon Script]
+Attributes=name,displayname,mail,profilepath,homedirectory
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(!scriptpath=*))
+Level=1
+[Users Without a Home Directory]
+Attributes=name,displayname,homedrive,profilepath,mail
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(!homedirectory=*))
+Level=1
+[Users Without an Email Address]
+Attributes=name,displayname,description
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(!email=*))
+Level=1
+[Users with an Exchange Mailbox]
+Attributes=name,displayname,mailnickname,proxyaddresses
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(mailnickname=*))
+Level=1
+[Users That Changed Passwords Specified Days Ago]
+Attributes=name,displayname,accountexpires,msDS-UserPasswordExpiryTimeComputed,pwdlastset
+Class=100
+Filter=(&(objectCategory=person)(objectClass=user)(pwdlastset>=%[TODAY-90]%)(!pwdlastset=9223372036854775807))
+Level=1
+[Search for Groups]
+Attributes=name,displayname,description,grouptype
+Class=106
+Filter=(&(objectCategory=group)(ANR=%%))
+Level=1
+[Distribution Groups]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(!GroupType:1.2.840.113556.1.4.803:=2147483648))
+Level=1
+[Security-Enabled Groups]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=2147483648))
+Level=1
+[Built-In Groups]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=1))
+Level=1
+[Universal Groups]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=8))
+Level=1
+[Local Groups]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=4))
+Level=1
+[Global Groups]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=2))
+Level=1
+[Security-Enabled Global Groups]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=-2147483646))
+Level=1
+[Groups with an assigned E-Mail Address]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(mail=*))
+Level=1
+[Groups WITHOUT an assigned E-Mail Address]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=106
+Filter=(&(objectCategory=group)(!mail=*))
+Level=1
+[Groups with an assigned Manager]
+Attributes=name,displayname,description,mail,grouptype,managedby
+Class=106
+Filter=(&(objectCategory=group)(managedBy=*))
+Level=1
+[Groups WITHOUT an assigned Manager]
+Attributes=name,displayname,description,mail,grouptype,managedby
+Class=106
+Filter=(&(objectCategory=group)(!managedBy=*))
+Level=1
+[Groups Nested in other Groups]
+Attributes=name,displayname,description,mail,grouptype
+Class=106
+Filter=(&(objectCategory=group)(memberof=*))
+Level=1
+[Groups Created in the last 30 Days]
+Attributes=name,displayname,description,grouptype,whencreated
+Class=106
+Filter=(&(objectCategory=group)(WhenCreated>=[TODAY-30]))
+Level=1
+[Groups Created after Specified Date]
+Attributes=name,displayname,description,grouptype,whencreated
+Class=106
+Filter=(&(objectCategory=group)(WhenCreated>=%%))
+Level=1
+[Groups WITHOUT any Members]
+Attributes=name,displayname,description,mail,grouptype
+Class=106
+Filter=(&(objectCategory=group)(!member=*))
+Level=1
+[Global Distribution Groups]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=107
+Filter=(&(objectCategory=group)(GroupType=2))
+Level=1
+[Global Security Groups]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=107
+Filter=(&(objectCategory=group)(GroupType=-2147483646))
+Level=1
+[Global Groups with an E-Mail Address]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=107
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=2)(mail=*))
+Level=1
+[Local Groups with an E-Mail Address]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=108
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=4)(mail=*))
+Level=1
+[Local Security Groups]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=108
+Filter=(&(objectCategory=group)(GroupType=-2147483644))
+Level=1
+[Local Distribution Groups]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=108
+Filter=(&(objectCategory=group)(GroupType=4))
+Level=1
+[Universal Groups with an E-Mail Address]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=109
+Filter=(&(objectCategory=group)(GroupType:1.2.840.113556.1.4.803:=8)(mail=*))
+Level=1
+[Universal Security Groups]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=109
+Filter=(&(objectCategory=group)(GroupType=-2147483640))
+Level=1
+[Universal Distribution Groups]
+Attributes=name,displayname,description,mail,grouptype,samaccountname
+Class=109
+Filter=(&(objectCategory=group)(GroupType=8))
+Level=1
+[Search for Computers]
+Attributes=name,displayname,dnshostname,description,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(ANR=%%))
+Level=1
+[Domain Controllers]
+Attributes=name,displayname,dnshostname,description,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(UserAccountControl:1.2.840.113556.1.4.803:=8192))
+Level=1
+[Computers (NOT Domain Controllers)]
+Attributes=name,displayname,dnshostname,description,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(!UserAccountControl:1.2.840.113556.1.4.803:=8192))
+Level=1
+[Servers]
+Attributes=name,displayname,dnshostname,description,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(OperatingSystem=*server*))
+Level=1
+[Servers (NOT Domain Controllers)]
+Attributes=name,displayname,dnshostname,description,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(OperatingSystem=*server*)(!UserAccountControl:1.2.840.113556.1.4.803:=8192))
+Level=1
+[Windows XP Computers]
+Attributes=name,displayname,description,dnshostname,operatingsystem,operatingsystemversion,operatingsystemservicepack
+Class=111
+Filter=(&(objectCategory=computer)(OperatingSystem=*Windows XP*))
+Level=1
+[Windows Vista Computers]
+Attributes=name,displayname,description,dnshostname,operatingsystem,operatingsystemversion,operatingsystemservicepack
+Class=111
+Filter=(&(objectCategory=computer)(OperatingSystem=*vista*))
+Level=1
+[Windows 7 Computers]
+Attributes=name,displayname,description,dnshostname,operatingsystem,operatingsystemversion,operatingsystemservicepack
+Class=111
+Filter=(&(objectCategory=computer)(OperatingSystem=*windows 7*))
+Level=1
+[Windows 8 Computers]
+Attributes=name,displayname,description,dnshostname,operatingsystem,operatingsystemversion,operatingsystemservicepack
+Class=111
+Filter=(&(objectCategory=computer)(OperatingSystem=*windows 8*))
+Level=1
+[Windows 10 Computers]
+Attributes=name,displayname,description,dnshostname,operatingsystem,operatingsystemversion,operatingsystemservicepack
+Class=111
+Filter=(&(objectCategory=computer)(OperatingSystem=*windows 10*))
+Level=1
+[Computers with a Logon Date]
+Attributes=name,LastLogonTimeStamp,displayname,dnshostname,description,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(LastLogonTimeStamp=*))
+Level=1
+[Computers WITHOUT Logon Date]
+Attributes=name,displayname,description,operatingsystem,LastLogonTimeStamp
+Class=111
+Filter=(&(objectCategory=computer)(!LastLogonTimeStamp=*))
+Level=1
+[Computers that have NOT Logged on in 'X' Days]
+Attributes=name,LastLogonTimeStamp,displayname,description,operatingsystem
+Class=111
+Filter=(&(objectCategory=computer)(|(!LastLogonTimeStamp=*)(LastLogonTimeStamp<=%[TODAY-30]%)))
+Level=1
+[Computers Created in the last 'X' Days]
+Attributes=name,displayname,dnshostname,description,operatingsystem,operatingsystemversion,whencreated
+Class=111
+Filter=(&(objectCategory=computer)(WhenCreated>=%[TODAY-30]%))
+Level=1
+[Computers Created in the last 30 Days]
+Attributes=name,displayname,dnshostname,description,operatingsystem,operatingsystemversion,whencreated
+Class=111
+Filter=(&(objectCategory=computer)(WhenCreated>=[TODAY-30]))
+Level=1
+[Computers with a Manager]
+Attributes=name,displayname,description,managedby,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(ManagedBy=*))
+Level=1
+[Computers WITHOUT a Manager]
+Attributes=name,displayname,description,operatingsystem,operatingsystemversion
+Class=111
+Filter=(&(objectCategory=computer)(!ManagedBy=*))
+Level=1
+[Disabled Computers]
+Attributes=name,displayname,description,operatingsystem,operatingsystemversion,lastLogonTimestamp,pwdlastset
+Class=111
+Filter=(&(objectCategory=computer)(userAccountControl:1.2.840.113556.1.4.803:=2))
+Level=1
+[Enabled Computers]
+Attributes=name,displayname,description,operatingsystem,operatingsystemversion,lastLogonTimestamp,pwdlastset
+Class=111
+Filter=(&(objectCategory=computer)(!userAccountControl:1.2.840.113556.1.4.803:=2))
+Level=1
+[Search for Directory Object]
+Attributes=name,displayname,description,objectclass
+Class=114
+Filter=(&ANR=%%)
+Level=1
+[Users]
+Attributes=name,displayname,telephonenumber,employeeid,title,company,department,division,info
+Class=114
+Filter=(&(objectCategory=person)(objectClass=user))
+Level=1
+[Users - Selected Container(s) Only]
+Attributes=name,displayname,telephonenumber,employeeid,title,company,department,division,info
+Class=114
+Filter=(&(objectCategory=person)(objectClass=user))
+Level=0
+[Groups - Selected Container(s) Only]
+Attributes=name,displayname,description,grouptype,samaccountname
+Class=114
+Filter=(&objectClass=group)
+Level=0
+[Computers - Selected Container(s) Only]
+Attributes=name,displayname,description
+Class=114
+Filter=(&objectClass=computer)
+Level=0
+[Contacts]
+Attributes=name,givenname,sn,description
+Class=114
+Filter=(&(objectCategory=person)(objectclass=contact))
+Level=1
+[OUs]
+Attributes=name,description
+Class=114
+Filter=(objectCategory=organizationalUnit)
+Level=0
+[Group Policy Objects]
+Attributes=name,description
+Class=114
+Filter=(objectCategory=groupPolicyContainer)
+Level=1
+[Servers]
+Attributes=name,displayname,description,dnshostname,samaccountname,operatingsystem,operatingsystemversion
+Class=114
+Filter=(&(objectCategory=computer)(operatingSystem=*server*))
+Level=1
+[Groups - All Types]
+Attributes=name,displayname,description,grouptype,mail,samaccountname
+Class=114
+Filter=(objectCategory=group)
+Level=1
+[Computers]
+Attributes=name,displayname,description,dnshostname,operatingsystem,operatingsystemversion
+Class=114
+Filter=(objectCategory=computer)
+Level=1
+[Printers]
+Attributes=PrinterName,DisplayName,AssetNumber,PrintBinNames,PrintColor,PrintRateUnit
+Class=114
+Filter=(objectCategory=printqueue)
+Level=1

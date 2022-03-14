@@ -1,0 +1,20 @@
+6	% CPU	1	 	 	50
+58	Pool Nonpaged	1024	KB	 	150
+56	Pool Paged	1024	KB	 	150
+348	 	1	 	 	91
+352	 	1	 	 	128
+362	 	1	 	 	69
+354	 	1	 	 	90
+388	 	1	 	 	126
+400	 	1	 	 	83
+682	Priority	1	 	 	75
+142	% User	1	 	 	50
+144	% Priv	1	 	 	50
+174	Virtual	1024	KB	 	150
+172	Virtual Peak	1024	KB	 	150
+186	Private	1024	KB	 	150
+184	Page File	1024	KB	 	150
+182	Page File Peak	1024	KB	 	150
+180	Work Set	1024	KB	 	150
+178	Work Set Peak	1024	KB	 	150
+264	 	1	 	 	116

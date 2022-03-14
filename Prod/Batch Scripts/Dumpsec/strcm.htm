@@ -1,0 +1,556 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>SystemTools Remote Control Manager</title>
+</head>
+
+<body>
+
+<p align="center"><b><font size="5" face="Verdana">SystemTools Remote Control
+Manager (STRCM) <br>
+Help and Usage Information</font></b><font size="5" face="Verdana">&nbsp;</font></p>
+<font SIZE="2">
+<hr color="#008000">
+</font>
+<p><b><font size="5" face="Verdana">Contents</font></b></p>
+<font SIZE="2">
+<p><a href="#About"><font face="Verdana">About the STRCM</font></a></p>
+<p><font face="Verdana"><a href="#Downloading">Downloading and Installation</a><br>
+<a href="#Configuration">Configuration</a><br>
+<a href="#Hyena">STRCM Integration with Hyena</a></font></p>
+<p><font face="Verdana"><a href="#Limitations">Limitations</a><a href="#VNC_Resources"><br>
+VNC Resources</a><br>
+<a href="#FAQ">FAQ</a></font></p>
+<hr color="#008000">
+<p><b><font size="5" face="Verdana"><a name="About"></a>About the STRCM</font></b></p>
+<p><font face="Verdana">The STRCM consists of a standalone command line utility
+(STRCM.exe) and documentation for how to integrate the STRCM with existing
+remote control software products.&nbsp; <b>The STRCM utility does NOT provide
+any remote control functionality itself</b>, but rather is an &quot;integration
+helper&quot; utility that can install, view, and configure some remote control
+software products.</font></p>
+<p><font face="Verdana">The STRCM can automatically check for, and start, a
+number of pre-configured service names on the remote computer prior to invoking
+the remote control software's &quot;viewer&quot; application.&nbsp; This allows
+for greater security, control, and flexibility.&nbsp; The STRCM can also stop
+the remote service after the viewer program has terminated, again&nbsp; allowing
+for increased security.</font></p>
+<p><font face="Verdana"><b>The STRCM is a FREE utility and full source code is
+provided (under GNU licensing provisions).</b></font></p>
+<hr color="#008000">
+<p><b><font face="Verdana" size="5"><a name="Downloading"></a>Downloading and
+Installation</font></b></p>
+<p><font size="2" face="Verdana">To download the STRCM, visit:</font></p>
+<p><a href="http://www.systemtools.com/strcm_frame.htm"><font size="2" face="Verdana">http://www.systemtools.com/strcm_frame.htm</font></a></p>
+<p><font face="Verdana" size="2">After downloading, run the setup.exe
+installation utility.&nbsp; The installation of the STRCM utility only creates
+an installation directory and copies files into this directory.&nbsp; There are
+not any registry changes, .dll changes, or system changes performed by
+installing the STRCM.</font></p>
+<p><font face="Verdana" size="2">If you are using Hyena, install the STRCM into
+Hyena's installation directory.&nbsp; If you are not using Hyena, install the
+files into a separate directory.&nbsp; The STRCM utility is <b><i>FREE</i></b>.&nbsp;&nbsp;
+If selected during installation, the source code files for the STRCM will be
+installed into a \Source directory.</font></p>
+<blockquote>
+  <p><font face="Verdana"><b><i>Important Note</i></b>: The STRCM is only meant
+  to install a remote control software product on a REMOTE computer.&nbsp; If
+  you want to perform a local installation, you may want to consider using the
+  remote control software's default installation software, as this will provide
+  for various uninstallation (Add/Remove Program), shortcuts, and other
+  installation options that the STRCM may not support during remote
+  installation.</font></p>
+</blockquote>
+<p><font face="Verdana" size="2">After installation, review the <a href="#Configuration">STRCM
+Configuration</a> information.</font></p>
+<p><font face="Verdana" size="2">For a list of FAQs, see the <a href="#FAQ">FAQ</a>
+section.</font></p>
+</font><font SIZE="2">
+<hr color="#008000">
+</font>
+<p><b><font face="Verdana" size="4"><a name="Configuration"></a></font><font face="Verdana" size="5">STRCM
+Configuration</font></b></p>
+<font SIZE="2">
+<p><font face="Verdana">The STRCM is configured through a simple text file with
+an .RCM extension.&nbsp; The format of the text file is a standard Windows .INI
+file format.&nbsp; Sample .RCM files for the VNC remote control software
+product is installed during the STRCM installation.&nbsp; It may need some
+modifications to configure an installation of VNC.&nbsp; If a remote control
+software program other than VNC is going to be used, the sample VNC*.RCM files and
+the information below can be used to configure a custom .RCM file.&nbsp; If the
+STRCM is being used with VNC, see the <b>Quick Setup for VNC 4</b> section below:</font></p>
+</font>
+<div align="left">
+  <table border="2" width="500" bordercolorlight="#000080" bordercolordark="#0000FF" bordercolor="#000080" bgcolor="#C0C0C0">
+    <tr>
+      <td>
+        <p align="center"><b><font size="4" face="Verdana"><br>
+        Quick Setup for VNC 4.x</font></b></p>
+        <font SIZE="2">
+        <ul>
+          <li><font face="Verdana">Find any existing VNC 4.x installation directory,
+            and copy the following files into a directory, either on your local
+            computer or on a network share:</font></li>
+        </ul>
+        <blockquote>
+          <p><font face="Verdana">winvnc4.exe<br>
+          wm_hooks.dll<br>
+          logmessages.dll<br>
+          vncconfig.exe</font></p>
+        </blockquote>
+        <ul>
+          <li><font face="Verdana">Modify the <b>SourceDirectory </b>setting in
+            the VNC4.RCM file to point to this directory.<br>
+            </font></li>
+          <li><font face="Verdana">Modify any additional settings in the VNC4.RCM
+            file to configure the STRCM utility for your environment.&nbsp; See
+            the <a href="#Configuration">STRCM Configuration</a> section below
+            for more information on all of the configuration options.</font></li>
+        </ul>
+        <p>&nbsp;</font></td>
+      </tr>
+    </table>
+  </div>
+<p><b><font face="Verdana" size="2">Note: If using VNC 3.x or TightVNC, see the 
+included VNC3.RCM and VNCtight.RCM files.</font></b></p>
+<p><b><font size="4" face="Verdana">.RCM File Settings</font></b></p>
+<font SIZE="2">
+<p><font face="Verdana">The STRCM is configured through a text file with an .RCM
+extension.&nbsp; The format of this file is a standard Windows .INI file format.&nbsp;
+See the sample VNC.RCM file that is installed by default as a guide.</font></p>
+<p><font face="Verdana"><b>General Settings - [General]</b></font></p>
+<blockquote>
+  <p><font face="Verdana"><b>SoftwareType - </b>The only supported setting for
+  this value at this time is &quot;VNC&quot;.&nbsp; Other values will be added
+  as needed to support other remote control software product installations.</font></p>
+  <p><font face="Verdana"><b>Enabled</b> - This setting should be set to a '1'
+  to indicate that the .RCM file is &quot;active&quot;.&nbsp; Set to a '0' to
+  indicate that the .RCM is not enabled.&nbsp; This setting is only used by <a href="http://www.systemtools.com/hyena">Hyena</a>.</font></p>
+  <p><font face="Verdana"><b>MenuName</b> - This value will be displayed by <a href="http://www.systemtools.com/hyena">Hyena</a>
+  on the Remote Control menu for computer objects.&nbsp; It can be set to any
+  text value to represent the configuration file options.</font></p>
+  <p><font face="Verdana"><b>AutoExecute</b> - Set this setting to a '1' to
+  force the STRCM to immediately execute the requested settings.&nbsp; This
+  option only applies when the STRCM utility is run from the command line with
+  all required parameters.</font></p>
+</blockquote>
+<p><font face="Verdana"><b>View Settings - [View]</b></font></p>
+<blockquote>
+  <p><font face="Verdana"><b>ViewerCommand </b>- Set this setting to the name
+  (and optionally the full directory path) of the viewer program for the remote
+  control software.&nbsp; The symbol %computer% can be used to pass the host
+  name to the viewer program.&nbsp; For VNC, this value is set to <b>vncviewer.exe
+  %computer%</b></font></p>
+  <p><font face="Verdana"><b>StartServiceBeforeViewing</b> - Set this setting to
+  a '1' to have the STRCM automatically start the remote control software
+  service prior to executing the viewer.&nbsp; Set to a '0' to bypass starting
+  any services.</font></p>
+  <blockquote>
+    <p><font face="Verdana"><b><font color="#FF0000">Security Tip</font></b> -
+    Enable both StartServiceBeforeViewing and StopServiceAfterViewing for
+    increased security.</font></p>
+  </blockquote>
+  <p><font face="Verdana"><b>StopServiceAfterViewing </b>- Set this setting to a
+  '1' to have the STRCM automatically stop the remote control software service
+  after the viewer program terminates.&nbsp; If enabled, the STRCM will wait
+  until the viewer program process terminates.&nbsp; The STRCM utility window
+  must be left open (executing) when this option is enabled.</font></p>
+  <blockquote>
+    <p><font face="Verdana"><b><font color="#FF0000">Security Tip</font></b> -
+    Enable both StartServiceBeforeViewing and StopServiceAfterViewing for
+    increased security.</font></p>
+  </blockquote>
+  <p><font face="Verdana"><b>AutoInstallBeforeViewing</b> - Set this setting to
+  a '1' to have the STRCM automatically install and configure the remote control
+  software prior to viewing.&nbsp; This option has no effect if the software is
+  already installed, or if the STRCM believes that the software is already
+  installed.&nbsp; See the <a href="#Limitations">Limitations</a> section for
+  automatic installation limitations.</font></p>
+  <p><font face="Verdana"><b>UnInstallAfterViewing</b> - Set this setting to a
+  '1' to have the STRCM automatically uninstall the remote control software
+  after the viewer exits.&nbsp; See the <a href="#Limitations">Limitations</a>
+  section for uninstallation limitations.</font></p>
+  <p><font face="Verdana"><b>AutoTerminateAfterViewing</b> - Set this setting to
+  a '1' to force the STRCM to immediately exit after a &quot;View&quot;
+  operation. This option only applies when the STRCM utility is run from the
+  command line with all required parameters.</font></p>
+</blockquote>
+<p><font face="Verdana"><b>Installation Settings - [Install]</b></font></p>
+<blockquote>
+  <p><font face="Verdana"><b>EULA</b> - This setting points to a text file for
+  the End User License Agreement (or any other text file) that is displayed
+  prior to installing the remote control software.&nbsp; The file must be a text
+  file.&nbsp; If a directory path is not supplied with the filename, the current
+  directory will be used for the file path.</font></p>
+  <p><font face="Verdana"><b>ServiceNames</b> - This setting controls the name(s)
+  of the services that the STRCM can either start, stop, or use for the service
+  name when installing the remote control software service.&nbsp; If multiple
+  names are to be used, separate each name with a semicolon, for example
+  &quot;WinVNC;VNC3;XWinVNC&quot;.&nbsp; When <b><i>installing</i></b> the
+  service, the STRCM installation dialog will present these names in a dropdown
+  combo box.&nbsp; When <b><i>starting</i></b> the remote control service, the
+  STRCM will look for each name and attempt to start each service, until a
+  matching name is found.</font></p>
+  <blockquote>
+    <p><font face="Verdana"><b><font color="#FF0000">Security Tip</font></b> -
+    Modify the name of the default VNC service name for increased security.</font></p>
+  </blockquote>
+  <p><font face="Verdana"><b>SourceDirectory</b> - This setting determines the
+  directory that is used to copy the files from for installation of the remote
+  control software.&nbsp; The <b><i>FileList</i></b> setting contains the list
+  of file names.&nbsp; This path can contain either a local path or remote
+  network shared directory.&nbsp; If not supplied, the default working directory
+  will be used.&nbsp; If only a directory name is supplied, then the default
+  working directory will be used, plus the indicated directory path.</font></p>
+  <p><font face="Verdana"><b>DestinationDirectory</b> - This setting specifies
+  the directory to copy the files TO on the remote computer.&nbsp; The symbol
+  %computer% can be used to substitute the host name.&nbsp; For example:
+  \\%computer%\admin$\rc .&nbsp;</font></p>
+  <blockquote>
+    <p><font face="Verdana"><b><font color="#FF0000">Security Tip</font></b> -
+    Choose a directory name that is not in an obvious location and named in such
+    a way to indicate that a particular remote control software package is
+    installed.</font></p>
+  </blockquote>
+  <p><font face="Verdana"><b>FileList - </b>This setting contains a list of file
+  names separated by semicolons (;) that are copied to the remote computer for
+  installation of the remote control software.&nbsp; The <b>SourceDirectory</b>
+  setting is used for the location of these files.&nbsp; The files are copied to
+  the <b>DestinationDirectory</b> setting.</font></p>
+  <p><font face="Verdana"><b>InstallService</b> - Set to a '1' to enable
+  installation of the remote control software as a service; set to a '0' to only
+  copy files and set appropriate registry settings.</font></p>
+  <p><font face="Verdana"><b>ServiceAutoStart</b> - Set to a '1' to enable the
+  service to be set to Automatic startup; set to a '0' to create a service that
+  requires starting Manually.&nbsp; This setting is only applicable if
+  InstallService is set to a '1'.</font></p>
+  <blockquote>
+    <p><font face="Verdana"><b><font color="#FF0000">Security Tip</font></b> -
+    For greater security, always set a remote control service for Manual
+    startup.</font></p>
+  </blockquote>
+  <p><font face="Verdana"><b>ServiceDisplayName</b> - This setting controls the
+  friendly display name used to display the service in Control Panel or other
+  GUI programs. This setting is only applicable if InstallService is set to a
+  '1'.</font></p>
+  <blockquote>
+    <p><font face="Verdana"><b><font color="#FF0000">Security Tip</font></b> -
+    For greater security, choose a display name that does not indicate either a
+    type of remote control service or that the service is not remote-control
+    related.</font></p>
+  </blockquote>
+  <p><font face="Verdana"><b>ServiceExeName </b>- This setting controls the name
+  of the executable program that controls the service. This setting is only
+  applicable if InstallService is set to a '1'.</font></p>
+  <blockquote>
+    <p><font face="Verdana"><b><font color="#FF0000">Security Tip</font></b> -
+    For greater security, the service executable name can generally be renamed
+    to help disguise which remote control software is being used.</font></p>
+  </blockquote>
+    <p><font face="Verdana"><b>RegistryKeyLocation</b> - Change this setting to 
+    create the proper registry key path for installation and removal.&nbsp; If 
+    left blank, the default location for VNC3 will be used (VNC installations 
+    only).&nbsp; For example:</font></p>
+  <blockquote>
+    <p><font face="Verdana">RegistryKeyLocation=Software\RealVNC\WinVNC4</font></p>
+  </blockquote>
+</blockquote>
+<p><font face="Verdana"><b>VNC Options - [VNC Options]</b></font></p>
+<blockquote>
+  <p><font face="Verdana"><b>InstallServiceHelper</b> - Set the setting to a '1'
+  to have the STRCM automatically install the VNC &quot;Service Helper&quot;
+  feature.&nbsp; This feature will set a special &quot;WinVNC&quot; setting
+  under:</font></p>
+  <p><font face="Verdana">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run</font></p>
+  <p><font face="Verdana">For further documentation on the effects of this
+  setting, consult the <a href="#VNC_Resources">VNC documentation</a>.</font></p>
+</blockquote>
+<p><b><font face="Verdana">VNC Settings - [VNC Settings]</font></b></p>
+<blockquote>
+  <p><font face="Verdana">During installation, the STRCM writes all of the
+  settings in the VNC Settings section of the .RCM file by default into the remote
+  computer's registry under:</font></p>
+  <p><font face="Verdana">HKEY_LOCAL_MACHINE\SOFTWARE\ORL\WinVNC3\Default</font></p>
+  <p><font face="Verdana">The settings are written exactly as specified.&nbsp;
+  Most of the settings in this section can be modified using the STRCM
+  &quot;Options&quot; operation.&nbsp; However, any documented VNC setting can
+  be manually entered into this section, which will then be written to the
+  remote computer during either a <b><i>View</i></b> or <b><i>Options</i></b>
+  operation.&nbsp; The default data type for all entries, is REG_DWORD. To 
+  change the default registry location, to specify additional settings in other 
+  registry locations, or to create non-REG_DWORD entries, see the <b>Custom 
+  Registry Locations</b> section below.</font></p>
+  <p><font face="Verdana">For complete information on the behavior of these
+  settings, see the <a href="#VNC_Resources">VNC documentation</a> for the
+  particular version of VNC that is being used.</font></p>
+  <p><b><font face="Verdana">Custom Registry Locations</font></b></p>
+  <blockquote>
+  <p><font face="Verdana">To change the default registry location for all 
+  settings in the .RCM file, specify a custom registry location using the 'RegistryKeyLocation' 
+  setting as documented in the [Install] section above.</font></p>
+  <p><font face="Verdana">To create individual registry entries in other 
+  locations (other than the default location), or to change the registry data 
+  type, specify the registry path and optionally, the data type as follows:</font></p>
+  <p><font face="Verdana">Registry_Path\Registry_Value=DataType:Registry_Value</font></p>
+  <p><font face="Verdana">For example:</font></p>
+  <p><font face="Verdana">Software\RealVNC\WinVNC4\number_value=4<br>
+  Software\RealVNC\WinVNC4\string_value=REG_SZ:this is a string value<br>
+  Software\RealVNC\WinVNC4\binary_value=REG_BINARY:db d8 3c fd 72 7a 14 58</font></p>
+  </blockquote>
+</font>
+  <p><b><font face="Verdana" size="2">Password Options</font></b></p>
+<font SIZE="2">
+  <blockquote>
+  <p><font face="Verdana">The &quot;Password&quot; value can be
+  entered into this section as well.&nbsp; This value is set using text
+  representations for each encrypted letter of the password.&nbsp; To get this
+  value, use regedt32 on a computer that has a password set for VNC under:</font></p>
+  <p><font face="Verdana">HKEY_LOCAL_MACHINE\SOFTWARE\ORL\WinVNC3\Default</font></p>
+  <p><font face="Verdana">Enter the value using the same hexadecimal
+  representation of the <b>password</b> value that is displayed in regedt32.&nbsp;
+  For example, the value of:</font></p>
+  <p><font face="Verdana">Password=db d8 3c fd 72 7a 14 58</font></p>
+  <p><font face="Verdana">...will result in a password of &quot;password&quot;.&nbsp;&nbsp;</font></p>
+  <p><font face="Verdana"><b>Important Note:</b> Entering the password into the
+  .RCM file directly is a security risk, however, as the password can be easily
+  discovered and cracked, thereby allowing someone to know the possible password
+  on computers where VNC has been installed.&nbsp; For maximum security, enter
+  the password only during installation.</font></p>
+  </blockquote>
+</blockquote>
+</font>
+<p><b><font size="4" face="Verdana">Supported Operations</font></b></p>
+<font SIZE="2">
+<blockquote>
+  <p><font size="2" face="Verdana">The STRCM utility supports the following
+  operations:</font></p>
+</font>
+<p><b><font size="2" face="Verdana">View</font></b><font size="2" face="Verdana">
+- The <b><i>View</i></b> operation will execute the <b>ViewerCommand</b> as
+specified in the configuration file.&nbsp; The <b>StartServiceBeforeViewing</b>,
+<b>StopServiceAfterViewing</b> , <b>AutoInstallBeforeViewing</b> , and <b>UnInstallAfterViewing</b>
+settings are also checked and acted upon when using the View operation.</font></p>
+<p><font face="Verdana"><b><font size="2">Install</font></b> <font size="2">-
+The <b><i>Install</i></b> operation is used when only the installation of the
+remote control software is needed, or to update the existing installation of the
+remote control software.</font></font></p>
+<p><b><font size="2" face="Verdana">UnInstall</font></b><font size="2" face="Verdana">
+-&nbsp;The <b><i>UnInstall</i></b> operation will remove all of the files and
+registry settings as specified in the .RCM file.&nbsp; See the <a href="#Limitations">Limitations</a>
+section for uninstallation limitations.</font></p>
+<p><font face="Verdana"><b><font size="2">Options</font></b><font size="2"> -
+The <i><b>Options</b></i> operation will display a dialog for changing the
+settings for the remote control software, including for VNC, the password.</font></font></p>
+<p><font face="Verdana"><b><font size="2">Start</font></b> <font size="2">- The <b><i>Start</i></b>
+operation will start the remote control service.</font></font></p>
+<p><font face="Verdana"><b><font size="2">Stop</font></b> <font size="2">- The <b><i>Stop</i></b>
+operation will stop the remote control service.</font></font></p>
+</blockquote>
+<p><b><font size="4" face="Verdana">STRCM program execution</font></b></p>
+<font SIZE="2">
+<p><font face="Verdana">The STRCM utility is executed by simply running the
+STRCM.exe program, which will prompt for the required parameters, including the
+configuration file, option (view, install, or settings), and host name.</font></p>
+<p><font face="Verdana">The STRCM can also be executed with the following
+command line syntax:</font></p>
+<p><font face="Verdana"><b>STRCM&nbsp;<br>
+&nbsp;&nbsp; /rcm=[.RCM file path and name]<br>
+&nbsp;&nbsp; /host=[Host Name]<br>
+&nbsp;&nbsp; /cmd=[View | Install | Options | UnInstall]</b></font></p>
+<p><font face="Verdana">For example:</font></p>
+<blockquote>
+  <p><font face="Verdana">STRCM /rcm=<a href="../../program%20files/STRCM/VNC/VNC.RCM">d:\program
+  files\STRCM\VNC\VNC.RCM</a> /host=123.123.123.123 /cmd=View</font></p>
+</blockquote>
+<p><font face="Verdana"><b>Notes:</b></font></p>
+<ul>
+  <li><font face="Verdana">If the path to the RCM file is not supplied, the
+    current installation directory will be used for the default path.</font></li>
+  <li><font face="Verdana">The host name can either be a computer name or tcp/ip
+    address.&nbsp; Do NOT enter leading backslashes.</font></li>
+  <li><font face="Verdana">The parameters can be supplied in any order.</font></li>
+</ul>
+<hr color="#008000">
+<p><b><font size="4" face="Verdana"><a name="Hyena"></a>STRCM Integration with
+Hyena</font></b></p>
+<p><font face="Verdana">Hyena is a centralized system administration tool for
+management of Windows NT/2000 networks.&nbsp; Hyena can be used from any Windows
+NT, Windows 2000, or Windows XP computer.&nbsp; More information about Hyena is
+available at <a href="http://www.systemtools.com/hyena">http://www.systemtools.com/hyena</a>.&nbsp;
+One of the benefits of using Hyena and the STRCM utility together is that Hyena
+provides a variety of methods to display computers in its windows, thereby
+providing for one-click access to the STRCM for any selected computer
+object.&nbsp; Hyena therefore can become a centralized console for access to any
+remote control software product that is configured through the STRCM.</font></p>
+<p><font face="Verdana">For each STRCM configuration file (.rcm), Hyena will add
+a context menu entry to the <b>Remote Control</b> menu for all computer objects
+(domain controllers, servers, workstations, etc.).&nbsp; The <b><i>MenuName</i></b>
+setting in the .rcm file is used for the menu title.&nbsp; Hyena will search for
+the .rcm files in the following locations (in this order):</font></p>
+<ul>
+  <li><font face="Verdana">Shared Settings directory
+    (Tools-&gt;Settings-&gt;Path to Object Manager...)&nbsp;</font></li>
+  <li><font face="Verdana">Active user's profile directory (&lt;profile
+    directory&gt;\application data\systemtools\hyena)</font></li>
+  <li><font face="Verdana">Installation directory</font></li>
+</ul>
+<p><font face="Verdana">Hyena will only include the .rcm file to the list of
+configurations if the <b><i>Enabled</i></b> setting in the .rcm file is set to a
+'1'; this is the default setting.</font></p>
+<p><font face="Verdana">The current active .rcm files found can be viewed under
+Hyena's <b>Tools-&gt;Settings-&gt;Remote Control</b> menu. The STRCM
+configuration files can also be view or modified on this dialog.</font></p>
+<p><font face="Verdana">To activate the STRCM utility for a selected computer in
+Hyena, right click, and select the desired remote control configuration from the
+<b>Remote Control</b> menu.&nbsp; Hyena will then run the STRCM utility by
+executing STRCM.exe, which must be installed in Hyena's installation directory.&nbsp;
+Hyena will pass the selected computer's path and the <b><i>View</i></b> option
+to the STRCM.&nbsp; If only the tcp/ip address is available for a computer,
+enter the computer manually into Hyena's Object Manager, and use the tcp/ip
+address for the computer's path.</font></p>
+<p><font face="Verdana">The <b><i>AutoExecute</i></b> STRCM .rcm file setting
+can be used to cause the STRCM to immediately execute, rather than pausing at
+the main STRCM dialog.&nbsp; The <b><i>AutoTerminate</i></b> setting can be used
+to close the STRCM window automatically once the remote control's viewer has
+been executed.</font></p>
+<hr color="#008000">
+</font>
+<p><b><font face="Verdana" size="4"><a name="Limitations"></a>Limitations</font></b></p>
+<font SIZE="2">
+<p><b><font face="Verdana">Installation Limitations</font></b></p>
+<ul>
+  <li><font face="Verdana">The STRCM does not support loading a .reg file
+    remotely into the remote computer's registry, so any .reg files that are
+    copied to a remote computer will not actually be 'installed'.&nbsp;&nbsp;</font></li>
+  <li><font face="Verdana">The STRCM's <b>AutoInstallBeforeViewing</b> feature
+    is designed to detect if the main service executable name (<b>ServiceExeName</b>)
+    is installed on the remote computer as indicated in the <b>DestinationDirectory</b>
+    setting.&nbsp; If the remote control software was previously installed with
+    a different configuration, the STRCM will most likely believe that the
+    remote software is not installed, and will attempt another installation.</font></li>
+</ul>
+<p><font face="Verdana"><b>UnInstallation Limitations</b></font></p>
+<ul>
+  <li><font face="Verdana">The STRCM is only designed to remove files and
+    registry settings that are part of the STRCM installation procedure.&nbsp;
+    For example, the only files removed are as specified in the <b>FileList</b>
+    setting, and the location of these files are as specified in the <b>DestinationDirectory</b>
+    setting.&nbsp; If the remote control software was originally installed using
+    the manufacturer's original installation, items such as program icons,
+    shortcuts, and Add/Remove Program entries will <b>NOT</b> be removed.</font></li>
+  <li><font face="Verdana">The STRCM is only capable of removing registry
+    entries that are installed into designated areas based on the remote control
+    software being configured.&nbsp; HKEY_CURRENT_USER entries, for example, are
+    <b><i>not </i></b>removed.</font></li>
+</ul>
+<hr color="#008000">
+</font>
+<p><b><font face="Verdana" size="4"><a name="VNC_Resources"></a>VNC Resources</font></b></p>
+<font SIZE="2">
+<p><font face="Verdana">Below are a collection of links to popular VNC products
+and packages:</font></p>
+<p><font face="Verdana"><a href="http://www.realvnc.com">VNC Home
+Page</a> - The original one-and-only home page by the creators of VNC, AT&amp;T
+Laboratories in Cambridge. Documentation, FAQ, downloads, and more are available
+here.</font></p>
+<p><font face="Verdana"><a href="http://www.tightvnc.com">TightVNC</a> -
+TightVNC is optimized to work over slow network connections and WAN links. In
+addition to bandwidth optimizations, TightVNC also includes many other
+improvements and bug fixes over the standard VNC build. Note that TightVNC is
+free, cross-platform and compatible with the standard VNC package.</font></p>
+<p><font face="Verdana"><a href="http://www.tridiavnc.com">TridiaVNC</a> -
+Tridia Corporation has created both a free and &quot;Pro&quot; version of VNC.&nbsp;
+Site includes extensive support options, download links, and lots of information
+about VNC.</font></p>
+<p><font face="Verdana"><a href="http://www.chromatix.uklinux.net/vnc">Chromatix</a>
+- VNC version for Mac platforms.</font></p>
+<hr color="#008000">
+</font>
+<p><b><font face="Verdana" size="4"><a name="FAQ"></a>FAQ</font></b></p>
+<font SIZE="2">
+<p><font face="Verdana"><b>Why not provide your own remote control software
+instead of integrating with existing products ?&nbsp;&nbsp;</b></font></p>
+<p><font face="Verdana">We felt that with the maturity and availability of a
+wide array of remote control (RC) software solutions, that developing yet
+another RC product would not be a good use of development resources.&nbsp; Many
+organizations have already standardized on an RC product, and increasingly,
+Microsoft has integrated RC into newer releases of Windows.&nbsp; <a href="http://www.systemtools.com/hyena">Hyena</a>
+already can invoke any external tool through its custom tools interface.&nbsp;
+The STRCM is simply a method that we can use to further integrate Hyena with
+existing RC products, while at the same time providing a standalone tool for
+more control over existing remote control software products.</font></p>
+<p><font face="Verdana"><b>Why VNC ?</b></font></p>
+<p><font face="Verdana">We selected VNC because its the only (at least that we
+know of) free remote control (RC) solution available.&nbsp; Its also extremely
+popular and its free.&nbsp; Did we mention that its free ?&nbsp; Its also an
+open-source product, so others have taken it and modified it.&nbsp; See the <a href="#VNC_Resources">VNC
+resources section</a> for links on&nbsp;VNC-related sites and products.</font></p>
+<p><font face="Verdana">The STRCM can in theory support any RC software
+solution, due to its flexible design.&nbsp; We are not able to redistribute or
+provide installation instructions or support for other RC software packages, as
+this may violate their licensing requirements.</font></p>
+<p><font face="Verdana"><b>What about VNC security ?</b></font></p>
+<p><font face="Verdana">Installing any remote control (RC) software product on a
+computer potentially exposes that computer (and the organization that the
+computer belongs to) to additional security risks.&nbsp; However, properly
+managing how the RC software is installed and configured can help manage these
+risks.&nbsp; Depending upon which RC product is used, different techniques to
+manage security can be used.</font></p>
+<p><font face="Verdana">The STRCM supports a number of techniques to help
+strengthen existing security for all RC products, including VNC. The STRCM can:</font></p>
+<ul>
+  <li><font face="Verdana">Automatically install and set the password for VNC.&nbsp;
+    This permits a consistent installation with known configuration options.&nbsp;
+    The password can optionally not be stored locally in any configuration file,
+    further increasing security.</font></li>
+  <li><font face="Verdana">Automatically stop the VNC service when the viewer
+    exits.</font></li>
+  <li><font face="Verdana">Support renaming of the VNC service and support
+    files.&nbsp;&nbsp;&nbsp;&nbsp;</font></li>
+</ul>
+<p><font face="Verdana">Any organization that is using remote control software
+should thoroughly familiarize themselves with the security features and
+implications of using different remote control software packages.</font></p>
+<p><font face="Verdana"><b>Why is the STRCM available as open source ?</b></font></p>
+<p><font face="Verdana">Portions of the STRCM require very specific
+functionality in order to correctly install VNC.&nbsp; In particular, the VNC
+password must be computed using a specific algorithm in order to encrypt the
+password correctly. Therefore, some source code routines from the VNC
+distribution were used for some portions of the STRCM.&nbsp; We thereby feel
+that it is desirable to make the STRCM product open source under the GNU
+licensing provisions.&nbsp; Also, this permits some organizations to modify the
+STRCM for their own specific needs.&nbsp; SystemTools Software Inc. is committed
+to respecting the contributions of others involved in the VNC project, and any
+organization that further develops or modifies the STRCM utility must do the
+same under the GNU licensing provisions.</font></p>
+<p><font face="Verdana"><b>What support options do you offer for the STRCM ?</b></font></p>
+<p><font face="Verdana">SystemTools Software will offer support if there are
+specific identified problems with the STRCM.&nbsp; We also gladly accept
+feedback and suggestions on ways to improve the STRCM utility.&nbsp; Due to the
+variety of configurations possible with any remote control software product, we
+can't offer support for VNC, any VNC variation (Tridia, TightVNC, etc.) or any
+other remote control software product.&nbsp; All of these packages have some
+support options of their own.</font></p>
+<p><font face="Verdana">Prior to asking for help or assistance with the STRCM,
+make sure that the remote control software product works independently of and
+from the STRCM.&nbsp; For support, send an email to <a href="mailto:support@systemtools.com">support@systemtools.com</a>
+or visit the Remote Control section of our online discussion board at <a href="http://www.systemtools.com/HyenaBoard">http://www.systemtools.com/HyenaBoard</a></font></p>
+<p><font face="Verdana"><b>Why did you develop the STRCM using the Microsoft
+Foundation Class (MFC) library ?</b></font></p>
+<p><font face="Verdana"><a href="http://www.systemtools.com/hyena" target="_blank">Hyena
+(http://www.systemtools.com/hyena)</a> was already developed using MFC, so we
+were naturally familiar with its use.&nbsp; Today, this is a very common
+framework, so the required .DLL files are usually already installed.&nbsp; Using
+MFC allowed us to develop the entire STRCM project in a couple of days.&nbsp; We
+chose not to use Unicode libraries only because of the inclusion of some
+non-Unicode functions from the original VNC code modules, and did not feel that
+a Unicode build would offer any significant advantages.&nbsp;</font></p>
+<hr color="#008000">
+</font>
+
+</body>
+
+</html>

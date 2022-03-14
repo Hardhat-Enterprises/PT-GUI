@@ -1,0 +1,16 @@
+Google_Username=google, Google_Password=test
+Insta_Username=0412301203, Insta_Password=hellothere
+FB_Email=test%40email.com, FB_Pass=passwordisadmin
+FB_Email=asdasd, FB_Pass=test
+FB_Email=test%40email.com, FB_Pass=ltefsado
+FB_Email=lastone, FB_Pass=lastone
+FB_Email=test%40email.com, FB_Pass=
+FB_Email=test%40email.com, FB_Pass=asd
+Google_Username=abcd, Google_Password=abcd
+Google_Username=test, Google_Password=test
+Google_Username=imfrommyphone, Google_Password=hello
+Google_Username=testing101, Google_Password=hello
+Insta_Username=insta, Insta_Password=insta
+FB_Email=hellofacebook, FB_Pass=asd
+Google_Username=asd, Google_Password=
+FB_Email=test%40email.com, FB_Pass=test
