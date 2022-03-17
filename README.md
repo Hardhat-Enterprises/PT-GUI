@@ -29,3 +29,18 @@ $ pip3 install -r requirements.txt
 ```bash
 $ python3 main.py
 ```
+
+## Usage
+After launching the tool, the GUI will open the homepage of toolkit. From there, we can see five main pages show up: About, Attack vectors, Tools, Walkthroughs, and References.
+![Main page](https://gyazo.com/0c511c5fd1e5c8ce65247fb8e6b6b9e3.png)
+
+- **About:** Provides basic information about the tool and its purpose.
+- **Attack Vectors:** Contains a step by step demonstration of different exploitations.
+- **Tools:** The tools page provides an easy access to many tools of different purposes, like reconnaissance and enummeration tools.
+- **Walkthroughs:** This page will have video walkthroughs to different exploits and tools.
+
+![Attack vectors](https://gyazo.com/1541331284ea3c948c54dbf1dc356b9a.png)
+![Tools](https://gyazo.com/8278a773d58cbc0332104ab4fba69c27.png)
+
+## 4. Development Toolkit
+The Red Teams' members are to study/research attack vectors or attack tools to implement in the toolkit. The GUI of the toolkit is developed using [Tkinter](https://docs.python.org/3/library/tkinter.html).
