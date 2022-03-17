@@ -12,7 +12,6 @@ Deakin Detonator Toolkit (DDT) is a toolkit that aims to simplify the penetratio
 1. Clone the repo
 ```bash
 $ git clone https://github.com/taysmith99/PT-GUI.git
-$ cd PT-GUI
 ```
 
 2. Install requirements
@@ -20,7 +19,6 @@ $ cd PT-GUI
 ```bash
 $ sudo apt update
 $ sudo apt install -y python3 python3-pip python3-tk git
-$ cd DDT-GUI/
 $ pip3 install -r requirements.txt
 ```
 

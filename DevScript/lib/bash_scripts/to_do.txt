@@ -1,4 +1,0 @@
-Have all the scripts interract with each other 
-
-Add variables to ip , passwords, usernames etc. This is to use enumeration tools to further automate the attacks.
-
