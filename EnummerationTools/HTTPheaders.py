@@ -13,9 +13,11 @@ except ImportError:
 from tkinter import font as tkfont
 from tkinter import ttk
 from tkinter import *
-from tkinter import messagebox
+from tkinter import font, messagebox
+import PySimpleGUI as sg
 from nav_bar import *
 import socket
+from os import path, system, name
 from tkinter.filedialog import asksaveasfile
 
 

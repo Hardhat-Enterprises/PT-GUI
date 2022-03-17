@@ -47,3 +47,4 @@ AUTH_BYPASS_DESC = "Privilege escalation attack will be applied to demonstrate A
                    "escalation attack is known as a child of Authentication Bypass attack. In this experiment, " \
                    "Metasploist will be used for testing, which consists of Meterpreter script and getsystem, " \
                    "that will utilize several alternative methods to attempt to acquire system level privilege on the target machine. "
+                   

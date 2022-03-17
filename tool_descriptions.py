@@ -140,5 +140,5 @@ HTTP_ANALYZER_DESC = "This tool is used to view the HTTP headers that are sent d
 TCP_SYN_FLOOD_DESC = "This tool is used to attack web servers by continuously sending spoofed SYN packets to opened TCP ports. " \
                      "It allows users to set the target destination and packet data, with the option of stopping, restarting or redirecting the attack, " \
                      "The program also randomizes the user's host IP address, anonymizing each attack. " \
-                     "This application can be used in consolidation with other tools, such as NMap to scan the web server for open ports, " \
+                     "This application can be used in consolidation with other tools, such as NMap to scan the web server for open ports, "\
                      "or Wireshark to monitor the packet transfer activity."

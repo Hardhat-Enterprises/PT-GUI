@@ -2,14 +2,17 @@
 
 
 import tkinter as tk  # python 3
-from tkinter import *
-from tkinter import font as tkfont
-
-from nav_bar import *
-
-
+from tkinter import font  as tkfont  # python 3
 # import Tkinter as tk     # python 2
 # import tkFont as tkfont  # python 2
+
+from tkinter import font as tkfont
+from tkinter import ttk
+from tkinter import *
+from tkinter import font, messagebox
+import random, requests, os, sys
+import PySimpleGUI as sg
+from nav_bar import *
 
 
 class ReferencesPage(tk.Frame):
@@ -33,24 +36,24 @@ class ReferencesPage(tk.Frame):
         frameextra = tk.Label(self, bg='#2E414F')
         frameextra.pack(pady=120)
 
-        # new frame for tools list
+                # new frame for tools list
         container = Frame(self)
         container.pack(fill='both', expand=True)
         # create a canvas on the new frame
         canvas = Canvas(container)
 
         # create scrollbar on new frame
-        # scrollbar y
-        scrollbar_y = Scrollbar(container,
-                                orient=VERTICAL,
-                                command=canvas.yview)
-        scrollbar_y.pack(side=RIGHT, fill=Y)
+        #scrollbar y
+        scrollbar_y = Scrollbar(container, 
+                                    orient=VERTICAL,
+                                    command=canvas.yview)
+        scrollbar_y.pack(side=RIGHT,fill=Y)
         scrollbar_y.config(command=canvas.yview)
-        # create scrollbar x
+        #create scrollbar x
         scrollbar_x = Scrollbar(container,
-                                orient=HORIZONTAL,
-                                command=canvas.xview)
-        scrollbar_x.pack(side=BOTTOM, fill=X)
+                                    orient=HORIZONTAL,
+                                    command=canvas.xview)
+        scrollbar_x.pack(side=BOTTOM,fill=X)
         scrollbar_x.config(command=canvas.xview)
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
@@ -66,7 +69,6 @@ class ReferencesPage(tk.Frame):
             yscrollcommand=scrollbar_y.set
         )
         canvas.pack(side=LEFT, fill=BOTH, expand=True)
-
         # packs passed widget to the left of screen, used for creating a reference entry
         def pack_widget_left(widget):
             widget.pack(fill='x', padx=280, pady=(1, 1), side=tk.TOP)
@@ -78,11 +80,10 @@ class ReferencesPage(tk.Frame):
             # if the title is empty, use a smaller label (lower font size)
             if title == "":
                 tool_title_label = tk.Label(reference_canvas, text="", font="calibri 4 bold", height=2, bg="#E3E4E5",
-                                            anchor="c")
+                                       anchor="c")
             else:
-                tool_title_label = tk.Label(reference_canvas, text=title, font="calibri 20 bold", height=2,
-                                            bg="#E3E4E5",
-                                            anchor="c")
+                tool_title_label = tk.Label(reference_canvas, text=title, font="calibri 20 bold", height=2, bg="#E3E4E5",
+                                       anchor="c")
             pack_widget_left(tool_title_label)
 
             explanation_label = tk.Label(reference_canvas, text=explanation, font="calibri 12", height=2, bg="#E3E4E5",
@@ -124,7 +125,7 @@ class ReferencesPage(tk.Frame):
         create_reference("", "Used this site to learn how to create dynamically resizing labels",
                          "https://stackoverflow.com/questions/49037051/when-using-the-pack-layout-of-tkinter-how-can-i-have-a-labels-wraplength-be-eq")
         create_reference("", "Used this site to learn how to add horizontal scrollbars to toolkit",
-                         "https://pythonguides.com/python-tkinter-scrollbar/")
+                            "https://pythonguides.com/python-tkinter-scrollbar/")
         # ATTACK VECTOR 1 REFERENCES
         create_reference("Attack Vector One", "Repository where 'pymetasploit3.msfrpc' module is imported from. Used as"
                                               " guide for communication with MSFRPC framework",
@@ -160,7 +161,7 @@ class ReferencesPage(tk.Frame):
                          "https://www.coalfire.com/the-coalfire-blog/may-2019/pymetasploit3-metasploit-automation-library")
         create_reference("", "Repository where 'pymetasploit3.msfrpc' module is imported from. Used as a guide for "
                              "communication with MSFRPC framework.",
-                         "https://github.com/DanMcInerney/pymetasploit3")
+                         "https://github.com/DanMcInerney/pymetasploit3")  
 
         # FTP brute force
         create_reference("FTP Brute Force Tool", "This guided me through installing a FTP server on my kali virtual "
@@ -177,25 +178,25 @@ class ReferencesPage(tk.Frame):
         create_reference("", "Helped me understand how to code the functionality behind the tool and how to connect "
                              "to a URL via code",
                          "http://www.learningaboutelectronics.com/Articles/How-to-retrieve-the-HTTP-headers-of-a-web-page-Python-http-client.php")
+        
+         # WALKTHROUGH REFERENCES
+        create_reference("Buffer Overflow", "Sources used to create overflow walkthrough", 
+                         "https://princerohit8800.medium.com/buffer-overflow-exploiting-slmail-email-server-f90b27459911") 
+        #Wordlist Generator References
+        create_reference("Wordlist Generator","Sources used to create Wordlist Generator",
+                            "https://github.com/Mebus/cupp")
+                            
+        create_reference("Video Player","Sources used to create video player function",
+                            "https://www.geeksforgeeks.org/pyglet-media-player/")
 
-        # WALKTHROUGH REFERENCES
-        create_reference("Buffer Overflow", "Sources used to create overflow walkthrough",
-                         "https://princerohit8800.medium.com/buffer-overflow-exploiting-slmail-email-server-f90b27459911")
-        # Wordlist Generator References
-        create_reference("Wordlist Generator", "Sources used to create Wordlist Generator",
-                         "https://github.com/Mebus/cupp")
-
-        create_reference("Video Player", "Sources used to create video player function",
-                         "https://www.geeksforgeeks.org/pyglet-media-player/")
-
-        create_reference("Authentication Bypass",
-                         "Sources used to conduct Privilege Escalation to demonstrate Authentication Bypass attack",
-                         "https://www.youtube.com/watch?v=pRcenfXjf9A")
-
-        create_reference("TCP SYN Flooder", "Sources used to create this attack ",
-                         "https://github.com/Malam-X/TCP-Flood/blob/main/flood.py")
-
+        create_reference("Authentication Bypass","Sources used to conduct Privilege Escalation to demonstrate Authentication Bypass attack",
+                            "https://www.youtube.com/watch?v=pRcenfXjf9A")
+        
+        create_reference("TCP SYN Flooder","Sources used to create this attack ",
+                            "https://github.com/Malam-X/TCP-Flood/blob/main/flood.py")
+                                     
         # used for spacing purposes, extends width of reference listing to look nicer
         space = tk.Label(scrollable_frame,
                          text="                                                                                                                                                                                                                                                         ",
                          height=0).pack(fill='x')
+

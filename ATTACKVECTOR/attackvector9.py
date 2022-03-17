@@ -1,16 +1,18 @@
 ## ATTACK VECTOR 2 PAGE ##
 
-import tkinter as tk  # python 3
-from subprocess import Popen, PIPE
-from tkinter import font, messagebox
+import tkinter as tk                # python 3
+from tkinter import font  as tkfont # python 3
+#import Tkinter as tk     # python 2
+#import tkFont as tkfont  # python 2
+
 from tkinter import font as tkfont
-
+from tkinter import *
+from tkinter import font, messagebox
+import random, requests, os, sys
+import PySimpleGUI as sg
 from nav_bar import *
-
-
-# import Tkinter as tk     # python 2
-# import tkFont as tkfont  # python 2
-
+from subprocess import call, Popen, PIPE
+import os
 
 class AttackVectorNine(tk.Frame):
 
@@ -19,7 +21,9 @@ class AttackVectorNine(tk.Frame):
         self.controller = controller
         framefont = tkfont.Font(family='Calibri', size=33, weight="bold")
 
+
         main_frame = tk.Frame(self)
+
 
         highlightFont = font.Font(family='Calibri', size=18)
 
@@ -28,11 +32,10 @@ class AttackVectorNine(tk.Frame):
         priv_escalation = tk.PhotoImage(file='resources/priv_escalation.png')
 
         def hint():
-            messagebox.showinfo("Hint",
-                                "You need to choose the appropriate Windows version with chosen exploit. For this attack, we will test on machine running Windows XP.")
+           messagebox.showinfo("Hint", "You need to choose the appropriate Windows version with chosen exploit. For this attack, we will test on machine running Windows XP.")
 
         def load_terminal():
-            p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True, shell=True).stdout
+            p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True, shell = True).stdout
 
         def change_to_Step1():
             text = (
@@ -42,11 +45,9 @@ class AttackVectorNine(tk.Frame):
                 "     ipconfig\n"
 
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
-                                    aspect=300)
+            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white',  font=('Calibri', 20), anchor= 'nw', aspect = 300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            hintButton = tk.Button(step1frame, text="Hint", bg="#154c79", fg="white", font=highlightFont, command=hint,
-                                   relief='flat').place(rely=0.02, relx=0.3, relheight=0.05, relwidth=0.04)
+            hintButton = tk.Button(step1frame, text="Hint", bg="#154c79", fg="white", font=highlightFont, command=hint, relief='flat').place(rely=0.02, relx=0.3, relheight=0.05, relwidth=0.04)
 
         def change_to_Step2():
             text = (
@@ -64,12 +65,9 @@ class AttackVectorNine(tk.Frame):
                 "o   Set URIPATH /\n\n"
 
             )
-            step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
-                                    aspect=300)
+            step2frame = tk.Message(main_frame, text=text, fg='black', bg='white',  font=('Calibri', 20), anchor= 'nw', aspect = 300)
             step2frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
-                                       command=load_terminal, relief='flat').place(rely=0.65, relx=0.02, relheight=0.05,
-                                                                                   relwidth=0.1)
+            terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont, command=load_terminal, relief='flat').place(rely=0.65, relx=0.02, relheight=0.05, relwidth=0.1)
 
         def change_to_Step3():
             text = (
@@ -85,8 +83,7 @@ class AttackVectorNine(tk.Frame):
                 "     ps\n\n"
 
             )
-            step3frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
-                                    aspect=300)
+            step3frame = tk.Message(main_frame, text=text, fg='black', bg='white',  font=('Calibri', 20), anchor= 'nw', aspect = 300)
             step3frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
 
         # creates blue bar as canvas below nav bar housing label containing title of page
@@ -98,19 +95,12 @@ class AttackVectorNine(tk.Frame):
         allscreenframe = tk.Label(main_frame, bg='white')
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
 
-        sidescreenframe = tk.Label(main_frame, text="\n            Steps", bg='#E7E7E7', font=('Calibri', 20),
-                                   anchor='nw')
+        sidescreenframe = tk.Label(main_frame, text="\n            Steps", bg='#E7E7E7',  font=('Calibri', 20), anchor= 'nw')
         sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
 
-        step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step1, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
-        step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step2, relief='flat').place(rely=0.4, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
-        step3btn = tk.Button(main_frame, text="Step 3", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step3, relief='flat').place(rely=0.5, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
+        step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont, command=change_to_Step1, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05, relwidth=0.1)
+        step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont, command=change_to_Step2, relief='flat').place(rely=0.4, relx=0.02, relheight=0.05, relwidth=0.1)
+        step3btn = tk.Button(main_frame, text="Step 3", bg="#E7E7E7", fg="black", font=highlightFont, command=change_to_Step3, relief='flat').place(rely=0.5, relx=0.02, relheight=0.05, relwidth=0.1)
 
         priv_escalation_label = tk.Label(main_frame, image=priv_escalation)
         priv_escalation_label.place(rely=0.36, relx=0.4)

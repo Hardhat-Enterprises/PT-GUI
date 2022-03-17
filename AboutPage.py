@@ -1,11 +1,15 @@
 ## ABOUT PAGE ##
 
 import tkinter as tk  # python 3
-from tkinter import *
+from tkinter import font  as tkfont  # python 3
 # import Tkinter as tk     # python 2
 # import tkFont as tkfont  # python 2
 from tkinter import font as tkfont
-
+import PIL
+from tkinter import *
+from tkinter import font, messagebox
+import random, requests, os, sys
+import PySimpleGUI as sg
 from nav_bar import *
 
 
@@ -14,7 +18,7 @@ class AboutPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-
+        
         display_nav_bar(self, controller)
         framefont = tkfont.Font(family='Calibri', size=33, weight="bold")
 
@@ -22,12 +26,12 @@ class AboutPage(tk.Frame):
         title_canvas = tk.Canvas(self, bg='white', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
 
-        title_label = tk.Label(self, text="About The Toolkit", bg='#3A4C5E', fg='white', anchor="c", font=framefont)
+        title_label = tk.Label(self, text="About The Toolkit", bg='#3A4C5E', fg='white' , anchor="c", font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
-        # allscreenframe = tk.Label(mycanvas)
-        # allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
-        # extra frame for spacing, pushes all subsequent content below nav bar and title label using the pady field
+        #allscreenframe = tk.Label(mycanvas)
+        #allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
+          # extra frame for spacing, pushes all subsequent content below nav bar and title label using the pady field
         frameextra = Label(self, bg='#3B5262')
         frameextra.pack(pady=120)
 
@@ -38,17 +42,17 @@ class AboutPage(tk.Frame):
         canvas = Canvas(container)
 
         # create scrollbar on new frame
-        # scrollbar y
-        scrollbar_y = Scrollbar(container,
-                                orient=VERTICAL,
-                                command=canvas.yview)
-        scrollbar_y.pack(side=RIGHT, fill=Y)
+        #scrollbar y
+        scrollbar_y = Scrollbar(container, 
+                                    orient=VERTICAL,
+                                    command=canvas.yview)
+        scrollbar_y.pack(side=RIGHT,fill=Y)
         scrollbar_y.config(command=canvas.yview)
-        # create scrollbar x
+        #create scrollbar x
         scrollbar_x = Scrollbar(container,
-                                orient=HORIZONTAL,
-                                command=canvas.xview)
-        scrollbar_x.pack(side=BOTTOM, fill=X)
+                                    orient=HORIZONTAL,
+                                    command=canvas.xview)
+        scrollbar_x.pack(side=BOTTOM,fill=X)
         scrollbar_x.config(command=canvas.xview)
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
@@ -56,7 +60,7 @@ class AboutPage(tk.Frame):
         scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
-        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.create_window((0,0), window=scrollable_frame, anchor="nw")
 
         # sets scrollcommand to the existing scrollbar, linking the widgets
         canvas.config(
@@ -91,21 +95,21 @@ class AboutPage(tk.Frame):
                               bg="#E7E7E7", fg="black", font=('Calibri', 14), justify=LEFT, width=120)
 
         # places labels on the screen
-        # paragraph_one.place(rely=0.22, relx=0.085, relheight=0.24, relwidth=0.4)
-        # paragraph_two.place(rely=0.71, relx=0.48, relheight=0.24, relwidth=0.4)
-        # teamwork_label.place(rely=0.22, relx=0.54, relheight=0.4, relwidth=0.31)
-        # computer_label.place(rely=0.5, relx=0.13, relheight=0.45, relwidth=0.31)
-        paragraph_one.pack(side=LEFT, padx=40, pady=50)
-        teamwork_label.pack(side=LEFT, padx=40, pady=50)
-
-        computer_label.pack(side=LEFT, padx=40, pady=50)
-        paragraph_two.pack(side=LEFT, padx=40, pady=50)
+        #paragraph_one.place(rely=0.22, relx=0.085, relheight=0.24, relwidth=0.4)
+        #paragraph_two.place(rely=0.71, relx=0.48, relheight=0.24, relwidth=0.4)
+        #teamwork_label.place(rely=0.22, relx=0.54, relheight=0.4, relwidth=0.31)
+        #computer_label.place(rely=0.5, relx=0.13, relheight=0.45, relwidth=0.31)
+        paragraph_one.pack(side=LEFT,padx=40,pady=50)
+        teamwork_label.pack(side=LEFT,padx=40,pady=50)
+        
+        computer_label.pack(side=LEFT,padx=40,pady=50)
+        paragraph_two.pack(side=LEFT,padx=40,pady=50)
         # binds the labels configure action to execute the set_label_wrap function
         # This will run when the screen is resized
-        # paragraph_one.bind("<Configure>", self.set_label_wrap)
-        # paragraph_two.bind("<Configure>", self.set_label_wrap)
+        #paragraph_one.bind("<Configure>", self.set_label_wrap)
+        #paragraph_two.bind("<Configure>", self.set_label_wrap)
 
     # dynamically updates the wraplength of the labels so that the text fits to the width properly
     def set_label_wrap(self, event):
-        wraplength = event.width - 20  # the 8 is for padding (makes it look nicer)
+        wraplength = event.width - 20 # the 8 is for padding (makes it look nicer)
         event.widget.configure(wraplength=wraplength)

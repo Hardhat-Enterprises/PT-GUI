@@ -1,5 +1,4 @@
 import tkinter as tk
-
 window = tk.Tk()
 greeting = tk.Label(text="Hello, Tkinter")
 greeting.pack()
@@ -65,7 +64,6 @@ def open_file():
         text = input_file.read()
         txt_edit.insert(tk.END, text)
     window.title(f"Simple Text Editor - {filepath}")
-
 
 window = tk.Tk()
 window.title("Simple Text Editor")

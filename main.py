@@ -1,40 +1,38 @@
 import tkinter as tk  # python 3
 from tkinter import font as tkfont  # python 3
-
-from ATTACKVECTOR.attackvector1 import AttackVectorOne
-from ATTACKVECTOR.attackvector2 import AttackVectorTwo
-from ATTACKVECTOR.attackvector3 import AttackVectorThree
-from ATTACKVECTOR.attackvector4 import AttackVectorFour
-from ATTACKVECTOR.attackvector7 import AttackVectorSeven
-from ATTACKVECTOR.attackvector8 import AttackVectorEight
-from ATTACKVECTOR.attackvector9 import AttackVectorNine
 # import Tkinter as tk     # python 2
 # import tkFont as tkfont  # python 2
 from AboutPage import AboutPage
-from EnumerationTools.HTTPheaders import HTTPheaders
-from EnumerationTools.ImageMetaDataExtractor import IMDExtractor
-from EnumerationTools.MacChanger import MacChange
-from EnumerationTools.TestSniffer import TestSniff
-from EnumerationTools.hash_analyzer import HashAn
-from ExecutionTools.FTPBruteForce import FTPBruteForce
-from ExecutionTools.ICMPPingFlooder import ICMP
+from VectorsPage import VectorsPage
+from ToolsPage import ToolsPage
+from ReferencesPage import ReferencesPage
+from ATTACKVECTOR.attackvector1 import AttackVectorOne
+from ATTACKVECTOR.attackvector3 import AttackVectorThree
+from ATTACKVECTOR.attackvector2 import AttackVectorTwo
+from StartPage import StartPage
+from ReconnaissanceTools.PortScanner import PortScan
+from EnummerationTools.TestSniffer import TestSniff
+from EnummerationTools.MacChanger import MacChange
+from Tools.Notepad import *
+from ReconnaissanceTools.BannerGrabbing import BannerGrab
+from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
 from ExecutionTools.MsfconsoleListener import MsfListener
 from ExecutionTools.Spoof import MimtDnsSpoof
+from ExecutionTools.FTPBruteForce import FTPBruteForce
 from Fuzzers.DirectoryTraversalFuzzer import DTFuzz
+from EnummerationTools.ImageMetaDataExtractor import IMDExtractor
+from ATTACKVECTOR.attackvector7 import AttackVectorSeven
+from ATTACKVECTOR.attackvector8 import AttackVectorEight
+from ATTACKVECTOR.attackvector9 import AttackVectorNine
+from InitialAccessTools.sshbrute import SshBrute
+from EnummerationTools.hash_analyzer import HashAn
 from InitialAccessTools.PasswordHashCracker import PHCracker
 from InitialAccessTools.ZipBruteForce import ZipBF
-from InitialAccessTools.sshbrute import SshBrute
-from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
-from ReconnaissanceTools.BannerGrabbing import BannerGrab
-from ReconnaissanceTools.PortScanner import PortScan
-from ReferencesPage import ReferencesPage
-from StartPage import StartPage
-from ToolsPage import ToolsPage
-from VectorsPage import VectorsPage
+from ExecutionTools.ICMPPingFlooder import ICMP
+from EnummerationTools.HTTPheaders import HTTPheaders
 from WalkthroughsPage import WalkthroughClass
-
-
-# from WordlistGen_final import WordlistGen
+from ATTACKVECTOR.attackvector4 import AttackVectorFour
+#from WordlistGen_final import WordlistGen
 
 class GUIApp(tk.Tk):
 
@@ -57,8 +55,7 @@ class GUIApp(tk.Tk):
         self.frames = {}
         # iterates through every object listed in brackets
         for F in (StartPage, AboutPage, VectorsPage, ToolsPage, ReferencesPage, AttackVectorOne, AttackVectorThree,
-                  AttackVectorTwo, PortScan, TestSniff, MacChange, BannerGrab, MsfPayloadGen, MsfListener, MimtDnsSpoof,
-                  DTFuzz,
+                  AttackVectorTwo, PortScan, TestSniff, MacChange, BannerGrab, MsfPayloadGen, MsfListener, MimtDnsSpoof, DTFuzz,
                   FTPBruteForce, IMDExtractor, AttackVectorSeven, AttackVectorEight, AttackVectorNine, AttackVectorFour,
                   SshBrute, HashAn, PHCracker, ZipBF, ICMP, HTTPheaders, WalkthroughClass):
             # sets page_name variable equal to current object's name
