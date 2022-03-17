@@ -75,13 +75,13 @@ class StartPage(tk.Frame):
         tk.Label(self, text="Wordlist Generator", font=LARGEFONT).grid(row=0, column=2, padx=10, pady=100)
 
         tk.Button(self, text="User Profile mode",
-                   command=lambda: controller.show_frame(Page1)).grid(row=3, column=1, padx=10, pady=10)
+                  command=lambda: controller.show_frame(Page1)).grid(row=3, column=1, padx=10, pady=10)
         tk.Button(self, text="About",
-                   command=About).grid(row=3, column=2, padx=10, pady=10)
+                  command=About).grid(row=3, column=2, padx=10, pady=10)
 
         ## button to show frame 2 with text layout2
         tk.Button(self, text="Random mode",
-                   command=lambda: controller.show_frame(Page2)).grid(row=3, column=4, padx=10, pady=10)
+                  command=lambda: controller.show_frame(Page2)).grid(row=3, column=4, padx=10, pady=10)
 
 
 # second window frame page1
@@ -130,19 +130,18 @@ class Page1(tk.Frame):
         tk.Button(self,
                   text=' About ', command=AboutButton).grid(row=8, column=2, padx=10, pady=10)
 
-
         # label = ttk.Label(self, text="Page 1", font=LARGEFONT)
         # label.grid(row=9, column=0, padx=10, pady=10)
 
         # button to show frame 2 with text
         # layout2
         tk.Button(self, text="Start Page",
-                   command=lambda: controller.show_frame(StartPage)).grid(row=9, column=0, padx=10, pady=10)
+                  command=lambda: controller.show_frame(StartPage)).grid(row=9, column=0, padx=10, pady=10)
 
         # button to show frame 2 with text
         # layout2
         tk.Button(self, text="Random mode",
-                   command=lambda: controller.show_frame(Page2)).grid(row=9, column=3, padx=10, pady=10)
+                  command=lambda: controller.show_frame(Page2)).grid(row=9, column=3, padx=10, pady=10)
 
     def operation(self):
         data = {}
@@ -217,17 +216,17 @@ class Page2(tk.Frame):
                                                        column=1, padx=10, pady=10)
         tk.Button(self,
                   text='About', command=AboutR).grid(row=7,
-                                                       column=2, padx=10, pady=10)
+                                                     column=2, padx=10, pady=10)
 
         # button to show frame 2 with text
         # layout2
         tk.Button(self, text="User Profile Mode",
-                   command=lambda: controller.show_frame(Page1)).grid(row=8, column=0, padx=10, pady=10)
+                  command=lambda: controller.show_frame(Page1)).grid(row=8, column=0, padx=10, pady=10)
 
         # button to show frame 3 with text
         # layout3
         tk.Button(self, text="Start Page",
-                   command=lambda: controller.show_frame(StartPage)).grid(row=8, column=3, padx=10, pady=10)
+                  command=lambda: controller.show_frame(StartPage)).grid(row=8, column=3, padx=10, pady=10)
 
     def get(self):
         MinSize = self.e1.get()
@@ -286,9 +285,9 @@ def About():
     messagebox.showinfo('Author', 'Wordlist Generator made by Steve')
     messagebox.showinfo('About', 'Wordlist Generator provide two mode to generate wordlist')
 
+
 def AboutR():
     messagebox.showinfo('Notice', 'select the length and style you want, Dont forget to get a file name')
-
 
 
 def AboutButton():

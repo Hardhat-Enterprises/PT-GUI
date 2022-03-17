@@ -4,11 +4,11 @@ from requests.exceptions import MissingSchema
 
 import tkinter.messagebox
 from socket import *
-from threading import Thread,Lock
-import sys,re,random, requests, os
+from threading import Thread, Lock
+import sys, re, random, requests, os
 
 import tkinter as tk  # python 3
-from tkinter import font  as tkfont  # python 3
+from tkinter import font as tkfont  # python 3
 # import Tkinter as tk     # python 2
 # import tkFont as tkfont  # python 2
 from tkinter import font as tkfont
@@ -28,129 +28,137 @@ dirList = dataString.split("\n")
 global homepageURL
 homepageURL = ""
 
+
 # ------------------------------------
 
 
 class DTFuzz(tk.Frame):
 
-# ============================= Initializer Function ========================================================================
+    # ============================= Initializer Function ========================================================================
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         abtframefont = tkfont.Font(family='Calibri', size=33, weight="bold")
         display_nav_bar(self, controller)
-        aboutframe = tk.Label(self, text="    Directory Traversal Fuzzer",bg='#3B5262', fg='white', anchor="c", font=abtframefont)
+        aboutframe = tk.Label(self, text="    Directory Traversal Fuzzer", bg='#3B5262', fg='white', anchor="c",
+                              font=abtframefont)
         aboutframe.place(rely=0.08, relheight=0.12, relwidth=1)
 
         allscreenframe = tk.Label(self, bg='white')
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
 
-# ---------------------------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------------------------------
 
         # LABELS / TEXT ON SCREEN
-# Label for "enter homepage"
-        labelHomepage = Label(self,text ="Enter homepage of target site:",
-          font=('Calibri', 13), bg = "white", anchor='w').place(rely=0.24, relx=0.03, relheight=0.04, relwidth=0.30)
-# Label for "VULNERABLE DIRECTORY SCANNER"
-        label2 = Label(self,text ="-- Vulnerable Directory Scanners --",
-          font=('Calibri', 13), anchor='c').place(rely=0.36, relx=0.03, relheight=0.04, relwidth=0.62)
-# Label "automatically scan for directories using library"
-        label3 = Label(self,text ="Scan for custom directory",
-          font=('Calibri', 13), bg = "white", anchor='c').place(rely=0.43, relx=0.03, relheight=0.04, relwidth=0.30)
-# Label "Enter CUSTOM directory to scan for"
-        label4 = Label(self,text ="Enter custom directory to scan for:",
-          font=('Calibri', 13), bg = "white", anchor='w').place(rely=0.48, relx=0.03, relheight=0.04, relwidth=0.18)
-# Label "OR"
-        label5 = Label(self,text ="OR",
-          font=('Calibri', 13), bg = "white", anchor='c').place(rely=0.64, relx=0.03, relheight=0.04, relwidth=0.30)
-# Label "automatically scan for directories using library"
-        label6 = Label(self,text ="Automatically scan for directories using library",
-          font=('Calibri', 13), bg = "white", anchor='c').place(rely=0.69, relx=0.03, relheight=0.04, relwidth=0.30)
-# Label "Enter parent directory to scan from - LIBRARY"
-        label7 = Label(self,text ="Enter parent directory to scan from:",
-          font=('Calibri', 13), bg = "white", anchor='w').place(rely=0.74, relx=0.03, relheight=0.04, relwidth=0.30)
-# Label "FILE DOWNLOADER"
-        label8 = Label(self,text ="File Downloader",
-          font=('Calibri', 13), anchor='c').place(rely=0.71, relx=0.68, relheight=0.04, relwidth=0.28)
-# Label "ENTER file to DOWNLOAD"
-        label9 = Label(self,text ="Enter path of file to download:",
-          font=('Calibri', 13), bg = "white", anchor='w').place(rely=0.75, relx=0.68, relheight=0.04, relwidth=0.28)
-# Label "Visit Page"
-        label9 = Label(self,text ="Visit A Directory",
-          font=('Calibri', 13), anchor='c').place(rely=0.45, relx=0.68, relheight=0.04, relwidth=0.28)
-# Label "Visit Page2"
-        label9 = Label(self,text ="Enter URL of page to visit:",
-          font=('Calibri', 13), bg = "white", anchor='w').place(rely=0.49, relx=0.68, relheight=0.04, relwidth=0.28)
+        # Label for "enter homepage"
+        labelHomepage = Label(self, text="Enter homepage of target site:",
+                              font=('Calibri', 13), bg="white", anchor='w').place(rely=0.24, relx=0.03, relheight=0.04,
+                                                                                  relwidth=0.30)
+        # Label for "VULNERABLE DIRECTORY SCANNER"
+        label2 = Label(self, text="-- Vulnerable Directory Scanners --",
+                       font=('Calibri', 13), anchor='c').place(rely=0.36, relx=0.03, relheight=0.04, relwidth=0.62)
+        # Label "automatically scan for directories using library"
+        label3 = Label(self, text="Scan for custom directory",
+                       font=('Calibri', 13), bg="white", anchor='c').place(rely=0.43, relx=0.03, relheight=0.04,
+                                                                           relwidth=0.30)
+        # Label "Enter CUSTOM directory to scan for"
+        label4 = Label(self, text="Enter custom directory to scan for:",
+                       font=('Calibri', 13), bg="white", anchor='w').place(rely=0.48, relx=0.03, relheight=0.04,
+                                                                           relwidth=0.18)
+        # Label "OR"
+        label5 = Label(self, text="OR",
+                       font=('Calibri', 13), bg="white", anchor='c').place(rely=0.64, relx=0.03, relheight=0.04,
+                                                                           relwidth=0.30)
+        # Label "automatically scan for directories using library"
+        label6 = Label(self, text="Automatically scan for directories using library",
+                       font=('Calibri', 13), bg="white", anchor='c').place(rely=0.69, relx=0.03, relheight=0.04,
+                                                                           relwidth=0.30)
+        # Label "Enter parent directory to scan from - LIBRARY"
+        label7 = Label(self, text="Enter parent directory to scan from:",
+                       font=('Calibri', 13), bg="white", anchor='w').place(rely=0.74, relx=0.03, relheight=0.04,
+                                                                           relwidth=0.30)
+        # Label "FILE DOWNLOADER"
+        label8 = Label(self, text="File Downloader",
+                       font=('Calibri', 13), anchor='c').place(rely=0.71, relx=0.68, relheight=0.04, relwidth=0.28)
+        # Label "ENTER file to DOWNLOAD"
+        label9 = Label(self, text="Enter path of file to download:",
+                       font=('Calibri', 13), bg="white", anchor='w').place(rely=0.75, relx=0.68, relheight=0.04,
+                                                                           relwidth=0.28)
+        # Label "Visit Page"
+        label9 = Label(self, text="Visit A Directory",
+                       font=('Calibri', 13), anchor='c').place(rely=0.45, relx=0.68, relheight=0.04, relwidth=0.28)
+        # Label "Visit Page2"
+        label9 = Label(self, text="Enter URL of page to visit:",
+                       font=('Calibri', 13), bg="white", anchor='w').place(rely=0.49, relx=0.68, relheight=0.04,
+                                                                           relwidth=0.28)
 
+        # ---------------------------------------------------------------------------------------------------
 
-
-# ---------------------------------------------------------------------------------------------------
-
-# BIG SCAN OUTPUT TEXT BOX
+        # BIG SCAN OUTPUT TEXT BOX
         dsrBox = tk.Label(self, bg='#E3E4E5')
         dsrBox.place(rely=0.45, relx=0.35, relheight=0.52, relwidth=0.30)
-        dsrBoxSB = Scrollbar(dsrBox)  
-        dsrBoxSB.pack(side = RIGHT, fill = Y)
+        dsrBoxSB = Scrollbar(dsrBox)
+        dsrBoxSB.pack(side=RIGHT, fill=Y)
 
-# ---------------------------------------------------------------------------------------------------
-       
+        # ---------------------------------------------------------------------------------------------------
 
         # INPUT TEXT BOXES
-# input text box for setting the homepage of victim site
+        # input text box for setting the homepage of victim site
         self.HomepageTB = Entry(self, font=('Calibri', 13))
         self.HomepageTB.place(rely=0.24, relx=0.18, relheight=0.04, relwidth=0.30)
-# input box for CUSTOM directory scan
-        self.CustomDirScanTB = Entry(self, font=('Calibri', 13),)
+        # input box for CUSTOM directory scan
+        self.CustomDirScanTB = Entry(self, font=('Calibri', 13), )
         self.CustomDirScanTB.place(rely=0.52, relx=0.03, relheight=0.04, relwidth=0.30)
-# input box for LIBRARY directory scan
-        self.LibraryDirScanTB = Entry(self, font=('Calibri', 13),)
+        # input box for LIBRARY directory scan
+        self.LibraryDirScanTB = Entry(self, font=('Calibri', 13), )
         self.LibraryDirScanTB.place(rely=0.78, relx=0.03, relheight=0.04, relwidth=0.30)
-# input box for VISIT
-        self.VisitPageTB = Entry(self, font=('Calibri', 13),)
+        # input box for VISIT
+        self.VisitPageTB = Entry(self, font=('Calibri', 13), )
         self.VisitPageTB.place(rely=0.53, relx=0.68, relheight=0.04, relwidth=0.28)
-# input box for DOWNLOAD
-        self.DownloadFileTB = Entry(self, font=('Calibri', 13),)
+        # input box for DOWNLOAD
+        self.DownloadFileTB = Entry(self, font=('Calibri', 13), )
         self.DownloadFileTB.place(rely=0.79, relx=0.68, relheight=0.04, relwidth=0.28)
-       
-# ---------------------------------------------------------------------------------------------------
+
+        # ---------------------------------------------------------------------------------------------------
 
         #  BUTTONS
-# set homepage button
-        Button(self,text="Set Homepage",font=('Calibri', 13),anchor='c',
-          command= lambda: self.homepage_set()).place(rely=0.24, relx=0.49, relheight=0.04, relwidth=0.13)
-# visit homepage button
-        Button(self,text="Visit Homepage",font=('Calibri', 13),anchor='c',
-          command= lambda: self.visit_homepage()).place(rely=0.24, relx=0.63, relheight=0.04, relwidth=0.13)
-# button to start CUSTOM directory scan
-        Button(self,text="Start Custom Directory Scan",font=('Calibri', 13),anchor='c',
-          command= lambda: self.custom_scan()).place(rely=0.57, relx=0.03, relheight=0.04, relwidth=0.30)
-# button to start LIBRARY directory scan
-        Button(self,text="Start Library Scan",font=('Calibri', 13),anchor='c',
-          command= lambda: self.library_scan()).place(rely=0.83, relx=0.03, relheight=0.04, relwidth=0.30)
-# button to insert homepage URL into text box CUSTOM
-        Button(self, text="Insert homepage",font=('Calibri', 13),anchor='c',
-          command= lambda: self.insert_homepage_custom()).place(rely=0.485, relx=0.24, relheight=0.03, relwidth=0.09)
-# button to insert homepage URL into text box LIBRARY
-        Button(self, text="Insert homepage",font=('Calibri', 13),anchor='c',
-          command= lambda: self.insert_homepage_library()).place(rely=0.745, relx=0.24, relheight=0.03, relwidth=0.09)
-# button to DOWNLOAD page
-        Button(self,text="Download File",font=('Calibri', 13),anchor='c',
-          command= lambda: self.download_page()).place(rely=0.84, relx=0.68, relheight=0.04, relwidth=0.28)
-# button to VISIT a page
-        Button(self,text="Visit Page",font=('Calibri', 13),anchor='c',
-          command= lambda: self.visit_page()).place(rely=0.58, relx=0.68, relheight=0.04, relwidth=0.28)
-        
+        # set homepage button
+        Button(self, text="Set Homepage", font=('Calibri', 13), anchor='c',
+               command=lambda: self.homepage_set()).place(rely=0.24, relx=0.49, relheight=0.04, relwidth=0.13)
+        # visit homepage button
+        Button(self, text="Visit Homepage", font=('Calibri', 13), anchor='c',
+               command=lambda: self.visit_homepage()).place(rely=0.24, relx=0.63, relheight=0.04, relwidth=0.13)
+        # button to start CUSTOM directory scan
+        Button(self, text="Start Custom Directory Scan", font=('Calibri', 13), anchor='c',
+               command=lambda: self.custom_scan()).place(rely=0.57, relx=0.03, relheight=0.04, relwidth=0.30)
+        # button to start LIBRARY directory scan
+        Button(self, text="Start Library Scan", font=('Calibri', 13), anchor='c',
+               command=lambda: self.library_scan()).place(rely=0.83, relx=0.03, relheight=0.04, relwidth=0.30)
+        # button to insert homepage URL into text box CUSTOM
+        Button(self, text="Insert homepage", font=('Calibri', 13), anchor='c',
+               command=lambda: self.insert_homepage_custom()).place(rely=0.485, relx=0.24, relheight=0.03,
+                                                                    relwidth=0.09)
+        # button to insert homepage URL into text box LIBRARY
+        Button(self, text="Insert homepage", font=('Calibri', 13), anchor='c',
+               command=lambda: self.insert_homepage_library()).place(rely=0.745, relx=0.24, relheight=0.03,
+                                                                     relwidth=0.09)
+        # button to DOWNLOAD page
+        Button(self, text="Download File", font=('Calibri', 13), anchor='c',
+               command=lambda: self.download_page()).place(rely=0.84, relx=0.68, relheight=0.04, relwidth=0.28)
+        # button to VISIT a page
+        Button(self, text="Visit Page", font=('Calibri', 13), anchor='c',
+               command=lambda: self.visit_page()).place(rely=0.58, relx=0.68, relheight=0.04, relwidth=0.28)
 
-# ============================== Other Functions ==========================================================================   
- 
+    # ============================== Other Functions ==========================================================================
+
     def insert_homepage_custom(self):
         global homepageURL
         if (homepageURL.endswith("/") == False):
             homepageURL = homepageURL + "/"
         textToInsert = homepageURL
         self.CustomDirScanTB.insert(0, homepageURL)
-        
+
     def insert_homepage_library(self):
         global homepageURL
         if (homepageURL.endswith("/") == False):
@@ -179,10 +187,10 @@ class DTFuzz(tk.Frame):
         dsrBox = tk.Label(self, bg='#E3E4E5')
         dsrBox.place(rely=0.45, relx=0.35, relheight=0.52, relwidth=0.30)
         # Init & Pack Scrollbar
-        dsrBoxSB = Scrollbar(dsrBox)  
-        dsrBoxSB.pack(side = RIGHT, fill = Y)
+        dsrBoxSB = Scrollbar(dsrBox)
+        dsrBoxSB.pack(side=RIGHT, fill=Y)
         # Init Textbox
-        myList = Listbox(dsrBox, yscrollcommand = dsrBoxSB.set)
+        myList = Listbox(dsrBox, yscrollcommand=dsrBoxSB.set)
 
         myList.insert(END, ("Custom Directory Scanner"))
         myList.insert(END, (""))
@@ -197,24 +205,23 @@ class DTFuzz(tk.Frame):
                 myList.insert(END, ("ERROR: Requested directory not found."))
         except MissingSchema:
             myList.insert(END, ("Error: Please specify http:// or https:// in input."))
-    
-        myList.pack(fill = "both", expand=True)
-        dsrBoxSB.config(command = myList.yview)
 
+        myList.pack(fill="both", expand=True)
+        dsrBoxSB.config(command=myList.yview)
 
     def library_scan(self):
         global homepageURL
-        global dirList  
-       
+        global dirList
+
         # Text box for showing results from a directory scan
         dsrBox = tk.Label(self, bg='#E3E4E5')
         dsrBox.place(rely=0.45, relx=0.35, relheight=0.52, relwidth=0.30)
         # Init & Pack Scrollbar
-        dsrBoxSB = Scrollbar(dsrBox)  
-        dsrBoxSB.pack(side = RIGHT, fill = Y)
+        dsrBoxSB = Scrollbar(dsrBox)
+        dsrBoxSB.pack(side=RIGHT, fill=Y)
 
         # Init textbox/list
-        myList = Listbox(dsrBox, yscrollcommand = dsrBoxSB.set)
+        myList = Listbox(dsrBox, yscrollcommand=dsrBoxSB.set)
         # Fill textbox/list
         myList.insert(END, ("==== Automated Library Directory Scan ===="))
         myList.insert(END, (" "))
@@ -223,7 +230,7 @@ class DTFuzz(tk.Frame):
         myList.insert(END, ("Open directories found include..."))
         myList.insert(END, (" "))
         # Pack list on screen
-        myList.pack(fill = "both", expand=True)
+        myList.pack(fill="both", expand=True)
 
         command = self.LibraryDirScanTB.get()
 
@@ -232,18 +239,15 @@ class DTFuzz(tk.Frame):
             if (request.status_code != 404):
                 myList.insert(END, (command + directory))
 
+        myList.pack(fill="both", expand=True)
+        dsrBoxSB.config(command=myList.yview)
 
-        myList.pack(fill = "both", expand=True)
-        dsrBoxSB.config(command = myList.yview)
-
-        
     def download_page(self):
         command = self.DownloadFileTB.get()
         os.system("curl -O " + command)
         # display msg saying "file downloaded"?
-        
-        
-        
+
+
 # OLD CODE FROM COMMAND LINE VERSION OF DIRECTORY TRAVERSAL FUZZER v1 ============================================          
 
 """
@@ -372,11 +376,3 @@ while (selection != 8):
 	input("Press enter to continue...")
 
 """
-				
-			
-
-
-		
-	
-
-
