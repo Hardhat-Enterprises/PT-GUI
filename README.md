@@ -6,9 +6,6 @@ Deakin Detonator Toolkit (DDT) is a toolkit that aims to simplify the penetratio
 
 ### Requirements
 * [Kali](https://www.kali.org/)
-* [Python 3.0+](https://docs.python-guide.org/starting/install3/linux/)
-* [PySimpleGUI](https://pypi.org/project/PySimpleGUI/)
-* [git](https://git-scm.com/)
 
 ### Steps
 
@@ -22,7 +19,7 @@ $ cd PT-GUI
 
 ```bash
 $ sudo apt update
-$ sudo apt install -y python3 python3-pip python3-tk
+$ sudo apt install -y python3 python3-pip python3-tk git
 $ cd DDT-GUI/
 $ pip3 install -r requirements.txt
 ```
