@@ -1,17 +1,9 @@
-## WALKTHROUGHS PAGE ##
+from tkinter import font as tkfont
 
-import tkinter as tk  # python 3
-# import tkFont as tkfont  # python 2
+import pyglet
 
-from tkinter import font as tkfont, ttk
-from tkinter import *
-from tkinter import font, messagebox
-import random, requests, os, sys
-import PySimpleGUI as sg
 from nav_bar import *
 from walkthrough_descriptions import *
-# importing pyglet module
-import pyglet
 
 pyglet.options['search_local_libs'] = True
 
@@ -107,11 +99,14 @@ class WalkthroughClass(tk.Frame):
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#232536', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Walkthrough List\nUse P and R to pause and resume playback", bg='#4D6C84',
+        title_label = tk.Label(self,
+                               text="Walkthrough List\nUse P and R to pause and resume playback",
+                               bg='#4D6C84',
                                fg='white', anchor="c", font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
-        # extra frame for spacing, pushes all subsquent content below nav bar and title label using the pady field
+        # extra frame for spacing, pushes all subsquent content below nav bar and title label
+        # using the pady field
         frameextra = tk.Label(self, bg='#4D6C84')
         frameextra.pack(pady=120)
 
@@ -137,7 +132,8 @@ class WalkthroughClass(tk.Frame):
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
         # binds scroll canvas to execute function that gets scrollable region of canvas on event e
-        scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+        scrollable_frame.bind("<Configure>",
+                              lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
         canvas.create_window((565, 3), window=scrollable_frame, anchor="n")
@@ -148,7 +144,8 @@ class WalkthroughClass(tk.Frame):
             yscrollcommand=scrollbar_y.set
         )
         canvas.pack(side=LEFT, fill=BOTH, expand=True)
-        # creates new image variable from start_button.png, used for launch button on walkthrough entry
+        # creates new image variable from start_button.png, used for launch button on
+        # walkthrough entry
         global button_image
         button_image = tk.PhotoImage(file='resources/start_button.png')
         global info_image
@@ -171,15 +168,18 @@ class WalkthroughClass(tk.Frame):
                                              font='controller.btn_font2 20 bold', bg="#E3E4E5")
             pack_widget_left(walkthroughname_label)
 
-            play_button = tk.Button(walkthrough_canvas, bg="#4D6C84", compound=LEFT, text="PLAY", fg="white",
+            play_button = tk.Button(walkthrough_canvas, bg="#4D6C84", compound=LEFT, text="PLAY",
+                                    fg="white",
                                     font="controller.btn_font2 12 bold",
                                     command=lambda: video_player(name, path))
             pack_widget_right(play_button)
             info_button = tk.Button(walkthrough_canvas, image=info_image, compound=LEFT,
-                                    command=lambda: self.show_hint(desc), relief=FLAT, bg="#E3E4E5", borderwidth=0)
+                                    command=lambda: self.show_hint(desc), relief=FLAT, bg="#E3E4E5",
+                                    borderwidth=0)
             pack_widget_right(info_button)
 
-            author_label = tk.Label(walkthrough_canvas, text=author, font="controller.btn_font2 12", height=2,
+            author_label = tk.Label(walkthrough_canvas, text=author, font="controller.btn_font2 12",
+                                    height=2,
                                     bg="#E3E4E5")
             pack_widget_right(author_label)
 
@@ -196,12 +196,16 @@ class WalkthroughClass(tk.Frame):
                            BUF_OVERFLOW_DESC)
 
         # used for spacing purposes, extends width of walkthrough listing to look nicer
-        space = tk.Label(scrollable_frame,
-                         text="                                                                                                                                                                                                                                                         ",
-                         height=0).pack(fill='x')
+        tk.Label(scrollable_frame,
+                 text="                                                                      "
+                      "                                                                      "
+                      "                                                                      "
+                      "                                       ",
+                 height=0).pack(fill='x')
 
     def show_hint(self, desc):
-        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396', fg='white', borderwidth=8,
+        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396',
+                              fg='white', borderwidth=8,
                               relief=RAISED,
                               font=("Calibri", 15))
         desc_label.place(rely=0.125, relx=0.25, relheight=0.75, relwidth=0.5)

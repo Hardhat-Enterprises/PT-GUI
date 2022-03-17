@@ -23,12 +23,12 @@ from InitialAccessTools.sshbrute import SshBrute
 from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
 from ReconnaissanceTools.BannerGrabbing import BannerGrab
 from ReconnaissanceTools.PortScanner import PortScan
-from ReferencesPage import ReferencesPage
-from StartPage import StartPage
+from references_page import ReferencesPage
+from start_page import StartPage
 from Tools.Notepad import *
-from ToolsPage import ToolsPage
-from VectorsPage import VectorsPage
-from WalkthroughsPage import WalkthroughClass
+from tools_page import ToolsPage
+from vectors_page import VectorsPage
+from walkthroughs_page import WalkthroughClass
 from about_page import AboutPage
 
 

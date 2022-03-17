@@ -1,10 +1,12 @@
-import tkinter as tk  # python 3
-from tkinter import Tk, Widget, font as tkfont
-from tkinter.constants import ANCHOR, BOTH, BOTTOM, CENTER, LEFT, NSEW, TOP, X
+import tkinter as tk
 from tkinter import *
+from tkinter import font as tkfont
 
 
 class StartPage(tk.Frame):
+    """
+    Start page.
+    """
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -32,9 +34,11 @@ class StartPage(tk.Frame):
         options_canvas.place(rely=0.4, relx=0, relwidth=1, relheight=0.6)
         bgcolours = ['#3A4C5E', '#4D6C84', '#3B5262', '#2E414F', '#375973']
 
-        # function that creates a menu button, takes a title, menu option number and page to navigate to on click
+        # function that creates a menu button, takes a title, menu option number and
+        # page to navigate to on click
         def create_option(title, menu_num, onclick_page):
-            option_button = tk.Button(options_canvas, text=title, bg=bgcolours[menu_num], fg="white",
+            option_button = tk.Button(options_canvas, text=title, bg=bgcolours[menu_num],
+                                      fg="white",
                                       font=('Calibri', 20, 'bold'),
                                       command=lambda: controller.show_frame(onclick_page),
                                       borderwidth=2, relief="flat", width=10)
@@ -45,7 +49,8 @@ class StartPage(tk.Frame):
         # creates the 4 menu options
         # if you want to add a new menu option,
         # 1. invoke create_option
-        # 2. enter the button text, menu option number and p6ageName you want to navigate to on button click
+        # 2. enter the button text, menu option number and p6ageName you want to navigate
+        # to on button click
         # 3. make sure you enter the name of the page defined in main.py at line 35
         # 4. You're done, run the app and see your new menu option
         create_option("About", 0, "AboutPage")

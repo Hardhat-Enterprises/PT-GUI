@@ -1,16 +1,10 @@
 ## TOOLS PAGE ##
 
-import tkinter as tk  # python 3
+import os
+from subprocess import Popen, PIPE
 # import tkFont as tkfont  # python 2
 from tkinter import font as tkfont
-from tkinter import ttk
-from tkinter import *
-from tkinter import font, messagebox
-import random, requests, os, sys
-from typing import Sized
-import PySimpleGUI as sg
 
-from subprocess import call, Popen, PIPE
 from nav_bar import *
 from tool_descriptions import *
 
@@ -30,7 +24,8 @@ class ToolsPage(tk.Frame):
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#3B5262', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Network Tools List", bg='#3B5262', fg='white', anchor="c", font=framefont)
+        title_label = tk.Label(self, text="Network Tools List", bg='#3B5262', fg='white',
+                               anchor="c", font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
         def notepadopen():
@@ -39,7 +34,8 @@ class ToolsPage(tk.Frame):
             p1 = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
             os.chdir("../")
 
-        # extra frame for spacing, pushes all subsequent content below nav bar and title label using the pady field
+        # extra frame for spacing, pushes all subsequent content below nav bar and
+        # title label using the pady field
         frameextra = Label(self, bg='#3B5262')
         frameextra.pack(pady=120)
 
@@ -65,7 +61,8 @@ class ToolsPage(tk.Frame):
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
         # binds scroll canvas to execute function that gets scrollable region of canvas on event e
-        scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+        scrollable_frame.bind("<Configure>",
+                              lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
         canvas.create_window((565, 3), window=scrollable_frame, anchor="nw")
@@ -113,7 +110,8 @@ class ToolsPage(tk.Frame):
             os.chdir("../")
 
         def load_terminal():
-            p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True, shell=True).stdout
+            p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True,
+                       shell=True).stdout
 
         # packs passed widget to the left of screen, used for creating a tool entry
         def pack_widget_left(button):
@@ -129,9 +127,11 @@ class ToolsPage(tk.Frame):
                              font='controller.btn_font2 20 bold', anchor="c")
             title.pack(expand=TRUE, fill='x', padx=100, pady=20)
 
-        # creates navigation button that executes passed command, allows for variety of functionality of tool click
+        # creates navigation button that executes passed command, allows for variety
+        # of functionality of tool click
         def nav_button(canvas, command):
-            nav_button = tk.Button(canvas, image=button_image, compound=LEFT, bg="#3B5262", command=command)
+            nav_button = tk.Button(canvas, image=button_image, compound=LEFT, bg="#3B5262",
+                                   command=command)
             pack_widget_right(nav_button)
 
         # creates a tool using passed strings and command function
@@ -139,17 +139,21 @@ class ToolsPage(tk.Frame):
             # creates new canvas to hold tool information/execute widgets
             tool_canvas = tk.Canvas(scrollable_frame, height=10, bg="#E3E4E5")
 
-            toolname_label = tk.Label(tool_canvas, text=name, height=2, font='controller.btn_font2 14 ', bg="#E3E4E5")
+            toolname_label = tk.Label(tool_canvas, text=name, height=2,
+                                      font='controller.btn_font2 14 ', bg="#E3E4E5")
             pack_widget_left(toolname_label)
 
-            author_label = tk.Label(tool_canvas, text=author, height=2, font='controller.btn_font2 12 ', bg="#E3E4E5")
+            author_label = tk.Label(tool_canvas, text=author, height=2,
+                                    font='controller.btn_font2 12 ', bg="#E3E4E5")
 
             nav_button(tool_canvas, command)
-            info_button = tk.Button(tool_canvas, image=info_image, compound=LEFT, command=lambda: self.show_hint(desc),
+            info_button = tk.Button(tool_canvas, image=info_image, compound=LEFT,
+                                    command=lambda: self.show_hint(desc),
                                     relief=FLAT, bg="#E3E4E5", borderwidth=0)
             pack_widget_right(info_button)
 
-            version_label = tk.Label(tool_canvas, text=version, height=2, font='controller.btn_font2 12 ', bg="#E3E4E5")
+            version_label = tk.Label(tool_canvas, text=version, height=2,
+                                     font='controller.btn_font2 12 ', bg="#E3E4E5")
             pack_widget_right(version_label)
             pack_widget_right(author_label)
 
@@ -164,45 +168,64 @@ class ToolsPage(tk.Frame):
         #    and replace PAGE_NAME with the name of the page defined in main.py at line 35
         # 4. You're done, run the app and see your new tool
         create_title(
-            "                                                                Reconnaissance Tools                                                                ")
-        create_tool("Port Scanner", "Laiba Samar", "1.01", lambda: controller.show_frame("PortScan"), PORT_SCANNER_DESC)
+            "                                                                Reconnaissance Tools"
+            "                                                                ")
+        create_tool("Port Scanner", "Laiba Samar", "1.01",
+                    lambda: controller.show_frame("PortScan"), PORT_SCANNER_DESC)
         create_tool("Nmap", "Malik Ayub", "1.01", lambda: load_nmap_tool(), NMAP_SCANNER_DESC)
-        create_tool("Banner Grabber", "Laiba Samar", "1.01", lambda: controller.show_frame("BannerGrab"),
+        create_tool("Banner Grabber", "Laiba Samar", "1.01",
+                    lambda: controller.show_frame("BannerGrab"),
                     BANNER_GRABBER_DESC)
 
         create_title("Enumeration Tools")
 
-        create_tool("Sniffer", "Laiba Samar", "1.01", lambda: controller.show_frame("TestSniff"), SNIFFER_DESC)
-        create_tool("Mac Changer", "Laiba Samar", "1.01", lambda: controller.show_frame("MacChange"), MAC_CHANGER_DESC)
-        create_tool("Image Metadata Extractor", "Laiba Samar", "1.01", lambda: controller.show_frame("IMDExtractor"),
+        create_tool("Sniffer", "Laiba Samar", "1.01", lambda: controller.show_frame("TestSniff"),
+                    SNIFFER_DESC)
+        create_tool("Mac Changer", "Laiba Samar", "1.01",
+                    lambda: controller.show_frame("MacChange"), MAC_CHANGER_DESC)
+        create_tool("Image Metadata Extractor", "Laiba Samar", "1.01",
+                    lambda: controller.show_frame("IMDExtractor"),
                     IMG_META_EXT_DESC)
-        create_tool("Hash Analyzer", "W. Tranku / R. Harris", "1.01", lambda: controller.show_frame("HashAn"),
+        create_tool("Hash Analyzer", "W. Tranku / R. Harris", "1.01",
+                    lambda: controller.show_frame("HashAn"),
                     HASH_ANALYZER_DESC)
-        create_tool("HTTP Header Analyzer", "James Martin", "1.01", lambda: controller.show_frame("HTTPheaders"),
+        create_tool("HTTP Header Analyzer", "James Martin", "1.01",
+                    lambda: controller.show_frame("HTTPheaders"),
                     HTTP_ANALYZER_DESC)
 
         create_title("Execution Tools")
-        create_tool("VulnExploit", "Adrian Nadalin", "1.01", lambda: load_vulnexploit_tool(), VULN_EXPLOIT_DESC)
-        create_tool("Msfconsole Listener", "Daniel Sacchetta", "1.01", lambda: controller.show_frame("MsfListener"),
+        create_tool("VulnExploit", "Adrian Nadalin", "1.01", lambda: load_vulnexploit_tool(),
+                    VULN_EXPLOIT_DESC)
+        create_tool("Msfconsole Listener", "Daniel Sacchetta", "1.01",
+                    lambda: controller.show_frame("MsfListener"),
                     MSFCON_LISTENER_DESC)
-        create_tool("Mimt + Dns Spoof", "Laiba Samar", "1.01", lambda: controller.show_frame("MimtDnsSpoof"),
+        create_tool("Mimt + Dns Spoof", "Laiba Samar", "1.01",
+                    lambda: controller.show_frame("MimtDnsSpoof"),
                     MITM_AND_DNS_DESC)
-        create_tool("FTP Brute Forcer", "James Martin", "1.01", lambda: controller.show_frame("FTPBruteForce"),
+        create_tool("FTP Brute Forcer", "James Martin", "1.01",
+                    lambda: controller.show_frame("FTPBruteForce"),
                     FTP_BRUTE_DESC)
-        create_tool("Wordlist generator", "Steve Tee", "1.01", lambda: open_wordlistgen(), WORDLIST_GEN_DESC)
-        create_tool("ICMP Ping Flooder", "Ryan Harris", "1.01", lambda: controller.show_frame("ICMP"),
+        create_tool("Wordlist generator", "Steve Tee", "1.01", lambda: open_wordlistgen(),
+                    WORDLIST_GEN_DESC)
+        create_tool("ICMP Ping Flooder", "Ryan Harris", "1.01",
+                    lambda: controller.show_frame("ICMP"),
                     PHCRACKER_DESC)
-        create_tool("TCP SYN Flooder", "Warren Bartholomeusz", "1.01", lambda: open_synfloodGUI(), TCP_SYN_FLOOD_DESC)
+        create_tool("TCP SYN Flooder", "Warren Bartholomeusz", "1.01", lambda: open_synfloodGUI(),
+                    TCP_SYN_FLOOD_DESC)
 
         create_title("Fuzzers")
-        create_tool("Directory Traversal Fuzzer", "Ryan Harris", "1.01", lambda: controller.show_frame("DTFuzz"),
+        create_tool("Directory Traversal Fuzzer", "Ryan Harris", "1.01",
+                    lambda: controller.show_frame("DTFuzz"),
                     DIREC_TRAV_DESC)
 
         create_title("Initial Access Tools")
-        create_tool("SSH Bruteforce", "Laiba Samar", "1.01", lambda: controller.show_frame("SshBrute"), SSH_BRUTE_DESC)
-        create_tool("Password Hash Cracker", "Ryan Harris", "1.01", lambda: controller.show_frame("PHCracker"),
+        create_tool("SSH Bruteforce", "Laiba Samar", "1.01",
+                    lambda: controller.show_frame("SshBrute"), SSH_BRUTE_DESC)
+        create_tool("Password Hash Cracker", "Ryan Harris", "1.01",
+                    lambda: controller.show_frame("PHCracker"),
                     PHCRACKER_DESC)
-        create_tool("ZIP File Brute Forcer", "Ryan Harris", "1.01", lambda: controller.show_frame("ZipBF"),
+        create_tool("ZIP File Brute Forcer", "Ryan Harris", "1.01",
+                    lambda: controller.show_frame("ZipBF"),
                     PHCRACKER_DESC)
 
         create_title("Payloads")
@@ -215,13 +238,9 @@ class ToolsPage(tk.Frame):
         create_title("Help")
         create_tool("Command Prompt", "", "1.01", lambda: load_terminal(), CMD_DESC)
 
-        # used for spacing purposes, extends width of tool listing to look nicer
-        space = tk.Label(scrollable_frame,
-                         text="                                                                                                                                                                                                                                                         ",
-                         height=0).pack(fill='x')
-
     def show_hint(self, desc):
-        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396', fg='white', borderwidth=8,
+        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396',
+                              fg='white', borderwidth=8,
                               relief=RAISED,
                               font=("Calibri", 15))
         desc_label.place(rely=0.125, relx=0.25, relheight=0.75, relwidth=0.5)

@@ -1,21 +1,12 @@
-## REFERENCES PAGE ##
-
-
-import tkinter as tk  # python 3
-from tkinter import font as tkfont  # python 3
-# import Tkinter as tk     # python 2
-# import tkFont as tkfont  # python 2
-
 from tkinter import font as tkfont
-from tkinter import ttk
-from tkinter import *
-from tkinter import font, messagebox
-import random, requests, os, sys
-import PySimpleGUI as sg
+
 from nav_bar import *
 
 
 class ReferencesPage(tk.Frame):
+    """
+    References page.
+    """
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -29,10 +20,12 @@ class ReferencesPage(tk.Frame):
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="References", bg='#2E414F', fg='white', anchor="c", font=framefont)
+        title_label = tk.Label(self, text="References", bg='#2E414F', fg='white', anchor="c",
+                               font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
-        # extra frame for spacing, pushes all subsequent content below nav bar and title label using the pady field
+        # extra frame for spacing, pushes all subsequent content
+        # below nav bar and title label using the pady field
         frameextra = tk.Label(self, bg='#2E414F')
         frameextra.pack(pady=120)
 
@@ -58,7 +51,8 @@ class ReferencesPage(tk.Frame):
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
         # binds scroll canvas to execute function that gets scrollable region of canvas on event e
-        scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+        scrollable_frame.bind("<Configure>",
+                              lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
         canvas.create_window((565, 3), window=scrollable_frame, anchor="nw")
@@ -80,19 +74,23 @@ class ReferencesPage(tk.Frame):
             reference_canvas = tk.Canvas(scrollable_frame, height=200, bg="#E3E4E5")
             # if the title is empty, use a smaller label (lower font size)
             if title == "":
-                tool_title_label = tk.Label(reference_canvas, text="", font="calibri 4 bold", height=2, bg="#E3E4E5",
+                tool_title_label = tk.Label(reference_canvas, text="", font="calibri 4 bold",
+                                            height=2, bg="#E3E4E5",
                                             anchor="c")
             else:
-                tool_title_label = tk.Label(reference_canvas, text=title, font="calibri 20 bold", height=2,
+                tool_title_label = tk.Label(reference_canvas, text=title, font="calibri 20 bold",
+                                            height=2,
                                             bg="#E3E4E5",
                                             anchor="c")
             pack_widget_left(tool_title_label)
 
-            explanation_label = tk.Label(reference_canvas, text=explanation, font="calibri 12", height=2, bg="#E3E4E5",
+            explanation_label = tk.Label(reference_canvas, text=explanation, font="calibri 12",
+                                         height=2, bg="#E3E4E5",
                                          anchor="c")
             pack_widget_left(explanation_label)
 
-            # the reason the link is in a text widget is so it can be copied directly, labels dont let you copy the text
+            # the reason the link is in a text widget is so it can be copied directly,
+            # labels dont let you copy the text
             w = Text(reference_canvas, height=1, borderwidth=0)
             w.insert(1.0, link)
             pack_widget_left(w)
@@ -104,21 +102,25 @@ class ReferencesPage(tk.Frame):
         # creates reference entries
         # if you want to add a new reference entry,
         # 1. invoke create_reference
-        # 2. enter the title of the tool the reference pertains to, the explanation of how the reference is used and...
+        # 2. enter the title of the tool the reference pertains to, the explanation of how
+        # the reference is used and...
         #    ...the URL link to the resource
         # 4. You're done, run the app and see your new reference entry
-        # --------------------------------------------------------------------------------------------------------------
-        # NOTE: if you have multiple entries for a single tool, create separate invocations of create_reference for...
-        # ...each link, however make sure they are all together in the code, then only include the title of the tool...
+        # --------------------------------------------------------------------------------------
+        # NOTE: if you have multiple entries for a single tool, create separate invocations of
+        # create_reference for...
+        # ...each link, however make sure they are all together in the code, then only include
+        # the title of the tool...
         # ...in the first entry, and use "" (essentially blank) for the title in the other entries
-        # --------------------------------------------------------------------------------------------------------------
+        # --------------------------------------------------------------------------------------
 
         # GUI DEVELOPMENT REFERENCES
         create_reference("GUI Development",
                          "Used this video to help learn the basics of tkinter and how to add functionality to the "
                          "application",
                          "https://www.youtube.com/watch?v=YXPyB4XeYLA")
-        create_reference("", "Used this site to learn the basics of tkinter and using the place command",
+        create_reference("",
+                         "Used this site to learn the basics of tkinter and using the place command",
                          "https://www.youtube.com/watch?v=D8-snVfekto&ab_channel=KeithGalli")
         create_reference("", "Used this site to learn how to implement navigation between screens",
                          "https://www.youtube.com/watch?v=39P4BMvvLdM&ab_channel=IntrotoComputerScience")
@@ -129,8 +131,9 @@ class ReferencesPage(tk.Frame):
         create_reference("", "Used this site to learn how to add horizontal scrollbars to toolkit",
                          "https://pythonguides.com/python-tkinter-scrollbar/")
         # ATTACK VECTOR 1 REFERENCES
-        create_reference("Attack Vector One", "Repository where 'pymetasploit3.msfrpc' module is imported from. Used as"
-                                              " guide for communication with MSFRPC framework",
+        create_reference("Attack Vector One",
+                         "Repository where 'pymetasploit3.msfrpc' module is imported from. Used as"
+                         " guide for communication with MSFRPC framework",
                          "https://github.com/DanMcInerney/pymetasploit3")
         create_reference("", "Used to help define 'kill_PID()' function.",
                          "https://stackoverflow.com/questions/26688936/how-to-get-pid-by-process-name")
@@ -140,45 +143,54 @@ class ReferencesPage(tk.Frame):
                          "https://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib")
 
         # ATTACK VECTOR 2 REFERENCES
-        create_reference("Attack Vector Two", "Mutillidae is a deliberately broken web application which I installed to"
-                                              " guide me in the creation and testing of my tool since the blue teams "
-                                              "network was not operational.",
+        create_reference("Attack Vector Two",
+                         "Mutillidae is a deliberately broken web application which I installed to"
+                         " guide me in the creation and testing of my tool since the blue teams "
+                         "network was not operational.",
                          "https://github.com/webpwnized/mutillidae")
-        create_reference("", "Succinct, easy to read site regarding directory traversal attacks – ideal for beginner/"
-                             "intermediate ethical hackers to help understand key concepts and aid in creation of a "
-                             "tool to compromise a vulnerability  \n as such. ",
+        create_reference("",
+                         "Succinct, easy to read site regarding directory traversal attacks – ideal for beginner/"
+                         "intermediate ethical hackers to help understand key concepts and aid in creation of a "
+                         "tool to compromise a vulnerability  \n as such. ",
                          "https://portswigger.net/web-security/file-path-traversal ")
-        create_reference("", "Same site as above except focussing on IDOR (Insecure direct object reference) attacks."
-                             " Once again easy readability for novice hackers and to help understand concepts to guide \n"
-                             "user to create a tool or conduct an attack for a vulnerability of this nature. ",
+        create_reference("",
+                         "Same site as above except focussing on IDOR (Insecure direct object reference) attacks."
+                         " Once again easy readability for novice hackers and to help understand concepts to guide \n"
+                         "user to create a tool or conduct an attack for a vulnerability of this nature. ",
                          "https://portswigger.net/web-security/access-control/idor ")
 
         # ATTACK VECTOR 3 REFERENCES
-        create_reference("Attack Vector Three", "Used in session function to help find session and read console "
-                                                "function",
+        create_reference("Attack Vector Three",
+                         "Used in session function to help find session and read console "
+                         "function",
                          "https://infosec.smashedpixels.pro/metasploit-automatization-using-python/")
         create_reference("", "Used to help define close_msfrpc()' function.",
                          "https://stackoverflow.com/questions/26688936/how-to-get-pid-by-process-name")
         create_reference("", "Used as a guide to using pymetasploit3 to create an exploit",
                          "https://www.coalfire.com/the-coalfire-blog/may-2019/pymetasploit3-metasploit-automation-library")
-        create_reference("", "Repository where 'pymetasploit3.msfrpc' module is imported from. Used as a guide for "
-                             "communication with MSFRPC framework.",
+        create_reference("",
+                         "Repository where 'pymetasploit3.msfrpc' module is imported from. Used as a guide for "
+                         "communication with MSFRPC framework.",
                          "https://github.com/DanMcInerney/pymetasploit3")
 
         # FTP brute force
-        create_reference("FTP Brute Force Tool", "This guided me through installing a FTP server on my kali virtual "
-                                                 "machine for testing purposes",
+        create_reference("FTP Brute Force Tool",
+                         "This guided me through installing a FTP server on my kali virtual "
+                         "machine for testing purposes",
                          "https://allabouttesting.org/install-ftp-server-on-kali-linux/")
-        create_reference("", "Helped me understand how to login to FTP using code what parameters to pass to the "
-                             "login function",
+        create_reference("",
+                         "Helped me understand how to login to FTP using code what parameters to pass to the "
+                         "login function",
                          "https://pythontic.com/ftplib/ftp/login")
 
         # HTTP Header analyzer tool
-        create_reference("HTTP Header Analyzer Tool", "This helped me understand how HTTP headers worked and what "
-                                                      "bits of them were important",
+        create_reference("HTTP Header Analyzer Tool",
+                         "This helped me understand how HTTP headers worked and what "
+                         "bits of them were important",
                          "https://www.youtube.com/watch?v=Oz902cJcCUg&ab_channel=JohnWatsonRooney")
-        create_reference("", "Helped me understand how to code the functionality behind the tool and how to connect "
-                             "to a URL via code",
+        create_reference("",
+                         "Helped me understand how to code the functionality behind the tool and how to connect "
+                         "to a URL via code",
                          "http://www.learningaboutelectronics.com/Articles/How-to-retrieve-the-HTTP-headers-of-a-web-page-Python-http-client.php")
 
         # WALKTHROUGH REFERENCES
@@ -197,8 +209,3 @@ class ReferencesPage(tk.Frame):
 
         create_reference("TCP SYN Flooder", "Sources used to create this attack ",
                          "https://github.com/Malam-X/TCP-Flood/blob/main/flood.py")
-
-        # used for spacing purposes, extends width of reference listing to look nicer
-        space = tk.Label(scrollable_frame,
-                         text="                                                                                                                                                                                                                                                         ",
-                         height=0).pack(fill='x')
