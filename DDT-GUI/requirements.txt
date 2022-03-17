@@ -1,0 +1,8 @@
+tkcalendar == 1.6.1
+pymetasploit3 == 1.0.3
+Pillow == 9.0.1
+msgpack == 1.0.3
+ffmpeg == 1.4
+pyglet == 1.5.22
+scapy == 2.4.5
+tqdm == 4.63.0
