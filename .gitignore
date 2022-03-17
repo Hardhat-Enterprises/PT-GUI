@@ -1,2 +1,3 @@
 .idea
-**/__py_cache__
+__py_cache__/
+*.pyc
