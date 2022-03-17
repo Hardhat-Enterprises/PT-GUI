@@ -1,10 +1,10 @@
 import tkinter as tk  # python 3
-from tkinter import font  as tkfont, ttk  # python 3
-
-from tkinter import font as tkfont
 from tkinter import *
-from tkinter import font, messagebox
+from tkinter import font
+from tkinter import font as tkfont
+
 from nav_bar import *
+
 
 class ResizingCanvas(Canvas):
     def __init__(self, parent, **kwargs):
@@ -24,6 +24,7 @@ class ResizingCanvas(Canvas):
         # rescale all the objects tagged with the "all" tag
         self.scale("all", 0, 0, wscale, hscale)
 
+
 class AttackVectorOne(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -37,13 +38,13 @@ class AttackVectorOne(tk.Frame):
 
         def run_generator_button(frame):
             tk.Button(frame, text="Payload Generator Tool", bg="#E7E7E7", fg="black", font=highlightFont,
-                                 command=lambda: controller.show_frame("MsfPayloadGen"),
-                                 relief='flat').place(rely=0.47, relx=0.02, relheight=0.05, relwidth=0.18)
+                      command=lambda: controller.show_frame("MsfPayloadGen"),
+                      relief='flat').place(rely=0.47, relx=0.02, relheight=0.05, relwidth=0.18)
 
         def run_listener_button(frame):
             tk.Button(frame, text="Listener Tool", bg="#E7E7E7", fg="black", font=highlightFont,
-                                 command=lambda: controller.show_frame("MsfListener"),
-                                 relief='flat').place(rely=0.68, relx=0.02, relheight=0.05, relwidth=0.1)
+                      command=lambda: controller.show_frame("MsfListener"),
+                      relief='flat').place(rely=0.68, relx=0.02, relheight=0.05, relwidth=0.1)
 
         global revtcp
         revtcp = tk.PhotoImage(file='resources/reversetcp1.png')
@@ -59,10 +60,11 @@ class AttackVectorOne(tk.Frame):
                 "o   Click 'Generate Payload' button to generate payload.\n"
 
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw', aspect=300)
+            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+                                    aspect=300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
             run_generator_button(step1frame)
-            
+
         def change_to_Step2():
             text = (
                 "\nStep 2: Msfconsole Listener Tool\n\n"
@@ -78,10 +80,11 @@ class AttackVectorOne(tk.Frame):
                 "     button. Once finished, click ‘Terminate’ button to close the connection.\n\n"
 
             )
-            step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw', aspect=300)
+            step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+                                    aspect=300)
             step2frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
             run_listener_button(step2frame)
-        
+
         def create_step_button(step_num, command):
             button = tk.Button(main_frame, text="Step " + str(step_num), bg="#E7E7E7", fg="black", font=highlightFont,
                                command=command, relief='flat').place(rely=0.3 + 0.1 * step_num, relx=0.02,
@@ -97,9 +100,10 @@ class AttackVectorOne(tk.Frame):
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
 
         side_label = tk.Label(main_frame, text="", bg='#E7E7E7', font='calibri 20 bold', anchor='nw')
-        side_label.place(rely=0.2, relheight=1, relwidth=0.2)\
-
-        sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font='calibri 20 bold', anchor='nw')
+        side_label.place(rely=0.2, relheight=1, relwidth=0.2) \
+ \
+        sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font='calibri 20 bold',
+                                   anchor='nw')
         sidescreenframe.place(rely=0.25, relheight=1, relwidth=0.2)
 
         revtcp_label = tk.Label(main_frame, image=revtcp)

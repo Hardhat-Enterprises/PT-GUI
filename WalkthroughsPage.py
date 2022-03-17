@@ -1,21 +1,21 @@
 ## WALKTHROUGHS PAGE ##
 
 import tkinter as tk  # python 3
-# import tkFont as tkfont  # python 2
-
-from tkinter import font as tkfont, ttk
 from tkinter import *
-from tkinter import font, messagebox
-import random, requests, os, sys
-import PySimpleGUI as sg
-from nav_bar import *
-from walkthrough_descriptions import *
+from tkinter import font as tkfont
+
 # importing pyglet module
 import pyglet
+
+from nav_bar import *
+from walkthrough_descriptions import *
+
+# import tkFont as tkfont  # python 2
+
 pyglet.options['search_local_libs'] = True
 
-def video_player(name, path):
 
+def video_player(name, path):
     # width of window
     width = 1280
 
@@ -49,50 +49,46 @@ def video_player(name, path):
     # on draw event
     @window.event
     def on_draw():
-        
+
         # clea the window
         window.clear()
-        
+
         # if player source exist
         # and video format exist
         if player.source and player.source.video_format:
-            
             # get the texture of video and
             # make surface to display on the screen
             player.get_texture().blit(0, 0)
-            
-            
+
     # key press event	
     @window.event
     def on_key_press(symbol, modifier):
 
         # key "p" get press
         if symbol == pyglet.window.key.P:
-            
             # printing the message
             print("Key : P is pressed")
-            
+
             # pause the video
             player.pause()
-            
+
             # printing message
             print("Video is paused")
-            
-            
+
         # key "r" get press
         if symbol == pyglet.window.key.R:
-            
             # printing the message
             print("Key : R is pressed")
-            
+
             # resume the video
             player.play()
-            
+
             # printing message
             print("Video is resumed")
 
     # run the pyglet application
     pyglet.app.run()
+
 
 class WalkthroughClass(tk.Frame):
 
@@ -110,13 +106,13 @@ class WalkthroughClass(tk.Frame):
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#232536', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Walkthrough List\nUse P and R to pause and resume playback", bg='#4D6C84', fg='white', anchor="c", font=framefont)
+        title_label = tk.Label(self, text="Walkthrough List\nUse P and R to pause and resume playback", bg='#4D6C84',
+                               fg='white', anchor="c", font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
         # extra frame for spacing, pushes all subsquent content below nav bar and title label using the pady field
         frameextra = tk.Label(self, bg='#4D6C84')
         frameextra.pack(pady=120)
-
 
         # new frame for tools list
         container = Frame(self)
@@ -125,17 +121,17 @@ class WalkthroughClass(tk.Frame):
         canvas = Canvas(container)
 
         # create scrollbar on new frame
-        #scrollbar y
-        scrollbar_y = Scrollbar(container, 
-                                    orient=VERTICAL,
-                                    command=canvas.yview)
-        scrollbar_y.pack(side=RIGHT,fill=Y)
+        # scrollbar y
+        scrollbar_y = Scrollbar(container,
+                                orient=VERTICAL,
+                                command=canvas.yview)
+        scrollbar_y.pack(side=RIGHT, fill=Y)
         scrollbar_y.config(command=canvas.yview)
-        #create scrollbar x
+        # create scrollbar x
         scrollbar_x = Scrollbar(container,
-                                    orient=HORIZONTAL,
-                                    command=canvas.xview)
-        scrollbar_x.pack(side=BOTTOM,fill=X)
+                                orient=HORIZONTAL,
+                                command=canvas.xview)
+        scrollbar_x.pack(side=BOTTOM, fill=X)
         scrollbar_x.config(command=canvas.xview)
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
@@ -170,18 +166,20 @@ class WalkthroughClass(tk.Frame):
             # creates new canvas to hold walkthrough information/execute widgets
             walkthrough_canvas = tk.Canvas(scrollable_frame, height=10, bg="#E3E4E5")
 
-            walkthroughname_label = tk.Label(walkthrough_canvas, text=name, height=2, font='controller.btn_font2 20 bold', bg="#E3E4E5")
+            walkthroughname_label = tk.Label(walkthrough_canvas, text=name, height=2,
+                                             font='controller.btn_font2 20 bold', bg="#E3E4E5")
             pack_widget_left(walkthroughname_label)
 
             play_button = tk.Button(walkthrough_canvas, bg="#4D6C84", compound=LEFT, text="PLAY", fg="white",
-                                   font="controller.btn_font2 12 bold",
-                                   command=lambda: video_player(name, path))
+                                    font="controller.btn_font2 12 bold",
+                                    command=lambda: video_player(name, path))
             pack_widget_right(play_button)
             info_button = tk.Button(walkthrough_canvas, image=info_image, compound=LEFT,
-                                    command=lambda: self.show_hint(desc), relief=FLAT,bg="#E3E4E5", borderwidth=0)
+                                    command=lambda: self.show_hint(desc), relief=FLAT, bg="#E3E4E5", borderwidth=0)
             pack_widget_right(info_button)
 
-            author_label = tk.Label(walkthrough_canvas, text=author,  font="controller.btn_font2 12", height=2, bg="#E3E4E5")
+            author_label = tk.Label(walkthrough_canvas, text=author, font="controller.btn_font2 12", height=2,
+                                    bg="#E3E4E5")
             pack_widget_right(author_label)
 
             walkthrough_canvas.pack(expand=TRUE, fill='x', padx=190, pady=20)
@@ -192,17 +190,18 @@ class WalkthroughClass(tk.Frame):
         # 2. enter the name, author, version and pageName you want to navigate to on button click
         # 3. enter the path of the video, which should be in /resources/Videos/ already
         # 4. You're done, run the app and see your new walkthrough
-        create_walkthrough("Buffer Overflow", "Jayden Ferris & Jack Abson", "resources/Videos/Buffer_Overflow_resized.mkv",
-                             BUF_OVERFLOW_DESC)
+        create_walkthrough("Buffer Overflow", "Jayden Ferris & Jack Abson",
+                           "resources/Videos/Buffer_Overflow_resized.mkv",
+                           BUF_OVERFLOW_DESC)
 
         # used for spacing purposes, extends width of walkthrough listing to look nicer
         space = tk.Label(scrollable_frame,
                          text="                                                                                                                                                                                                                                                         ",
                          height=0).pack(fill='x')
 
-
     def show_hint(self, desc):
-        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg ='#6f8396', fg='white', borderwidth=8, relief=RAISED,
+        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396', fg='white', borderwidth=8,
+                              relief=RAISED,
                               font=("Calibri", 15))
         desc_label.place(rely=0.125, relx=0.25, relheight=0.75, relwidth=0.5)
         desc_label.bind("<Button-1>", lambda x: desc_label.place_forget())

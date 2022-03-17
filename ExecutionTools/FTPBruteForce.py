@@ -8,18 +8,15 @@ except ImportError:
     import ttk
     import tkFileDialog as filedialog
 
-from tkinter import font as tkfont
-from tkinter import ttk
-from tkinter import *
-from tkinter import font, messagebox
-import PySimpleGUI as sg
-import sys, re, random, requests, os
-from nav_bar import *
-import subprocess
+import re
 import socket
-from os import path, system, name
 from ftplib import FTP
-import threading
+from os import path
+from tkinter import *
+from tkinter import font as tkfont
+from tkinter import messagebox
+
+from nav_bar import *
 
 
 class FTPBruteForce(tk.Frame):

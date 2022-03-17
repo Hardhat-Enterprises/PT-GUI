@@ -1,15 +1,14 @@
 ## ATTACK VECTORS PAGE ##
 
 import tkinter as tk  # python 3
-# import tkFont as tkfont  # python 2
-
-from tkinter import font as tkfont, ttk
 from tkinter import *
-from tkinter import font, messagebox
-import random, requests, os, sys
-import PySimpleGUI as sg
+from tkinter import font as tkfont
+
 from nav_bar import *
 from vector_descriptions import *
+
+
+# import tkFont as tkfont  # python 2
 
 
 class VectorsPage(tk.Frame):
@@ -35,7 +34,6 @@ class VectorsPage(tk.Frame):
         frameextra = tk.Label(self, bg='#4D6C84')
         frameextra.pack(pady=120)
 
-
         # new frame for tools list
         container = Frame(self)
         container.pack(fill='both', expand=True)
@@ -43,17 +41,17 @@ class VectorsPage(tk.Frame):
         canvas = Canvas(container)
 
         # create scrollbar on new frame
-        #scrollbar y
-        scrollbar_y = Scrollbar(container, 
-                                    orient=VERTICAL,
-                                    command=canvas.yview)
-        scrollbar_y.pack(side=RIGHT,fill=Y)
+        # scrollbar y
+        scrollbar_y = Scrollbar(container,
+                                orient=VERTICAL,
+                                command=canvas.yview)
+        scrollbar_y.pack(side=RIGHT, fill=Y)
         scrollbar_y.config(command=canvas.yview)
-        #create scrollbar x
+        # create scrollbar x
         scrollbar_x = Scrollbar(container,
-                                    orient=HORIZONTAL,
-                                    command=canvas.xview)
-        scrollbar_x.pack(side=BOTTOM,fill=X)
+                                orient=HORIZONTAL,
+                                command=canvas.xview)
+        scrollbar_x.pack(side=BOTTOM, fill=X)
         scrollbar_x.config(command=canvas.xview)
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
@@ -61,7 +59,7 @@ class VectorsPage(tk.Frame):
         scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("alsl")))
 
         # creates new window using scrollable frame as a base
-        canvas.create_window((0,0), window=scrollable_frame, anchor="nw")
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
 
         # sets scrollcommand to the existing scrollbar, linking the widgets
         canvas.config(
@@ -77,18 +75,19 @@ class VectorsPage(tk.Frame):
 
         # packs passed widget to the left of screen, used for creating a vector entry
         def pack_widget_left(button):
-            button.pack(fill='x',padx=80,  pady=(5, 5), side=LEFT)
+            button.pack(fill='x', padx=80, pady=(5, 5), side=LEFT)
 
         # same as above but to right of screen
         def pack_widget_right(button):
-            button.pack(fill='x',padx=120, pady=(5, 5), side=RIGHT)
+            button.pack(fill='x', padx=120, pady=(5, 5), side=RIGHT)
 
         # creates a vector entry using passed strings and command function
         def create_attack_vector(name, author, onclick_pagenav, desc):
             # creates new canvas to hold vector information/execute widgets
             vector_canvas = tk.Canvas(scrollable_frame, height=10, bg="#E3E4E5")
 
-            vectorname_label = tk.Label(vector_canvas, text=name, height=2, font='controller.btn_font2 20 bold', bg="#E3E4E5")
+            vectorname_label = tk.Label(vector_canvas, text=name, height=2, font='controller.btn_font2 20 bold',
+                                        bg="#E3E4E5")
             pack_widget_left(vectorname_label)
 
             nav_button = tk.Button(vector_canvas, bg="#4D6C84", compound=LEFT, text="LAUNCH", fg="white",
@@ -96,14 +95,14 @@ class VectorsPage(tk.Frame):
                                    command=lambda: controller.show_frame(onclick_pagenav))
             pack_widget_right(nav_button)
             info_button = tk.Button(vector_canvas, image=info_image, compound=LEFT,
-                                    command=lambda: self.show_hint(desc), relief=FLAT,bg="#E3E4E5", borderwidth=0)
+                                    command=lambda: self.show_hint(desc), relief=FLAT, bg="#E3E4E5", borderwidth=0)
             pack_widget_right(info_button)
 
-            author_label = tk.Label(vector_canvas, text=author,  font="controller.btn_font2 12", height=2, bg="#E3E4E5")
+            author_label = tk.Label(vector_canvas, text=author, font="controller.btn_font2 12", height=2, bg="#E3E4E5")
             pack_widget_right(author_label)
 
             vector_canvas.pack(expand=TRUE, fill='x', padx=190, pady=20)
-    
+
         # creates vector entries
         # if you want to add a new vector entry,
         # 1. invoke create_attack_vector
@@ -127,11 +126,11 @@ class VectorsPage(tk.Frame):
         # used for spacing purposes, extends width of vector listing to look nicer
         space = tk.Label(scrollable_frame,
                          text="                                                                                                                                                                                                                                                         ",
-                         height=0).pack(fill=BOTH,expand=True)
-
+                         height=0).pack(fill=BOTH, expand=True)
 
     def show_hint(self, desc):
-        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg ='#6f8396', fg='white', borderwidth=8, relief=RAISED,
+        desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396', fg='white', borderwidth=8,
+                              relief=RAISED,
                               font=("Calibri", 15))
         desc_label.place(rely=0.125, relx=0.25, relheight=0.75, relwidth=0.5)
         desc_label.bind("<Button-1>", lambda x: desc_label.place_forget())

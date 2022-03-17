@@ -2,33 +2,22 @@
 # By Willem Tranku
 # GUI by Ryan Harris
 
-from sys import exit
-import base64
 import re
-import os
-import requests
-from requests.exceptions import MissingSchema
-import tkinter.messagebox
-from socket import *
-from threading import Thread,Lock
-import sys,re,random, requests, os
 import tkinter as tk  # python 3
-from tkinter import font  as tkfont  # python 3
 # import Tkinter as tk     # python 2
 # import tkFont as tkfont  # python 2
 from tkinter import font as tkfont
-from tkinter import font, messagebox
-import PySimpleGUI as sg
+
 from nav_bar import *
 
 # Global var for list of hashes
 global hashes
 hashes = []
 
-class HashAn(tk.Frame):
-  
 
-# ============================= Initializer Function 
+class HashAn(tk.Frame):
+
+    # ============================= Initializer Function
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -42,12 +31,14 @@ class HashAn(tk.Frame):
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
 
         # LABELS / TEXT ON SCREEN
-        labelHomepage = Label(self,text ="Enter hash value to check",
-          font=('Calibri', 16), bg='#4D6C84', fg='white', anchor='c').place(rely=0.26, relx=0.12, relheight=0.06, relwidth=0.20)
+        labelHomepage = Label(self, text="Enter hash value to check",
+                              font=('Calibri', 16), bg='#4D6C84', fg='white', anchor='c').place(rely=0.26, relx=0.12,
+                                                                                                relheight=0.06,
+                                                                                                relwidth=0.20)
 
         #  BUTTONS
-        Button(self,text="CHECK HASH",font=('Calibri', 16),anchor='c', bg='#4D6C84', fg='white',
-          command= lambda: self.check_hash()).place(rely=0.35, relx=0.33, relheight=0.06, relwidth=0.38)
+        Button(self, text="CHECK HASH", font=('Calibri', 16), anchor='c', bg='#4D6C84', fg='white',
+               command=lambda: self.check_hash()).place(rely=0.35, relx=0.33, relheight=0.06, relwidth=0.38)
 
         # INPUT TEXT BOXES
         self.HashTB = Entry(self, font=('Calibri', 16))
@@ -56,32 +47,51 @@ class HashAn(tk.Frame):
         # OUTPUT TEXT BOX
         resultsBox = tk.Label(self, bg='#E3E4E5')
         resultsBox.place(rely=0.45, relx=0.33, relheight=0.52, relwidth=0.38)
-        resultsBoxSB = Scrollbar(resultsBox)  
-        resultsBoxSB.pack(side = RIGHT, fill = Y)
-        hashResults = Listbox(resultsBox, yscrollcommand = resultsBoxSB.set)
-
-
+        resultsBoxSB = Scrollbar(resultsBox)
+        resultsBoxSB.pack(side=RIGHT, fill=Y)
+        hashResults = Listbox(resultsBox, yscrollcommand=resultsBoxSB.set)
 
     # Check the hash function ===============
     def check_hash(self):
         resultsBox = tk.Label(self, bg='#E3E4E5')
         resultsBox.place(rely=0.45, relx=0.35, relheight=0.52, relwidth=0.30)
-        resultsBoxSB = Scrollbar(resultsBox)  
-        resultsBoxSB.pack(side = RIGHT, fill = Y)
-        hashResults = Listbox(resultsBox, yscrollcommand = resultsBoxSB.set)
+        resultsBoxSB = Scrollbar(resultsBox)
+        resultsBoxSB.pack(side=RIGHT, fill=Y)
+        hashResults = Listbox(resultsBox, yscrollcommand=resultsBoxSB.set)
 
         global hashes
         hashes.clear()
         h = self.HashTB.get()
-        
+
         # check all the hashes to see if input is matches
-        self.md5(h);self.md2(h);self.md4(h);self.sha1(h)
-        self.sha224(h);self.sha3224(h);self.sha256(h);self.sha3256(h)
-        self.sha384(h);self.sha3384(h);self.sha512(h);self.sha3512(h)
-        self.ripemd160(h);self.ripemd256(h);self.ripemd320(h);self.tiger128(h)
-        self.tiger160(h);self.tiger192(h);self.whirlpool(h);self.adler32(h)
-        self.ntlm(h);self.crc16(h);self.crc32(h);self.desunix(h)
-        self.haval128(h);self.haval160(h);self.haval192(h);self.haval224(h)
+        self.md5(h);
+        self.md2(h);
+        self.md4(h);
+        self.sha1(h)
+        self.sha224(h);
+        self.sha3224(h);
+        self.sha256(h);
+        self.sha3256(h)
+        self.sha384(h);
+        self.sha3384(h);
+        self.sha512(h);
+        self.sha3512(h)
+        self.ripemd160(h);
+        self.ripemd256(h);
+        self.ripemd320(h);
+        self.tiger128(h)
+        self.tiger160(h);
+        self.tiger192(h);
+        self.whirlpool(h);
+        self.adler32(h)
+        self.ntlm(h);
+        self.crc16(h);
+        self.crc32(h);
+        self.desunix(h)
+        self.haval128(h);
+        self.haval160(h);
+        self.haval192(h);
+        self.haval224(h)
         self.haval256(h)
 
         if (bool(hashes) == True):
@@ -92,11 +102,9 @@ class HashAn(tk.Frame):
         else:
             hashResults.insert(END, ("No recognizable hash formats found..."))
 
-        hashResults.pack(fill = "both", expand=True)
-        resultsBoxSB.config(command = hashResults.yview)
-            
+        hashResults.pack(fill="both", expand=True)
+        resultsBoxSB.config(command=hashResults.yview)
 
-        
     # ========== ALL THE HASH DETAILS / FUNCTIONS TO MATCH TO USER INPUT ===================
 
     def md5(self, hash):
@@ -188,7 +196,7 @@ class HashAn(tk.Frame):
         global hashes
         if (re.search(r'([a-fA-F0-9]{48})', hash) != None and len(hash) == 48):
             hashes.append("TIGER 192")
-        
+
     def whirlpool(self, hash):
         global hashes
         if (re.search(r'([a-fA-F0-9]{128})', hash) != None and len(hash) == 128):
@@ -244,7 +252,4 @@ class HashAn(tk.Frame):
         if (re.search(r'([a-fA-F0-9]{64})', hash) != None and len(hash) == 64):
             hashes.append("haval256")
 
-
 # =======================================
-
-
