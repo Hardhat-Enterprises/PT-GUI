@@ -19,12 +19,14 @@ $ git clone https://github.com/taysmith99/PT-GUI.git
 ```bash
 $ sudo apt update
 $ sudo apt install -y python3 python3-pip python3-tk git
+$ cd PT-GUI
 $ pip3 install -r requirements.txt
 ```
 
 3. Start the application
 
 ```bash
+$ cd PT-GUI (this step is not needed if you are already in the directory)
 $ python3 main.py
 ```
 
