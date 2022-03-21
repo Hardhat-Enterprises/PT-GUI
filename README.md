@@ -19,7 +19,7 @@ $ git clone https://github.com/taysmith99/PT-GUI.git
 ```bash
 $ sudo apt update
 $ sudo apt install -y python3 python3-pip python3-tk git
-$ cd PT-GUI fff
+$ cd PT-GUI
 $ pip3 install -r requirements.txt
 ```
 
