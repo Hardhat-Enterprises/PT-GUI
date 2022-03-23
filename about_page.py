@@ -1,5 +1,7 @@
-from tkinter import font as tkfont
+# pylint: disable=invalid-name
+# pylint: disable=global-variable-undefined
 
+from tkinter import font as tkfont
 from nav_bar import *
 
 
@@ -67,14 +69,14 @@ class AboutPage(tk.Frame):
         frame1 = Canvas(scrollable_frame)
         frame1.pack()
         # creates new image variable from teamwork.png, used for background on title screen
-
+        global teamwork
         teamwork = tk.PhotoImage(file='resources/teamwork.png')
         teamwork_label = tk.Label(frame1, image=teamwork)
 
         frame2 = Canvas(scrollable_frame)
         frame2.pack()
         # creates new image variable from using_computer.png, used for background on title screen
-
+        global using_computer
         using_computer = tk.PhotoImage(file='resources/using_computer.png')
         computer_label = tk.Label(frame2, image=using_computer)
 

@@ -1,5 +1,3 @@
-# import Tkinter as tk     # python 2
-# import tkFont as tkfont  # python 2
 from ATTACKVECTOR.attackvector1 import AttackVectorOne
 from ATTACKVECTOR.attackvector2 import AttackVectorTwo
 from ATTACKVECTOR.attackvector3 import AttackVectorThree
