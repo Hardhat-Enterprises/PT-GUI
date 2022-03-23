@@ -5,3 +5,4 @@ disable=
     R0914, # too-many-locals
     W0614, # unused-wildcard-import
     R0915, # too-many-statements
+    R0801, # duplicate-code

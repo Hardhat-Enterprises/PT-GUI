@@ -1,3 +1,5 @@
+# pylint: disable=line-too-long
+
 REVERSE_TCP_DESC = "The purpose of this attack vector is to provide a step-by-step walk through of how to carry out " \
                    "a reverse shell attack through simplified use of the Metasploit framework. This attack consists " \
                    "of two major parts, generation of the malicious payload to execute on the victim machine, as " \

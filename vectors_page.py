@@ -1,6 +1,6 @@
-## ATTACK VECTORS PAGE ##
-
-# import tkFont as tkfont  # python 2
+# pylint: disable=global-variable-undefined
+# pylint: disable=invalid-name
+# pylint: disable=no-self-use
 
 from tkinter import font as tkfont
 
@@ -9,8 +9,14 @@ from vector_descriptions import *
 
 
 class VectorsPage(tk.Frame):
+    """
+    Vectors page class.
+    """
 
     def __init__(self, parent, controller):
+        """
+        Vectors page init.
+        """
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
@@ -19,7 +25,7 @@ class VectorsPage(tk.Frame):
         # sets font for frame
         framefont = tkfont.Font(family='Calibri', size=33, weight="bold")
         # sets font for buttons
-        btnfont = tkfont.Font(family='Calibri', size=13)
+        tkfont.Font(family='Calibri', size=13)
 
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#232536', highlightthickness=0)
@@ -130,6 +136,9 @@ class VectorsPage(tk.Frame):
                              AUTH_BYPASS_DESC)
 
     def show_hint(self, desc):
+        """
+        Show hints.
+        """
         desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396',
                               fg='white', borderwidth=8,
                               relief=RAISED,
@@ -141,7 +150,9 @@ class VectorsPage(tk.Frame):
         # This will run when the screen is resized
         desc_label.bind("<Configure>", self.set_label_wrap)
 
-    # dynamically updates the wraplength of the labels so that the text fits to the width properly
     def set_label_wrap(self, event):
+        """
+        Dynamically updates the wraplength of the labels so that the text fits to the width properly
+        """
         wraplength = event.width - 100  # the 8 is for padding (makes it look nicer)
         event.widget.configure(wraplength=wraplength)

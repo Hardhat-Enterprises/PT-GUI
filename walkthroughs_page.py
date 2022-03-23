@@ -1,3 +1,9 @@
+# pylint: disable=global-variable-undefined
+# pylint: disable=invalid-name
+# pylint: disable=no-self-use
+# pylint: disable=unused-variable
+# pylint: disable=unused-argument
+
 from tkinter import font as tkfont
 
 import pyglet
@@ -9,6 +15,10 @@ pyglet.options['search_local_libs'] = True
 
 
 def video_player(name, path):
+    """
+    Video player
+    """
+
     # width of window
     width = 1280
 
@@ -53,7 +63,7 @@ def video_player(name, path):
             # make surface to display on the screen
             player.get_texture().blit(0, 0)
 
-    # key press event	
+    # key press event
     @window.event
     def on_key_press(symbol, modifier):
 
@@ -84,8 +94,14 @@ def video_player(name, path):
 
 
 class WalkthroughClass(tk.Frame):
+    """
+    Walkthrough class.
+    """
 
     def __init__(self, parent, controller):
+        """
+        Walkthrough init.
+        """
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
@@ -94,7 +110,7 @@ class WalkthroughClass(tk.Frame):
         # sets font for frame
         framefont = tkfont.Font(family='Calibri', size=33, weight="bold")
         # sets font for buttons
-        btnfont = tkfont.Font(family='Calibri', size=13)
+        tkfont.Font(family='Calibri', size=13)
 
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#232536', highlightthickness=0)
@@ -155,12 +171,16 @@ class WalkthroughClass(tk.Frame):
         def pack_widget_left(button):
             button.pack(fill='x', padx=40, pady=(5, 5), side=tk.LEFT)
 
-        # same as above but to right of screen
         def pack_widget_right(button):
+            """
+            Same as above but to right of screen
+            """
             button.pack(fill='x', padx=260, pady=(5, 5), side=tk.RIGHT)
 
-        # creates a walkthrough entry using passed strings and command function
         def create_walkthrough(name, author, path, desc):
+            """
+            Creates a walkthrough entry using passed strings and command function
+            """
             # creates new canvas to hold walkthrough information/execute widgets
             walkthrough_canvas = tk.Canvas(scrollable_frame, height=10, bg="#E3E4E5")
 
@@ -204,6 +224,9 @@ class WalkthroughClass(tk.Frame):
                  height=0).pack(fill='x')
 
     def show_hint(self, desc):
+        """
+        Show hints.
+        """
         desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396',
                               fg='white', borderwidth=8,
                               relief=RAISED,
@@ -215,7 +238,9 @@ class WalkthroughClass(tk.Frame):
         # This will run when the screen is resized
         desc_label.bind("<Configure>", self.set_label_wrap)
 
-    # dynamically updates the wraplength of the labels so that the text fits to the width properly
     def set_label_wrap(self, event):
+        """
+        Dynamically updates the wraplength of the labels so that the text fits to the width properly
+        """
         wraplength = event.width - 100  # the 8 is for padding (makes it look nicer)
         event.widget.configure(wraplength=wraplength)
