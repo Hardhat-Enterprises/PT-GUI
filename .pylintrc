@@ -1,0 +1,7 @@
+[MASTER]
+disable=
+    C0114, # missing-module-docstring
+    W0401, # wildcard-import
+    R0914, # too-many-locals
+    W0614, # unused-wildcard-import
+    R0915, # too-many-statements

@@ -1,3 +1,5 @@
+# pylint: disable=line-too-long
+
 from tkinter import font as tkfont
 
 from nav_bar import *
@@ -15,7 +17,7 @@ class ReferencesPage(tk.Frame):
         # sets font for frame
         framefont = tkfont.Font(family='Calibri', size=33, weight="bold")
         # sets font for buttons
-        btnfont = tkfont.Font(family='Calibri', size=14)
+        tkfont.Font(family='Calibri', size=14)
 
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
@@ -91,11 +93,11 @@ class ReferencesPage(tk.Frame):
 
             # the reason the link is in a text widget is so it can be copied directly,
             # labels dont let you copy the text
-            w = Text(reference_canvas, height=1, borderwidth=0)
-            w.insert(1.0, link)
-            pack_widget_left(w)
+            widget = Text(reference_canvas, height=1, borderwidth=0)
+            widget.insert(1.0, link)
+            pack_widget_left(widget)
             # sets the text box to disabled so it cannot be edited
-            w.configure(state="disabled")
+            widget.configure(state="disabled")
 
             reference_canvas.pack(expand=TRUE, fill='x', padx=90, pady=20)
 

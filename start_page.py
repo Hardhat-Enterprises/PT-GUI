@@ -12,7 +12,7 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         # sets font for titles
-        title_font = tkfont.Font(family='Calibri', size=40, weight="bold")
+        tkfont.Font(family='Calibri', size=40, weight="bold")
 
         # creates new image variable from bkg.png, used for background on title screen
         self.image = tk.PhotoImage(file="resources/landingpagebkgBLUE.png")

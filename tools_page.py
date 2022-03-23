@@ -1,8 +1,12 @@
-## TOOLS PAGE ##
+# pylint: disable=unnecessary-lambda
+# pylint: disable=consider-using-with
+# pylint: disable=global-variable-undefined
+# pylint: disable=invalid-name
+# pylint: disable=no-self-use
+# pylint: disable=unused-variable
 
 import os
 from subprocess import Popen, PIPE
-# import tkFont as tkfont  # python 2
 from tkinter import font as tkfont
 
 from nav_bar import *
@@ -10,8 +14,14 @@ from tool_descriptions import *
 
 
 class ToolsPage(tk.Frame):
+    """
+    Class for the Tools Page.
+    """
 
     def __init__(self, parent, controller):
+        """
+        Initialisation of the tools page.
+        """
         tk.Frame.__init__(self, parent)
         self.controller = controller
         # displays navbar at top of app screen
@@ -19,7 +29,7 @@ class ToolsPage(tk.Frame):
         # sets font for frame
         framefont = tkfont.Font(family='Calibri', size=33, weight="bold")
         # sets font for buttons
-        btnfont = tkfont.Font(family='Calibri', size=13)
+        tkfont.Font(family='Calibri', size=13)
 
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#3B5262', highlightthickness=0)
@@ -29,9 +39,12 @@ class ToolsPage(tk.Frame):
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
         def notepadopen():
+            """
+            Open notepad.
+            """
             os.chdir("./Tools")
             cmd = "python3 Notepad.py"
-            p1 = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
+            _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
             os.chdir("../")
 
         # extra frame for spacing, pushes all subsequent content below nav bar and
@@ -82,35 +95,35 @@ class ToolsPage(tk.Frame):
         def open_wordlistgen():
             os.chdir("./Tools")
             cmd = "python3 WordlistGen.py"
-            p1 = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
+            _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
             os.chdir("../")
 
         def open_notepad():
             os.chdir("./Tools")
             cmd = "python3 Notepad.py"
-            p1 = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
+            _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
             os.chdir("../")
 
         def load_nmap_tool():
             os.chdir("./Tools/Nmap_Gui")
             cmd = "python3 nmapGUI.py"
-            p1 = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
+            _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
             os.chdir("../../")
 
         def open_synfloodGUI():
             os.chdir("./Tools")
             cmd = "python3 synfloodGUI.py"
-            p1 = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
+            _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
             os.chdir("../")
 
         def load_vulnexploit_tool():
             os.chdir("./Tools")
             cmd = 'exo-open --launch TerminalEmulator'
-            p1 = Popen([cmd + ' python3 VulnExploit.py'], stdout=PIPE, shell=True)
+            _ = Popen([cmd + ' python3 VulnExploit.py'], stdout=PIPE, shell=True)
             os.chdir("../")
 
         def load_terminal():
-            p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True,
+            _ = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True,
                        shell=True).stdout
 
         # packs passed widget to the left of screen, used for creating a tool entry
@@ -239,6 +252,9 @@ class ToolsPage(tk.Frame):
         create_tool("Command Prompt", "", "1.01", lambda: load_terminal(), CMD_DESC)
 
     def show_hint(self, desc):
+        """
+        Show hint function.
+        """
         desc_label = tk.Label(self, text=desc + "\n\n\n\nClick to dismiss", bg='#6f8396',
                               fg='white', borderwidth=8,
                               relief=RAISED,
@@ -250,7 +266,9 @@ class ToolsPage(tk.Frame):
         # This will run when the screen is resized
         desc_label.bind("<Configure>", self.set_label_wrap)
 
-    # dynamically updates the wraplength of the labels so that the text fits to the width properly
     def set_label_wrap(self, event):
+        """
+        Dynamically updates the wraplength of the labels so that the text fits to the width properly
+        """
         wraplength = event.width - 100  # the 8 is for padding (makes it look nicer)
         event.widget.configure(wraplength=wraplength)
