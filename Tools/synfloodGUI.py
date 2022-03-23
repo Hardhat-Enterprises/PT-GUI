@@ -107,10 +107,10 @@ root.title("TCP SYN Flood")
 root.configure(background="#3B5262")
 
 # Label settings:
-IP_label = Label(root, text="IP Address:", bg="#3B5262")
-port_label = Label(root, text="Port Number:", bg="#3B5262")
-packet_label = Label(root, text="Number of Packets:", bg="#3B5262")
-thread_label = Label(root, text="Number of Threads:", bg="#3B5262")
+IP_label = Label(root, text="IP Address:", bg="#3B5262", fg="white")
+port_label = Label(root, text="Port Number:", bg="#3B5262", fg="white")
+packet_label = Label(root, text="Number of Packets:", bg="#3B5262", fg="white")
+thread_label = Label(root, text="Number of Threads:", bg="#3B5262", fg="white")
 
 # User entry settings:
 IP_entry = Entry(root, highlightbackground="#3B5262", bg="black", fg="white")
