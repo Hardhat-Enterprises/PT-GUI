@@ -1,3 +1,5 @@
+# pylint: disable=line-too-long
+
 PORT_SCANNER_DESC = " Ports on a computer are the place where information is sent to and received from." \
                     " Port scanning is used to determine which ports on a network are open. A port" \
                     " scanner sends a network request to connect to a specific TCP or UDP port on a" \
