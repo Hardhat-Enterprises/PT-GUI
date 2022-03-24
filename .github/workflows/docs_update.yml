@@ -3,7 +3,7 @@ name: docs
 # Only publishes the docs when the main branch is pushed to.
 on:
   push:
-    branches: [main]
+    branches: [main, feature/docs]
 
 jobs:
   docs_update:
