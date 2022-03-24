@@ -1,0 +1,15 @@
+name: docs
+
+# Only attempts to build the docs when a PR is made. Publishing is done by docs_update.yml.
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
