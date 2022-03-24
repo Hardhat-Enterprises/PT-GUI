@@ -17,6 +17,7 @@ jobs:
         run: |
           git clone https://github.com/Huskehhh/PT-GUI --branch gh-pages --single-branch gh-pages
           cp -r docs/build/html/* gh-pages/
+          touch .nojekyll
           cd gh-pages
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
