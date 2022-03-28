@@ -1,9 +1,15 @@
-import tkinter as tk
+# pylint: disable=global-statement
+# pylint: disable=unused-import
+
 from tkinter import *
 from tkinter import ttk
+import tkinter as tk
+
+# Global variable for dark mode toggle status.
+DARK_MODE_TOGGLE = 0
 
 # function that takes the passed frame and controller variable and adds the navigation bar
-#  to the top of the frame
+# to the top of the frame
 def display_nav_bar(frame, controller):
     """
     Helper function to display the nav bar.
@@ -15,10 +21,6 @@ def display_nav_bar(frame, controller):
 
     # these variables influence the placement and appearance of the menu option buttons
     # they've been centralised into variables for ease of modification
-    # used for the border-width of the menu buttons
-    border = 0
-    # used for the border style of the menu buttons
-    style = "flat"
     # used for the width of the buttons
     btn_width = 0.11
     # used to track the button num (used for spacing on the right side of the nav_bar equally)
@@ -39,8 +41,9 @@ def display_nav_bar(frame, controller):
     # Dark mode switch global to ensure state is retained.
     global DARK_MODE_TOGGLE
     DARK_MODE_TOGGLE = 0
-    dark_mode_switch = ttk.Checkbutton(frame, text="Dark mode", style="Switch.TCheckbutton", 
-                                       command=lambda: change_theme(controller), variable=DARK_MODE_TOGGLE)
+    dark_mode_switch = ttk.Checkbutton(frame, text="Dark mode", style="Switch.TCheckbutton",
+                                       command=lambda: change_theme(controller),
+                                        variable=DARK_MODE_TOGGLE)
 
     # this code block places all the buttons in the correct order
     # btn_num is used to correctly space out the buttons on the right side of the nav_bar

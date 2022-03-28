@@ -115,8 +115,9 @@ class WalkthroughClass(tk.Frame):
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#3A4C5E', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Walkthrough List\nUse P and R to pause and resume playback", bg='#3A4C5E', fg='white',
-                               anchor="c", font=framefont)
+        title_label = tk.Label(self,
+         text="Walkthrough List\nUse P and R to pause and resume playback",
+          bg='#3A4C5E', fg='white', anchor="c", font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
         # extra frame for spacing, pushes all subsquent content below nav bar and title label
@@ -193,7 +194,7 @@ class WalkthroughClass(tk.Frame):
                                     command=lambda: self.show_hint(desc))
             pack_widget_right(info_button)
 
-            author_label = ttk.Label(walkthrough_canvas, text=author, 
+            author_label = ttk.Label(walkthrough_canvas, text=author,
                 font="controller.btn_font2 12")
             pack_widget_right(author_label)
 

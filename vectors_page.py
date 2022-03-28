@@ -1,6 +1,5 @@
-# pylint: disable=global-variable-undefined
-# pylint: disable=invalid-name
-# pylint: disable=no-self-use
+# pylint: disable=global-variable-undefined, invalid-name, no-self-use
+# pylint: disable=non-parent-init-called, super-init-not-called
 
 from tkinter import font as tkfont
 

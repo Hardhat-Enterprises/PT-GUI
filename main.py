@@ -28,8 +28,6 @@ from tools_page import ToolsPage
 from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
 from about_page import AboutPage
-from tkinter import ttk
-
 
 class GUIApp(tk.Tk):
     """
@@ -98,10 +96,8 @@ if __name__ == "__main__":
 
     app.title("Deakin Detonator Toolkit")
     # getting the width & height of display screen
-    
     screenwidth = int(app.winfo_screenwidth() / 1.2)
     screenheight = int(app.winfo_screenheight() / 1.2)
-
     # setting the size of window %d refers to the numbers
     # contained within the brackets eg screenwidth
     app.geometry(f"{screenwidth}x{screenheight}")
