@@ -1,6 +1,7 @@
 # pylint: disable=line-too-long
 
 from tkinter import font as tkfont
+from tkinter import ttk
 
 from nav_bar import *
 
@@ -20,15 +21,15 @@ class ReferencesPage(tk.Frame):
         tkfont.Font(family='Calibri', size=14)
 
         # creates blue bar as canvas below nav bar housing label containing title of page
-        title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
+        title_canvas = tk.Canvas(self, bg='#3A4C5E', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="References", bg='#2E414F', fg='white', anchor="c",
+        title_label = tk.Label(self, text="References", bg='#3A4C5E', fg='white', anchor="c",
                                font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
         # extra frame for spacing, pushes all subsequent content
         # below nav bar and title label using the pady field
-        frameextra = tk.Label(self, bg='#2E414F')
+        frameextra = Label(self, bg='#3A4C5E')
         frameextra.pack(pady=120)
 
         # new frame for tools list
@@ -39,13 +40,13 @@ class ReferencesPage(tk.Frame):
 
         # create scrollbar on new frame
         # scrollbar y
-        scrollbar_y = Scrollbar(container,
+        scrollbar_y = ttk.Scrollbar(container,
                                 orient=VERTICAL,
                                 command=canvas.yview)
         scrollbar_y.pack(side=RIGHT, fill=Y)
         scrollbar_y.config(command=canvas.yview)
         # create scrollbar x
-        scrollbar_x = Scrollbar(container,
+        scrollbar_x = ttk.Scrollbar(container,
                                 orient=HORIZONTAL,
                                 command=canvas.xview)
         scrollbar_x.pack(side=BOTTOM, fill=X)
@@ -73,21 +74,17 @@ class ReferencesPage(tk.Frame):
         # creates a reference entry using passed strings
         def create_reference(title, explanation, link):
             # creates new canvas to hold reference information
-            reference_canvas = tk.Canvas(scrollable_frame, height=200, bg="#E3E4E5")
+            reference_canvas = tk.Canvas(scrollable_frame, height=200)
             # if the title is empty, use a smaller label (lower font size)
             if title == "":
-                tool_title_label = tk.Label(reference_canvas, text="", font="calibri 4 bold",
-                                            height=2, bg="#E3E4E5",
+                tool_title_label = ttk.Label(reference_canvas, text="", font="calibri 4 bold",
                                             anchor="c")
             else:
-                tool_title_label = tk.Label(reference_canvas, text=title, font="calibri 20 bold",
-                                            height=2,
-                                            bg="#E3E4E5",
+                tool_title_label = ttk.Label(reference_canvas, text=title, font="calibri 20 bold",
                                             anchor="c")
             pack_widget_left(tool_title_label)
 
-            explanation_label = tk.Label(reference_canvas, text=explanation, font="calibri 12",
-                                         height=2, bg="#E3E4E5",
+            explanation_label = ttk.Label(reference_canvas, text=explanation, font="calibri 12",
                                          anchor="c")
             pack_widget_left(explanation_label)
 

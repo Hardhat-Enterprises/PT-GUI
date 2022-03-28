@@ -98,8 +98,8 @@ if __name__ == "__main__":
 
     app.title("Deakin Detonator Toolkit")
     # getting the width & height of display screen
-    screenwidth = int(app.winfo_screenwidth() / 1.5)
-    screenheight = int(app.winfo_screenheight() / 1.5)
+    screenwidth = app.winfo_screenwidth()
+    screenheight = app.winfo_screenheight()
     # setting the size of window %d refers to the numbers
     # contained within the brackets eg screenwidth
     app.geometry(f"{screenwidth}x{screenheight}")

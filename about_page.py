@@ -2,6 +2,7 @@
 # pylint: disable=global-variable-undefined
 
 from tkinter import font as tkfont
+from tkinter import ttk
 from nav_bar import *
 
 
@@ -29,7 +30,7 @@ class AboutPage(tk.Frame):
         # allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
         # extra frame for spacing, pushes all subsequent
         # content below nav bar and title label using the pady field
-        frameextra = Label(self, bg='#3B5262')
+        frameextra = Label(self, bg='#3A4C5E')
         frameextra.pack(pady=120)
 
         # new frame for tools list
@@ -40,13 +41,13 @@ class AboutPage(tk.Frame):
 
         # create scrollbar on new frame
         # scrollbar y
-        scrollbar_y = Scrollbar(container,
+        scrollbar_y = ttk.Scrollbar(container,
                                 orient=VERTICAL,
                                 command=canvas.yview)
         scrollbar_y.pack(side=RIGHT, fill=Y)
         scrollbar_y.config(command=canvas.yview)
         # create scrollbar x
-        scrollbar_x = Scrollbar(container,
+        scrollbar_x = ttk.Scrollbar(container,
                                 orient=HORIZONTAL,
                                 command=canvas.xview)
         scrollbar_x.pack(side=BOTTOM, fill=X)
@@ -55,7 +56,7 @@ class AboutPage(tk.Frame):
         scrollable_frame = Frame(canvas)
         # binds scroll canvas to execute function that gets scrollable region of canvas on event e
         scrollable_frame.bind("<Configure>",
-                              lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+                              lambda _: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
         canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
@@ -71,24 +72,24 @@ class AboutPage(tk.Frame):
         # creates new image variable from teamwork.png, used for background on title screen
         global teamwork
         teamwork = tk.PhotoImage(file='resources/teamwork.png')
-        teamwork_label = tk.Label(frame1, image=teamwork)
+        teamwork_label = ttk.Label(frame1, image=teamwork)
 
         frame2 = Canvas(scrollable_frame)
         frame2.pack()
         # creates new image variable from using_computer.png, used for background on title screen
         global using_computer
         using_computer = tk.PhotoImage(file='resources/using_computer.png')
-        computer_label = tk.Label(frame2, image=using_computer)
+        computer_label = ttk.Label(frame2, image=using_computer)
 
-        paragraph_one = Label(frame1,
+        paragraph_one = ttk.Label(frame1,
                               text="In it's simplest definition, Deakin Detonator Toolkit (DDT)"
                                    " is a penetration testing toolkit. "
                                    "\n\nMade by university students, DDT is our capstone project,"
                                    " completed over successive trimesters."
                                    "\n\nThe toolkit allows you to make use of a variety of tools, "
                                    "without needing the \"know-how\" of each command.",
-                              bg="#E7E7E7", fg="black", font=('Calibri', 14),
-                              justify=LEFT, width=100)
+                                    font=('Calibri', 14),
+                                    justify=LEFT, width=100)
 
         paragraph_two = Label(frame2,
                               text="We have simplified the penetration testing "
@@ -101,8 +102,8 @@ class AboutPage(tk.Frame):
                                    "\n\nAlternatively, you can choose an attack vector"
                                    " from the attack "
                                    "vectors sub-menu and follow the steps.",
-                              bg="#E7E7E7", fg="black", font=('Calibri', 14),
-                              justify=LEFT, width=120)
+                                    font=('Calibri', 14),
+                                    justify=LEFT, width=120)
 
         # places labels on the screen
         # paragraph_one.place(rely=0.22, relx=0.085, relheight=0.24, relwidth=0.4)

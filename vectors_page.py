@@ -28,14 +28,15 @@ class VectorsPage(tk.Frame):
         tkfont.Font(family='Calibri', size=13)
 
         # creates blue bar as canvas below nav bar housing label containing title of page
-        title_canvas = tk.Canvas(self, highlightthickness=0)
+        title_canvas = tk.Canvas(self, bg='#3A4C5E', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = ttk.Label(self, text="Attack Vectors List", anchor="c", font=framefont)
+        title_label = tk.Label(self, text="Attack Vectors List", bg='#3A4C5E', fg='white',
+                               anchor="c", font=framefont)
         title_label.place(rely=0.08, relheight=0.12, relwidth=1)
 
         # extra frame for spacing, pushes all subsquent content below nav bar and title
         # label using the pady field
-        frameextra = ttk.Label(self)
+        frameextra = Label(self, bg='#3A4C5E')
         frameextra.pack(pady=120)
 
         # new frame for tools list
@@ -72,9 +73,6 @@ class VectorsPage(tk.Frame):
             yscrollcommand=scrollbar_y.set
         )
         canvas.pack(side=LEFT, fill=BOTH, expand=True)
-        # creates new image variable from start_button.png, used for launch button on vector entry
-        global button_image
-        button_image = tk.PhotoImage(file='resources/start_button.png')
         global info_image
         info_image = tk.PhotoImage(file='resources/Info_button.png')
 
