@@ -55,7 +55,7 @@ class ReferencesPage(tk.Frame):
         scrollable_frame = Frame(canvas)
         # binds scroll canvas to execute function that gets scrollable region of canvas on event e
         scrollable_frame.bind("<Configure>",
-                              lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+                              lambda _: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
         canvas.create_window((565, 3), window=scrollable_frame, anchor="nw")

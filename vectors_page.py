@@ -47,13 +47,13 @@ class VectorsPage(tk.Frame):
 
         # create scrollbar on new frame
         # scrollbar y
-        scrollbar_y = Scrollbar(container,
+        scrollbar_y = ttk.Scrollbar(container,
                                 orient=VERTICAL,
                                 command=canvas.yview)
         scrollbar_y.pack(side=RIGHT, fill=Y)
         scrollbar_y.config(command=canvas.yview)
         # create scrollbar x
-        scrollbar_x = Scrollbar(container,
+        scrollbar_x = ttk.Scrollbar(container,
                                 orient=HORIZONTAL,
                                 command=canvas.xview)
         scrollbar_x.pack(side=BOTTOM, fill=X)
@@ -65,7 +65,7 @@ class VectorsPage(tk.Frame):
                               lambda _: canvas.configure(scrollregion=canvas.bbox("alsl")))
 
         # creates new window using scrollable frame as a base
-        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.create_window((565, 0), window=scrollable_frame, anchor="nw")
 
         # sets scrollcommand to the existing scrollbar, linking the widgets
         canvas.config(
