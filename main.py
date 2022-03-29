@@ -29,7 +29,6 @@ from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
 from about_page import AboutPage
 
-
 class GUIApp(tk.Tk):
     """
     Application entrypoint.
@@ -41,6 +40,10 @@ class GUIApp(tk.Tk):
         self.title_font = tkfont.Font(family='Calibri', size=18, weight="bold")
         self.btn_font = tkfont.Font(family='Calibri', size=18)
         self.btn_font2 = tkfont.Font(family='Calibri', size=12)
+
+        # Set default theming options.
+        self.tk.call('source', 'azure.tcl')
+        self.tk.call('set_theme', 'light')
 
         # the container is where we'll stack a bunch of frames
         # on top of each other, then the one we want visible
@@ -93,8 +96,8 @@ if __name__ == "__main__":
 
     app.title("Deakin Detonator Toolkit")
     # getting the width & height of display screen
-    screenwidth = app.winfo_screenwidth()
-    screenheight = app.winfo_screenheight()
+    screenwidth = int(app.winfo_screenwidth() / 1.2)
+    screenheight = int(app.winfo_screenheight() / 1.2)
     # setting the size of window %d refers to the numbers
     # contained within the brackets eg screenwidth
     app.geometry(f"{screenwidth}x{screenheight}")
