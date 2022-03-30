@@ -61,7 +61,7 @@ class VectorsPage(tk.Frame):
         scrollable_frame = Frame(canvas)
         # binds scroll canvas to execute function that gets scrollable region of canvas on event e
         scrollable_frame.bind("<Configure>",
-                              lambda _: canvas.configure(scrollregion=canvas.bbox("alsl")))
+                              lambda _: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
         canvas.create_window((565, 0), window=scrollable_frame, anchor="nw")
