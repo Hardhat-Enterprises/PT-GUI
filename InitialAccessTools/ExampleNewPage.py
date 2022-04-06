@@ -20,15 +20,15 @@ class ExampleNewPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         display_nav_bar(self, controller)
 
-        heading_font = tkfont.Font(family='Calibri', size=32, weight="bold")
+        heading_font = tkfont.Font(family="Calibri", size=32, weight="bold")
 
         # Heading for page
-        heading_frame = tk.Label(self, text="Example new page", bg='#3B5262', fg='white',
+        heading_frame = tk.Label(self, text="Example new page", bg="#3B5262", fg="white",
                                  anchor="center", font=heading_font)
         heading_frame.place(rely=0.08, relheight=0.12, relwidth=1)
 
         # Create a screen frame to house our components.
-        screen_frame = tk.Frame(self, bg='white')
+        screen_frame = tk.Frame(self, bg="white")
         screen_frame.place(rely=0.2, relheight=1, relwidth=1)
 
         # Example label.
