@@ -11,7 +11,6 @@ class ExampleNewPage(tk.Frame):
     # Below are some basic class variables that are used for controlling positioning of elements.
     screen_base_x = .5
     screen_base_y = .2
-    incremental_x = .1
     incremental_y = .05
 
     def __init__(self, parent, controller):
