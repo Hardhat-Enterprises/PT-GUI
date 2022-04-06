@@ -243,7 +243,7 @@ class ToolsPage(tk.Frame):
                     lambda: controller.show_frame("MsfPayloadGen"), MSFVENOM_PAY_GEN_DESC)
 
         create_title("Resource Development Tools")
-        create_tool("Notepad", "Laiba Samar", "1.01", lambda: open_synfloodGUI(), NOTEPAD_DESC)
+        create_tool("Notepad", "Laiba Samar", "1.01", lambda: open_notepad(), NOTEPAD_DESC)
 
         create_title("Help")
         create_tool("Command Prompt", "", "1.01", lambda: load_terminal(), CMD_DESC)
