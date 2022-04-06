@@ -28,6 +28,7 @@ from tools_page import ToolsPage
 from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
 from about_page import AboutPage
+from ReconnaissanceTools.ShodanAPI import ShodanScript
 
 class GUIApp(tk.Tk):
     """
@@ -62,7 +63,7 @@ class GUIApp(tk.Tk):
                   BannerGrab, MsfPayloadGen, MsfListener, MimtDnsSpoof,
                   DTFuzz, FTPBruteForce, IMDExtractor, AttackVectorSeven,
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
-                  SshBrute, HashAn, PHCracker, ZipBF, ICMP, HTTPheaders, WalkthroughClass):
+                  SshBrute, HashAn, PHCracker, ZipBF, ICMP, HTTPheaders, WalkthroughClass, ShodanScript):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame

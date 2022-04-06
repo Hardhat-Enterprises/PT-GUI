@@ -32,6 +32,9 @@ BANNER_GRABBER_DESC = "Banner Grabbing is a technique that helps in gaining info
                       " can exploit it. The tool here takes the victim IP address and the port number from the user" \
                       " to perform banner grabbing."
 
+SHODAN_DESC = "Placeholder"
+
+
 SNIFFER_DESC = "A packet sniffer is essentially a tool that helps monitor network traffic and troubleshoot a network." \
                " It captures and analyzes data packets flowing through a specific network. Using a sniffer, it's " \
                "possible to capture almost any information — for example, which websites that a user visits, what is" \
