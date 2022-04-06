@@ -26,7 +26,7 @@ $ pip3 install -r requirements.txt
 3. Start the application
 
 ```bash
-$ cd PT-GUI (this step is not needed if you are already in the directory)
+$ cd PT-GUI #This step is not needed if you are already in the directory.
 $ python3 main.py
 ```
 
@@ -46,4 +46,4 @@ After launching the tool, the GUI will open the homepage of toolkit. From there,
 
 # Development
 
-The GUI of the toolkit is developed using [Tkinter](https://docs.python.org/3/library/tkinter.html).
+The GUI of the toolkit is developed using [Tkinter](https://docs.python.org/3/library/tkinter.html) and theming is inspired from [here](https://github.com/rdbende/Azure-ttk-theme).
