@@ -30,7 +30,7 @@ class ShodanScript(tk.Frame):
         self.LabelsList = [a,b,c,d,e,f,g,h,i,j,k,k,l,m,n,o,p,q,r]
 
         ##buttons
-        Button(self, text="Start", bg='#4D6C84', fg='white', anchor='c', command=self.ShodanMain).place(rely=0.36, relx=0.66, relheight=0.12, relwidth=0.12)
+        Button(self, text="Start", bg='#4D6C84', fg='white', anchor='c', command=self.ShodanMain).place(rely=0.38, relx=0.66, relheight=0.08, relwidth=0.08)
         self.nextButton = Button(self, text="Next", bg='#4D6C84', fg='white', anchor='c')
         self.prevButton = Button(self, text="Previous", bg='#4D6C84', fg='white', anchor='c')
 
