@@ -8,6 +8,7 @@
 import os
 from subprocess import Popen, PIPE
 from tkinter import font as tkfont
+from tkinter import ttk
 
 from nav_bar import *
 from tool_descriptions import *
@@ -61,14 +62,14 @@ class ToolsPage(tk.Frame):
         # create scrollbar on new frame
         # scrollbar y
         scrollbar_y = ttk.Scrollbar(container,
-                                    orient=VERTICAL,
-                                    command=canvas.yview)
+                                orient=VERTICAL,
+                                command=canvas.yview)
         scrollbar_y.pack(side=RIGHT, fill=Y)
         scrollbar_y.config(command=canvas.yview)
         # create scrollbar x
         scrollbar_x = ttk.Scrollbar(container,
-                                    orient=HORIZONTAL,
-                                    command=canvas.xview)
+                                orient=HORIZONTAL,
+                                command=canvas.xview)
         scrollbar_x.pack(side=BOTTOM, fill=X)
         scrollbar_x.config(command=canvas.xview)
         # create new canvas that will be scrolled
@@ -124,7 +125,7 @@ class ToolsPage(tk.Frame):
 
         def load_terminal():
             _ = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True,
-                      shell=True).stdout
+                       shell=True).stdout
 
         # packs passed widget to the left of screen, used for creating a tool entry
         def pack_widget_left(button):
@@ -137,7 +138,7 @@ class ToolsPage(tk.Frame):
         # creates section title from passed string
         def create_title(title):
             title = ttk.Label(scrollable_frame, text=title,
-                              font='controller.btn_font2 20 bold', anchor="c")
+                             font='controller.btn_font2 20 bold', anchor="c")
             title.pack(expand=TRUE, fill='x', padx=100, pady=20)
 
         # creates navigation button that executes passed command, allows for variety
@@ -152,15 +153,15 @@ class ToolsPage(tk.Frame):
             tool_canvas = tk.Canvas(scrollable_frame, height=10)
 
             toolname_label = ttk.Label(tool_canvas, text=name,
-                                       font='controller.btn_font2 14')
+                                      font='controller.btn_font2 14')
             pack_widget_left(toolname_label)
 
             author_label = ttk.Label(tool_canvas, text=author,
-                                     font='controller.btn_font2 12')
+                                    font='controller.btn_font2 12')
 
             nav_button(tool_canvas, command)
             info_button = ttk.Button(tool_canvas, image=info_image, compound=LEFT,
-                                     command=lambda: self.show_hint(desc))
+                                    command=lambda: self.show_hint(desc))
             pack_widget_right(info_button)
 
             version_label = ttk.Label(tool_canvas, text=version, font='controller.btn_font2 12')
@@ -243,19 +244,17 @@ class ToolsPage(tk.Frame):
                     lambda: controller.show_frame("MsfPayloadGen"), MSFVENOM_PAY_GEN_DESC)
 
         create_title("Resource Development Tools")
-        create_tool("Notepad", "Laiba Samar", "1.01", lambda: open_synfloodGUI(), NOTEPAD_DESC)
+        create_tool("Notepad", "Laiba Samar", "1.01", lambda: open_notepad(), NOTEPAD_DESC)
 
         create_title("Help")
         create_tool("Command Prompt", "", "1.01", lambda: load_terminal(), CMD_DESC)
-        create_tool("Example New Page", "Jordyn Newnham", "1.0.0",
-                    lambda: controller.show_frame("ExampleNewPage"), "Example new page")
 
     def show_hint(self, desc):
         """
         Show hint function.
         """
         desc_label = ttk.Label(self, text=desc + "\n\n\n\nClick to dismiss", borderwidth=8,
-                               relief=RAISED, font=("Calibri", 15))
+                              relief=RAISED, font=("Calibri", 15))
         desc_label.place(rely=0.125, relx=0.25, relheight=0.75, relwidth=0.5)
         desc_label.bind("<Button-1>", lambda _: desc_label.place_forget())
 
