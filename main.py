@@ -25,6 +25,7 @@ from ReconnaissanceTools.PortScanner import PortScan
 from references_page import ReferencesPage
 from start_page import StartPage
 from Tools.Notepad import *
+from Tools.API_Keys import API_Keys
 from tools_page import ToolsPage
 from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
@@ -64,7 +65,8 @@ class GUIApp(tk.Tk):
                   DTFuzz, FTPBruteForce, IMDExtractor, AttackVectorSeven,
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
                   SshBrute, HashAn, PHCracker, ExampleNewPage,
-                  ZipBF, ICMP, HTTPheaders, WalkthroughClass):
+                  ZipBF, ICMP, HTTPheaders, WalkthroughClass,
+                  API_Keys):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame

@@ -257,6 +257,8 @@ class ToolsPage(tk.Frame):
         create_tool("Command Prompt", "", "1.01", lambda: load_terminal(), CMD_DESC)
         create_tool("Example New Page", "Jordyn Newnham", "1.0.0",
                     lambda: controller.show_frame("ExampleNewPage"), "Example new page")
+        create_tool("API Key Management", "Taylor Smith", "1.0.0",
+                    lambda: controller.show_frame("API_Keys"), "Set API Keys")
 
     def show_hint(self, desc):
         """
