@@ -22,6 +22,7 @@ from InitialAccessTools.ExampleNewPage import ExampleNewPage
 from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
 from ReconnaissanceTools.BannerGrabbing import BannerGrab
 from ReconnaissanceTools.PortScanner import PortScan
+from ReconnaissanceTools.ShodanAPI import ShodanScript
 from references_page import ReferencesPage
 from start_page import StartPage
 from Tools.Notepad import *
@@ -30,7 +31,6 @@ from tools_page import ToolsPage
 from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
 from about_page import AboutPage
-from ReconnaissanceTools.ShodanAPI import ShodanScript
 
 class GUIApp(tk.Tk):
     """
