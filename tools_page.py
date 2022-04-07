@@ -226,8 +226,10 @@ class ToolsPage(tk.Frame):
         create_tool("ICMP Ping Flooder", "Ryan Harris", "1.01",
                     lambda: controller.show_frame("ICMP"),
                     PHCRACKER_DESC)
-        create_tool("TCP SYN Flooder", "Warren Bartholomeusz", "1.01", lambda: open_synfloodGUI(), TCP_SYN_FLOOD_DESC)
-        create_tool("Email Bomber", "Warren Bartholomeusz", "1.01", lambda: open_emailbomberGUI(), EMAIL_BOMBER_DESC)
+        create_tool("TCP SYN Flooder", "Warren Bartholomeusz", "1.01",
+                    lambda: open_synfloodGUI(), TCP_SYN_FLOOD_DESC)
+        create_tool("Email Bomber", "Warren Bartholomeusz", "1.01",
+                    lambda: open_emailbomberGUI(), EMAIL_BOMBER_DESC)
 
         create_title("Fuzzers")
         create_tool("Directory Traversal Fuzzer", "Ryan Harris", "1.01",
