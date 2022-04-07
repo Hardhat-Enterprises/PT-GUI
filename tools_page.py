@@ -192,9 +192,11 @@ class ToolsPage(tk.Frame):
         create_tool("Banner Grabber", "Laiba Samar", "1.01",
                     lambda: controller.show_frame("BannerGrab"),
                     BANNER_GRABBER_DESC)
+        create_tool("Shodan Reconnaissance", "A.S. Jaeger / K. Gray", "1.01",
+                    lambda: controller.show_frame("ShodanScript"),
+                    SHODAN_DESC)
 
         create_title("Enumeration Tools")
-
         create_tool("Sniffer", "Laiba Samar", "1.01", lambda: controller.show_frame("TestSniff"),
                     SNIFFER_DESC)
         create_tool("Mac Changer", "Laiba Samar", "1.01",

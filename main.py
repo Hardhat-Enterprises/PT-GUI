@@ -22,6 +22,7 @@ from InitialAccessTools.ExampleNewPage import ExampleNewPage
 from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
 from ReconnaissanceTools.BannerGrabbing import BannerGrab
 from ReconnaissanceTools.PortScanner import PortScan
+from ReconnaissanceTools.ShodanAPI import ShodanScript
 from references_page import ReferencesPage
 from start_page import StartPage
 from Tools.Notepad import *
@@ -66,7 +67,7 @@ class GUIApp(tk.Tk):
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
                   SshBrute, HashAn, PHCracker, ExampleNewPage,
                   ZipBF, ICMP, HTTPheaders, WalkthroughClass,
-                  API_Keys):
+                  API_Keys, ShodanScript):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame
