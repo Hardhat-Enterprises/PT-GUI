@@ -112,7 +112,7 @@ def check_entrys():
         return False
     return True
 
-# Boolean variable that indicates whether the mailing process is running or not
+# Boolean variable that indicates whether the mailing process is running or not.
 process = False
 
 # Global variables
