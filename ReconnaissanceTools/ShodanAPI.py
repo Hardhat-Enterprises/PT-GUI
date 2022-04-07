@@ -40,7 +40,7 @@ class ShodanScript(tk.Frame):
     def ShodanMain(self):
 
         # API Key needs to be added to the Environment Variable prior to use.
-        api_key = ['vvxN0nHpOrATgGiP4nimlQGSiNzb00eo'] #made specifically for this project
+        api_key = os.environ['SHODAN_API_KEY'] #use API tool to make sure this is findable
         api = shodan.Shodan(api_key)
 
 
