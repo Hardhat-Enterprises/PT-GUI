@@ -145,3 +145,9 @@ TCP_SYN_FLOOD_DESC = "This tool is used to attack web servers by continuously se
                      "The program also randomizes the user's host IP address, anonymizing each attack. " \
                      "This application can be used in conjunction with other tools, such as NMap to scan the web server for open ports, " \
                      "or Wireshark to monitor the packet transfer activity."
+
+EMAIL_BOMBER_DESC =  "This tool is used to attack email accounts by sending spoofed email messages to a victim's inbox. " \
+                     "This attack is known as a Distributed Spam Distraction technique and operates as a smoke-screen to distract the victim from viewing importing messages, " \
+                     "and can also potentially flood the victim's web server depending on the number of messages sent. " \
+                     "It allows users to set the target destination, sender information, subject and message details, with the option of stopping, restarting or redirecting the attack. " \
+                     "For future developments, the tool could also be used as a conduit for sending payloads to a victim via email."
