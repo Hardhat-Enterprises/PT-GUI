@@ -7,6 +7,7 @@ from nav_bar import *
 
 class ShodanScript(tk.Frame):
     def __init__(self, parent, controller):
+        ##drawing frame, etc
         tk.Frame.__init__(self, parent)
         self.controller = controller
         display_nav_bar(self, controller)
@@ -62,7 +63,7 @@ class ShodanScript(tk.Frame):
         except Exception as e:
             print('Error: {}'.format(e))
 
-        #increases/decreases page and re-draws some elements
+    #increases/decreases page and re-draws some elements
     def ShodanIncpage(self, host):
         self.pageNumber = self.pageNumber + 1
         self.ShodanShowpage(host)
@@ -72,7 +73,7 @@ class ShodanScript(tk.Frame):
         self.ShodanShowpage(host)
 
     def ShodanShowpage(self, host):
-        #cleaning up all the unused labels
+        #cleaning up all the old labels
         for label in self.LabelsList: 
             label.place_forget()
         self.nextButton.place_forget()
@@ -82,10 +83,11 @@ class ShodanScript(tk.Frame):
         flexy = 0.50        
         flexx = 0.32        
         idx = 0             #this is the index of the label in the grid, 0-17 (for 18 positions)
-        count = 0           #this is used to count the totle number of items gotten from host
+        count = 0           #this is used to count the total number of items gotten from host
     
         for item in host ['data']:
             #if the host items are within the range for the current page... and while not too many labels are placed for a page
+            #places labels in a grid 6x3 in column order
             if ((count > (self.pageNumber - 1)*18) and (flexx <= 0.82) and idx <18):
                 self.LabelsList[idx] = Label(self, text=("""* Product: {}\n* Port: {}\n* Transport: {}""".format(item.get('product'),item['port'],item['transport'])), bg='#4D6C84', fg='white', anchor='c')
                 self.LabelsList[idx].place(rely=flexy, relx=flexx, relheight=0.1, relwidth=0.1)
@@ -97,14 +99,18 @@ class ShodanScript(tk.Frame):
             count = count+1
         
         #didn't want to import math so: str(int(-(-(len(host ['data'])/18)//1))) is the string of labels/labels per page rounded up 1 integer
+        #displays the page #/#
         Label(self, text=("Page " + str(self.pageNumber) + " of " + str(int(-(-(len(host ['data'])/18)//1))) ), bg='#4D6C84', fg='white', anchor='c').place(rely=0.8, relx=0.32, relheight=0.03, relwidth=0.1)
         
         #if labels go far enough right, AND the total number of labels is greater than the number of pages * labels per page
+        #shows the next button and lets it traverse page
         if ((flexx >= 0.82) and (len(host ['data']) > (self.pageNumber * 18))):
             #go to next page
             self.nextButton.configure(command=lambda : self.ShodanIncpage(host))
             self.nextButton.place(rely=0.8, relx=0.52, relheight=0.03, relwidth=0.1)
+
         #if we're on the first page, we don't want to be able to "previous"
+        #shows the prev button and lets it traverse page
         if (self.pageNumber > 1):
             self.prevButton.configure(command=lambda : self.ShodanDecpage(host))
             self.prevButton.place(rely=0.8, relx=0.42, relheight=0.03, relwidth=0.1)
