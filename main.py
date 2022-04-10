@@ -1,3 +1,4 @@
+from tkinter import * 
 from ATTACKVECTOR.attackvector1 import AttackVectorOne
 from ATTACKVECTOR.attackvector2 import AttackVectorTwo
 from ATTACKVECTOR.attackvector3 import AttackVectorThree
@@ -31,6 +32,9 @@ from tools_page import ToolsPage
 from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
 from about_page import AboutPage
+
+win = Tk()
+win.geometry("400x300")
 
 class GUIApp(tk.Tk):
     """
@@ -108,3 +112,5 @@ if __name__ == "__main__":
     app.geometry(f"{screenwidth}x{screenheight}")
 
     app.mainloop()
+    
+win.mainloop()
