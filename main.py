@@ -32,6 +32,10 @@ from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
 from about_page import AboutPage
 
+from tkinter import * #to make this responsive
+win = Tk()
+win.geometry("400x300")
+
 class GUIApp(tk.Tk):
     """
     Application entrypoint.
@@ -108,3 +112,5 @@ if __name__ == "__main__":
     app.geometry(f"{screenwidth}x{screenheight}")
 
     app.mainloop()
+ 
+win.mainloop()
