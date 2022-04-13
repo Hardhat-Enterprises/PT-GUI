@@ -35,7 +35,6 @@ class ToolsPage(tk.Frame):
         # title label using the pady field
         frameextra = Label(self, anchor='w')
         frameextra.pack(pady=22.3)
-        
         # displays navbar at top of app screen
         display_nav_bar(self, controller)
 
@@ -52,7 +51,6 @@ class ToolsPage(tk.Frame):
                                     command=canvas.yview)
         scrollbar_y.pack(side=RIGHT, fill=Y)
         scrollbar_y.config(command=canvas.yview)
-        
         # create new canvas that will be scrolled
         scrollable_frame = Frame(canvas)
         # binds scroll canvas to execute function that gets scrollable region of canvas on event e
@@ -129,7 +127,7 @@ class ToolsPage(tk.Frame):
             nav_button = ttk.Button(canvas, image=launch_image, 
             command=command, style='Rocket.TButton')
             pack_widget_right(nav_button)
-
+            
         # creates a tool using passed strings and command function
         def create_tool(name, command, desc):
             # creates new canvas to hold tool information/execute widgets
