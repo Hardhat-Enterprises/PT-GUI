@@ -210,6 +210,8 @@ class ToolsPage(tk.Frame):
         create_tool("HTTP Header Analyzer", "James Martin", "1.01",
                     lambda: controller.show_frame("HTTPheaders"),
                     HTTP_ANALYZER_DESC)
+        create_tool("SNMP Check", "Jordyn Newnham", "1.0.0", lambda: controller.show_frame("SNMPCheck"),
+                    "GUI Wrapper for 'snmp-check' CLI tool.")
 
         create_title("Execution Tools")
         create_tool("VulnExploit", "Adrian Nadalin", "1.01", lambda: load_vulnexploit_tool(),
