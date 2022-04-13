@@ -10,6 +10,7 @@ from EnumerationTools.ImageMetaDataExtractor import IMDExtractor
 from EnumerationTools.MacChanger import MacChange
 from EnumerationTools.TestSniffer import TestSniff
 from EnumerationTools.hash_analyzer import HashAn
+from EnumerationTools.snmp_check import SNMPCheck
 from ExecutionTools.FTPBruteForce import FTPBruteForce
 from ExecutionTools.ICMPPingFlooder import ICMP
 from ExecutionTools.MsfconsoleListener import MsfListener
@@ -67,7 +68,7 @@ class GUIApp(tk.Tk):
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
                   SshBrute, HashAn, PHCracker, ExampleNewPage,
                   ZipBF, ICMP, HTTPheaders, WalkthroughClass,
-                  API_Keys, ShodanScript):
+                  API_Keys, ShodanScript, SNMPCheck):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame
