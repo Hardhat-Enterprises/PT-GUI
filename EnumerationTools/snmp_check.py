@@ -2,6 +2,7 @@ from subprocess import Popen, PIPE
 from tkinter import font as tkfont
 
 from nav_bar import *
+from utils.console import Console
 
 
 class SNMPCheck(tk.Frame):
@@ -48,15 +49,27 @@ class SNMPCheck(tk.Frame):
         port_entry_field.insert(0, "Please enter target port here.")
         self.place_widget_center(port_entry_field)
 
+        console = Console(screen_frame)
+
         # Button to start snmp-check.
         start_button = ttk.Button(screen_frame, text="Start", style="Accent.TButton",
-                                  command=self.start_button_action(ip_entry_field.get(), port_entry_field.get()))
+                                  command=lambda: self.start_button_action(ip_entry_field.get(), port_entry_field.get(),
+                                                                           console))
         self.place_widget_center(start_button)
 
-        self.console = Text()
-        self.place_widget_center(self.console)
+        console_output_label = ttk.Label(
+            screen_frame,
+            text="SNMP Output",
+            justify="center",
+            font=("-size", 15, "-weight", "bold"),
+        )
+        self.place_widget_center(console_output_label)
 
-    def start_button_action(self, ip: str, port: str):
+        self.screen_base_y *= 1.3
+
+        self.place_widget_center(console)
+
+    def start_button_action(self, ip: str, port: str, console: Console):
         command = f"snmp-check {ip} -p {port}"
 
         # Start process
@@ -64,15 +77,7 @@ class SNMPCheck(tk.Frame):
 
         # Print all output from stdout to tkinter.
         for line in process.stdout:
-            self.write_to_console_output(line)
-
-    def write_to_console_output(self, *message, end="\n", sep=" "):
-        text = ""
-        for item in message:
-            text += "{}".format(item)
-            text += sep
-        text += end
-        self.console.insert(INSERT, text)
+            console.write(line)
 
     def place_widget_center(self, widget: Widget):
         """
