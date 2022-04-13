@@ -1,4 +1,4 @@
-import asyncio
+from subprocess import Popen, PIPE
 from tkinter import font as tkfont
 
 from nav_bar import *
@@ -53,9 +53,8 @@ class SNMPCheck(tk.Frame):
 
         # Button to start snmp-check.
         start_button = ttk.Button(screen_frame, text="Start", style="Accent.TButton",
-                                  command=lambda: asyncio.run(
-                                      start_button_action(ip_entry_field.get(), port_entry_field.get(),
-                                                          console)))
+                                  command=lambda: self.start_button_action(ip_entry_field.get(), port_entry_field.get(),
+                                                                           console))
         self.place_widget_center(start_button)
 
         console_output_label = ttk.Label(
@@ -69,6 +68,16 @@ class SNMPCheck(tk.Frame):
         self.screen_base_y *= 1.3
 
         self.place_widget_center(console)
+
+    def start_button_action(self, ip: str, port: str, console: Console):
+        command = f"snmp-check {ip} -p {port}"
+
+        # Start process
+        process = Popen(command, stdout=PIPE, universal_newlines=True, shell=True)
+
+        # Print all output from stdout to tkinter.
+        for line in process.stdout:
+            console.write(line)
 
     def place_widget_center(self, widget: Widget):
         """
@@ -87,19 +96,3 @@ class SNMPCheck(tk.Frame):
           :param x_offset: Offset on the X axis at which to place the widget. Defaults to 0.1.
           """
         widget.place(anchor=CENTER, relx=self.screen_base_x + x_offset, rely=self.screen_base_y - self.incremental_y)
-
-
-async def start_button_action(ip: str, port: str, console: Console):
-    command = f"snmp-check {ip} -p {port}"
-
-    # Start process
-    process = await asyncio.create_subprocess_shell(
-        command,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE)
-
-    stdout, stderr = await process.communicate()
-
-    # Print all output from stdout to tkinter.
-    for line in stdout:
-        console.write(line)
