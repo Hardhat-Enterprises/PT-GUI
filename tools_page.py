@@ -124,10 +124,10 @@ class ToolsPage(tk.Frame):
         # creates navigation button that executes passed command, allows for variety
         # of functionality of tool click
         def nav_button(canvas, command):
-            nav_button = ttk.Button(canvas, image=launch_image, 
+            nav_button = ttk.Button(canvas, image=launch_image,
             command=command, style='Rocket.TButton')
             pack_widget_right(nav_button)
-            
+
         # creates a tool using passed strings and command function
         def create_tool(name, command, desc):
             # creates new canvas to hold tool information/execute widgets
