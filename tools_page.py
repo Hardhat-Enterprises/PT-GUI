@@ -35,7 +35,7 @@ class ToolsPage(tk.Frame):
         # title label using the pady field
         frameextra = Label(self, anchor='w')
         frameextra.pack(pady=22.3)
-                
+        
         # displays navbar at top of app screen
         display_nav_bar(self, controller)
 
@@ -66,7 +66,7 @@ class ToolsPage(tk.Frame):
         canvas.config(
            yscrollcommand=scrollbar_y.set
         )
-        canvas.pack(side=LEFT, fill=BOTH, expand=True)     
+        canvas.pack(side=LEFT, fill=BOTH, expand=True)
         # creates new image variable from start_button.png, used for launch button on tools
         global button_image
         button_image = tk.PhotoImage(file='resources/start_button.png')
@@ -126,7 +126,8 @@ class ToolsPage(tk.Frame):
         # creates navigation button that executes passed command, allows for variety
         # of functionality of tool click
         def nav_button(canvas, command):
-            nav_button = ttk.Button(canvas, image=launch_image, command=command, style='Rocket.TButton')
+            nav_button = ttk.Button(canvas, image=launch_image, 
+            command=command, style='Rocket.TButton')
             pack_widget_right(nav_button)
 
         # creates a tool using passed strings and command function
@@ -141,9 +142,7 @@ class ToolsPage(tk.Frame):
             nav_button(tool_canvas, command)
             info_button = ttk.Button(tool_canvas, image=info_image,
                                      command=lambda: self.show_hint(desc), style='Accent.TButton')
-                                     #height=0, width=0, relief=FLAT, borderwidth=0, activebackground=self['background']
-            pack_widget_right(info_button)            
-            
+            pack_widget_right(info_button)
             tool_canvas.pack(expand=TRUE, fill='x', padx=90, pady=8)
 
         # creates tools and section titles by invoking previous functions
