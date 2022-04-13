@@ -49,7 +49,7 @@ class SNMPCheck(tk.Frame):
         port_entry_field.insert(0, "Please enter target port here.")
         self.place_widget_center(port_entry_field)
 
-        console = Console(screen_frame)
+        console = Console(screen_frame, width="200")
 
         # Button to start snmp-check.
         start_button = ttk.Button(screen_frame, text="Start", style="Accent.TButton",
