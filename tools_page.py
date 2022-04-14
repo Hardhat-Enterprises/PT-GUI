@@ -177,6 +177,8 @@ class ToolsPage(tk.Frame):
             nav_button = ttk.Button(canvas, image=launch_image,
             command=command, style='Rocket.TButton')
             pack_widget_right(nav_button)
+            Tk.update(self)
+            return nav_button
 
         # creates a tool using passed strings and command function
         def create_tool(name, command, desc):
@@ -187,7 +189,7 @@ class ToolsPage(tk.Frame):
                                        font='controller.btn_font2 12 italic')
             pack_widget_left(toolname_label)
 
-            nav_button(tool_canvas, command)
+            navbutton = nav_button(tool_canvas, command)
             info_button = ttk.Button(tool_canvas, image=info_image,
                                      command=lambda: self.show_hint(desc), style='Accent.TButton')
             pack_widget_right(info_button)
