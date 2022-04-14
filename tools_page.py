@@ -65,6 +65,11 @@ class ToolsPage(tk.Frame):
            yscrollcommand=scrollbar_y.set
         )
         canvas.pack(side=LEFT, fill=BOTH, expand=True)
+        
+        ##for toggling visibility of tools under a title
+        self.titleChildrenNumber = []#number of elements below a title (tool's labels and buttons)
+        self.toolsList = []#a list of each of these elements to hide
+        self.hideButtons=[]#a list of the title buttons
         # creates new image variable from start_button.png, used for launch button on tools
         global button_image
         button_image = tk.PhotoImage(file='resources/start_button.png')
@@ -117,9 +122,54 @@ class ToolsPage(tk.Frame):
 
         # creates section title from passed string
         def create_title(title):
-            title = ttk.Label(scrollable_frame, text=title,
-                              font='controller.btn_font2 14', anchor="w")
-            title.pack(expand=TRUE, fill='x', padx=0, pady=5)
+            self.titleChildrenNumber.append(0)
+
+            titleidx = len(self.titleChildrenNumber)-1
+            self.hideButtons.append(Button(scrollable_frame, text=title, font='controller.btn_font2 14', anchor="w", 
+                                    command=lambda : hide_on_title(titleidx, self.hideButtons[titleidx]), 
+                                    borderwidth=2,  relief="flat"))
+            self.hideButtons[len(self.hideButtons)-1].pack(expand=TRUE, fill='x', padx=5)
+            
+        ## toggles visibility of tools under a title
+        def toggle_tools(titleidx, namebutton, hidden):
+            ## using namebutton.configure, visual indicators for hidden/not hidden can be added here
+
+            ## calculates target indexes for all components under given title
+            idxFrom = idxTo = 0
+            for idx, val in enumerate(self.titleChildrenNumber):
+                if (idx < titleidx): 
+                    idxFrom += (val)
+                    idxTo += (val)
+                else:
+                    idxTo += (val)
+                    break
+
+            ## tooltype%4: 0=tool_canvas, 1=toolname_label, 2=navbutton, 3=infobutton
+            tooltype = 0
+
+            ## in the range of items below the target title at titleidx: hide or unhide
+            for n in range(idxFrom, idxTo):
+                if ((tooltype%4 == 0) and not hidden):                       
+                    self.toolsList[n].pack_forget()
+                    namebutton.configure(command=lambda : show_on_title(titleidx,namebutton))
+
+                elif (tooltype%4 == 0 and hidden): 
+                    pack_widget_left(self.toolsList[n+1])
+                    pack_widget_right(self.toolsList[n+2])
+                    pack_widget_right(self.toolsList[n+3])
+                    self.toolsList[n].pack(after=namebutton, expand=TRUE, fill='x', padx=90,)
+                    namebutton.configure(command=lambda : hide_on_title(titleidx,namebutton))
+
+                tooltype += 1
+        ##shows tools under a title
+        def show_on_title(titleidx, namebutton):
+            toggle_tools(titleidx, namebutton, True)
+
+        ##hides tools under a title
+        def hide_on_title(titleidx, namebutton):
+            toggle_tools(titleidx, namebutton, False)
+
+            
 
         # creates navigation button that executes passed command, allows for variety
         # of functionality of tool click
@@ -142,6 +192,11 @@ class ToolsPage(tk.Frame):
                                      command=lambda: self.show_hint(desc), style='Accent.TButton')
             pack_widget_right(info_button)
             tool_canvas.pack(expand=TRUE, fill='x', padx=90, pady=8)
+            self.toolsList.append(tool_canvas)
+            self.toolsList.append(toolname_label)
+            self.toolsList.append(navbutton)
+            self.toolsList.append(info_button)
+            self.titleChildrenNumber[len(self.titleChildrenNumber)-1] += 4
 
         # creates tools and section titles by invoking previous functions
         # if you want to add a new tool,
