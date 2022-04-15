@@ -17,7 +17,7 @@ class AttackVectorEleven(tk.Frame):
     
     main_frame = tk.Frame(self)
     
-    highlightFont = font.Font(family='Calibri', size=18)
+    highlightFont = font.Font(family='Calibri', name='appHighlightFont11', size=18)
     
     def change_to_Step1():
       text = (
@@ -70,12 +70,18 @@ class AttackVectorEleven(tk.Frame):
         sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
         
         # buttons
-        step1button = tk.Button(main_frame, text="Step 1", font=highlightFont,
-                                command=change_to_Step1).place(rely=0.3, relx=0.02, relheight=0.05,
-                                                               relwidth=0.1)
-        step2button = tk.Button(main_frame, text="Step 2", font=highlightFont,
-                                command=change_to_Step2).place(rely=0.4, relx=0.02, relheight=0.05,
-                                                               relwidth=0.1)
+        step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont,
+                             command=change_to_Step1, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
+                                                                           relwidth=0.1)
+        step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont,
+                             command=change_to_Step2, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
+                                                                           relwidth=0.1)
+        #step1button = tk.Button(main_frame, text="Step 1", font=highlightFont,
+                                #command=change_to_Step1).place(rely=0.3, relx=0.02, relheight=0.05,
+                                                               #relwidth=0.1)
+        #step2button = tk.Button(main_frame, text="Step 2", font=highlightFont,
+                                #command=change_to_Step2).place(rely=0.4, relx=0.02, relheight=0.05,
+                                                               #relwidth=0.1)
         
         display_nav_bar(self, controller)
         main_frame.pack(fill='both', expand=1)
