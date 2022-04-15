@@ -124,6 +124,8 @@ class VectorsPage(tk.Frame):
         create_attack_vector("Authentication Bypass Attack", "Thanh Bao Chau Le",
                              "AttackVectorNine",
                              AUTH_BYPASS_DESC)
+        create_attack_vector("phpMyAdmin 4.8.1 RCE Attack", "Alton Liew", "AttackVectorEleven",
+                             PHPMYADMIN_RCE_DESC)
 
     def show_hint(self, desc):
         """
