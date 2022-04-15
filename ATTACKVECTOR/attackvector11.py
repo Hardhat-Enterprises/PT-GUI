@@ -17,7 +17,7 @@ class AttackVectorEleven(tk.Frame):
     
     main_frame = tk.Frame(self)
     
-    highlightFont = font.Font(family='Calibri', name='appHighlightFont11', size=18)
+    highlightFont = font.Font(family='Calibri', size=18)
     
     def change_to_Step1():
       text = (
