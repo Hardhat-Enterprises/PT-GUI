@@ -1,7 +1,7 @@
 import tkinter as tk
 import os
 import PySimpleGUI as sg
-from tkinter import font as tkfont, ttk
+#from tkinter import font as tkfont, ttk
 from tkinter import font as tkfont
 from tkinter import font, messagebox
 from tkinter import *
@@ -33,7 +33,7 @@ class AttackVectorEleven(tk.Frame):
                 "o   Windows 7 and Kali Linux is configured to be in the same internal network.\n\n"
             )
             step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
-                                    aspect=300)
+                                    aspect=350)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
             terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
                                        command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
@@ -58,7 +58,7 @@ class AttackVectorEleven(tk.Frame):
                 "o   If successfull, a meterpreter session should be created and the RCE attack is complete.\n\n"
             )
             step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
-                                    aspect=300)
+                                    aspect=350)
             step2frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
             terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
                                        command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
