@@ -21,7 +21,7 @@ class AttackVectorEleven(tk.Frame):
         
         def change_to_Step1():
             text = (
-                "\nStep 1: Setup environment (the following setup was used in this demonstration)\n\n"
+                "\n\nStep 1: Setup environment (the following setup was used in this demonstration)\n\n"
                 "o   phpMyAdmin 4.8.1\n\n"
                 "o   Windows 7\n\n"
                 "o   Kali Linux\n\n"
@@ -35,7 +35,7 @@ class AttackVectorEleven(tk.Frame):
             
         def change_to_Step2():
             text = (
-                "\nStep 2: Walkthrough\n\n"
+                "\n\nStep 2: Walkthrough\n\n"
                 "o   On the windows machine, make sure that you are running and logged into phpMyAdmin.\n\n"
                 "o   Open terminal on Kali Linux and run metaploit using this command:\n"
                 "     msfconsole\n\n"
@@ -58,14 +58,14 @@ class AttackVectorEleven(tk.Frame):
             # creates blue bar as canvas below nav bar housing label containing title of page
             title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
             title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-            title_label = tk.Label(self, text="phpMyAdmin 4.8.1 RCE", bg='#4D6C84', fg='white', anchor="c",
-                                   font=framefont)
+            title_label = tk.Label(self, text="phpMyAdmin 4.8.1 RCE", bg='#4D6C84', fg='white',
+                                   anchor="c", font=framefont)
             title_label.place(rely=0.08, relheight=0.12, relwidth=1)
             
             allscreenframe = tk.Label(main_frame, bg='white')
             allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
             
-            sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font=('Calibri', 20),
+            sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font=('Calibri', 20, 'bold'),
                                        anchor='nw')
             sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
             
