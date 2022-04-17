@@ -6,7 +6,7 @@ from tkinter import font as tkfont
 from tkinter import font, messagebox
 from tkinter import *
 from nav_bar import *
-#from subprocess import call, Popen, PIPE
+from subprocess import call, Popen, PIPE
 
 class AttackVectorEleven(tk.Frame):
     
@@ -18,6 +18,9 @@ class AttackVectorEleven(tk.Frame):
         main_frame = tk.Frame(self)
         
         highlightFont = font.Font(family='Calibri', name='appHighlightFont11', size=18)
+        
+        def load_terminal():
+            p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True, shell=True).stdout
         
         def change_to_Step1():
             text = (
