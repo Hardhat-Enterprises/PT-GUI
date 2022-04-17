@@ -1,12 +1,17 @@
-import tkinter as tk
-import os
-import PySimpleGUI as sg
-#from tkinter import font as tkfont, ttk
+import tkinter as tk  # python 3
+from tkinter import font as tkfont  # python 3
+# import Tkinter as tk     # python 2
+# import tkFont as tkfont  # python 2
+
 from tkinter import font as tkfont
-from tkinter import font, messagebox
 from tkinter import *
+from tkinter import font, messagebox
+import random, requests, os, sys
+import PySimpleGUI as sg
 from nav_bar import *
 from subprocess import call, Popen, PIPE
+import os
+
 
 class AttackVectorEleven(tk.Frame):
     
