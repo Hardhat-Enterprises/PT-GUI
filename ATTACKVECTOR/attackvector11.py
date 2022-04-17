@@ -68,27 +68,27 @@ class AttackVectorEleven(tk.Frame):
             terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
                                        command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
                                                                                    relwidth=0.1)
-            # creates blue bar as canvas below nav bar housing label containing title of page
-            title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
-            title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-            title_label = tk.Label(self, text="phpMyAdmin 4.8.1 RCE", bg='#4D6C84', fg='white',
-                                   anchor="c", font=framefont)
-            title_label.place(rely=0.08, relheight=0.12, relwidth=1)
+        # creates blue bar as canvas below nav bar housing label containing title of page
+        title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
+        title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
+        title_label = tk.Label(self, text="phpMyAdmin 4.8.1 RCE", bg='#4D6C84', fg='white',
+                               anchor="c", font=framefont)
+        title_label.place(rely=0.08, relheight=0.12, relwidth=1)
             
-            allscreenframe = tk.Label(main_frame, bg='white')
-            allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
+        allscreenframe = tk.Label(main_frame, bg='white')
+        allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
             
-            sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font=('Calibri', 20, 'bold'),
-                                       anchor='nw')
-            sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
+        sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font=('Calibri', 20, 'bold'),
+                                   anchor='nw')
+        sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
             
-            #Buttons
-            step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont,   
-                                 command=change_to_Step1, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
-                                                                               relwidth=0.1)
-            step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont,
-                                 command=change_to_Step2, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
-                                                                               relwidth=0.1)
+        #Buttons
+        step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont,   
+                             command=change_to_Step1, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
+                                                                           relwidth=0.1)
+        step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont,
+                             command=change_to_Step2, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
+                                                                           relwidth=0.1)
             
-            display_nav_bar(self, controller)
-            main_frame.pack(fill='both', expand=1)
+        display_nav_bar(self, controller)
+        main_frame.pack(fill='both', expand=1)
