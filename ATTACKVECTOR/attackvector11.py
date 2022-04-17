@@ -60,7 +60,7 @@ class AttackVectorEleven(tk.Frame):
             step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
                                     aspect=300)
             step2frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
+            terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
                                        command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
                                                                                    relwidth=0.1)
             # creates blue bar as canvas below nav bar housing label containing title of page
