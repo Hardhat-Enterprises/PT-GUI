@@ -32,6 +32,9 @@ class AttackVectorEleven(tk.Frame):
             step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
                                     aspect=300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
+            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
+                                       command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
+                                                                                   relwidth=0.1)
             
         def change_to_Step2():
             text = (
@@ -54,7 +57,9 @@ class AttackVectorEleven(tk.Frame):
             step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
                                     aspect=300)
             step2frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            
+            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
+                                       command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
+                                                                                   relwidth=0.1)
             # creates blue bar as canvas below nav bar housing label containing title of page
             title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
             title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
