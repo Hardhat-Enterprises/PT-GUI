@@ -24,7 +24,7 @@ class AttackVectorEleven(tk.Frame):
 
         main_frame = tk.Frame(self)
 
-        highlightFont = font.Font(family='Calibri', name='appHighlightFont', size=18)
+        highlightFont = font.Font(family='Calibri', name='appHighlightFont11', size=18)
 
         global unpatchedvul
         unpatchedvul = tk.PhotoImage(file='resources/unpatched.png')
