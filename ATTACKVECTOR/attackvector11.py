@@ -24,6 +24,9 @@ class AttackVectorEleven(tk.Frame):
         
         highlightFont = font.Font(family='Calibri', name='appHighlightFont11', size=18)
         
+        global phpmyadminrce
+        phpmyadminrce = tk.PhotoImage(file='resources/phpmyadminrce.png')
+        
         def load_terminal():
             p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True, shell=True).stdout
         
