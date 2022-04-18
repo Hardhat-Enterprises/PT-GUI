@@ -90,6 +90,9 @@ class AttackVectorEleven(tk.Frame):
         sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font=('Calibri', 20, 'bold'),
                                    anchor='nw')
         sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
+        
+        phpmyadminrce_label = tk.Label(main_frame, image=phpmyadminrce)
+        phpmyadminrce_label.place(rely=0.36, relx=0.4)
             
         #Buttons
         step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont,   
