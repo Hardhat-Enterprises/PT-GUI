@@ -24,19 +24,29 @@ class ToolsPage(tk.Frame):
         """
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        # sets font for buttons
+        # sets font for buttons and title
         tkfont.Font(family='OpenSans', size=13)
+        framefont = tkfont.Font(family='Arial Rounded MT Bold', size=28, weight='bold')
 
-        # creates blue bar as canvas below nav bar
-        title_canvas = tk.Canvas(self, bg='#C7E6FF', highlightthickness=0)
-        title_canvas.place(rely=0.08, relheight=0.008, relwidth=1)
+        title_label = tk.Label(self, text="Tools", bg='white', fg='#92CEFF',
+                               anchor="c", font=framefont)
+        title_label.place(rely=0.06, relheight=0.12, relwidth=1)
 
+	
         # extra frame for spacing, pushes all subsequent content below nav bar and
         # title label using the pady field
-        frameextra = Label(self, anchor='w')
-        frameextra.pack(pady=22.3)
+        frameextra = Label(self, anchor='c')
+        frameextra.pack(pady=54.49)
         # displays navbar at top of app screen
         display_nav_bar(self, controller)
+        
+	# creates blue bar as canvas below nav bar
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
+        
+        # creates blue bar as canvas below title
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.155, relheight=0.004, relwidth=1)
 
         # new frame for tools list
         container = Frame(self)
@@ -58,7 +68,7 @@ class ToolsPage(tk.Frame):
                               lambda _: canvas.configure(scrollregion=canvas.bbox("all")))
 
         # creates new window using scrollable frame as a base
-        canvas.create_window((50, 3), window=scrollable_frame, anchor="nw")
+        canvas.create_window((10, 3), window=scrollable_frame, anchor="nw")
 
         # sets scrollcommand to the existing scrollbar, linking the widgets
         canvas.config(
@@ -125,9 +135,8 @@ class ToolsPage(tk.Frame):
             self.titleChildrenNumber.append(0)
 
             titleidx = len(self.titleChildrenNumber)-1
-            self.hideButtons.append(Button(scrollable_frame, text=title, font='controller.btn_font2 14', anchor="w", 
-                                    command=lambda : hide_on_title(titleidx, self.hideButtons[titleidx]), 
-                                    borderwidth=2,  relief="flat"))
+            self.hideButtons.append(ttk.Button(scrollable_frame, text=title, style='Dropdown.TButton', 
+                                    command=lambda : hide_on_title(titleidx, self.hideButtons[titleidx])))
             self.hideButtons[len(self.hideButtons)-1].pack(expand=TRUE, fill='x', padx=5)
             
         ## toggles visibility of tools under a title
@@ -157,7 +166,7 @@ class ToolsPage(tk.Frame):
                     pack_widget_left(self.toolsList[n+1])
                     pack_widget_right(self.toolsList[n+2])
                     pack_widget_right(self.toolsList[n+3])
-                    self.toolsList[n].pack(after=namebutton, expand=TRUE, fill='x', padx=90,)
+                    self.toolsList[n].pack(after=namebutton, expand=TRUE, fill='x', padx=90, pady=8)
                     namebutton.configure(command=lambda : hide_on_title(titleidx,namebutton))
 
                 tooltype += 1

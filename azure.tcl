@@ -28,7 +28,7 @@ proc set_theme {mode} {
             -insertcolor $colors(-fg) \
             -insertwidth 1 \
             -fieldbackground $colors(-selectbg) \
-            -font {"OpenSans" 13} \
+            -font {"OpenSans" 14} \
             -borderwidth 1 \
             -relief flat
 
@@ -67,7 +67,7 @@ proc set_theme {mode} {
             -insertcolor $colors(-fg) \
             -insertwidth 1 \
             -fieldbackground $colors(-selectbg) \
-            -font {"OpenSans" 13} \
+            -font {"OpenSans" 14} \
             -borderwidth 1 \
             -relief flat
 
