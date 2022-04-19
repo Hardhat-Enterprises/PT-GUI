@@ -69,6 +69,14 @@ namespace eval ttk::theme::azure-dark {
                 } 
             }
         }
+        
+        ttk::style layout Dropdown.TButton {
+            DropdownButton.button -children {
+                DropdownButton.padding -children {
+                    DropdownButton.label -side left -expand true
+                } 
+            }
+        }
 
 	ttk::style layout Rocket.TButton {
             RocketButton.button -children {
@@ -263,9 +271,21 @@ namespace eval ttk::theme::azure-dark {
             ] -width 15 -sticky e
 
         # AccentButton
-        ttk::style configure Accent.TButton -padding {8 4 8 4} -width -10 -anchor center
+        ttk::style configure Accent.TButton -padding {8 4 8 4} -width -10 -anchor c
 
         ttk::style element create AccentButton.button image \
+            [list $I(rect-accent-idle-dark) \
+            	{selected disabled} $I(rect-accent-hover-dark) \
+                disabled $I(rect-accent-idle-dark) \
+                selected $I(rect-accent-press-dark) \
+                pressed $I(rect-accent-press-dark) \
+                active $I(rect-accent-hover-dark) \
+            ] -border 4 -sticky ewns
+            
+        # DropdownButton
+        ttk::style configure Dropdown.TButton -padding {8 4 8 4} -width -10 -anchor w
+
+        ttk::style element create DropdownButton.button image \
             [list $I(rect-accent-idle-dark) \
             	{selected disabled} $I(rect-accent-hover-dark) \
                 disabled $I(rect-accent-idle-dark) \
