@@ -214,7 +214,8 @@ class ReferencesPage(tk.Frame):
                          "https://www.youtube.com/watch?v=ftYwX5hn7dY&t")
         
         create_reference("", "Used to better understand the attack",
-                         "https://www.vulnspy.com/phpmyadmin-4.8.1/")
+                         "https://www.vulnspy.com/phpmyadmin-4.8.1/",
+                         "https://www.phpmyadmin.net/security/PMASA-2018-4/")
         
-        create_reference("", "Used to get image for the attack vector",
+        create_reference("", "Used to download image found in the attack vector",
                          "https://www.wallarm.com/what/the-concept-of-rce-remote-code-execution-attack")
