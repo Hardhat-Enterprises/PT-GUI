@@ -49,4 +49,6 @@ AUTH_BYPASS_DESC = "Privilege escalation attack will be applied to demonstrate A
                    "escalation attack is known as a child of Authentication Bypass attack. In this experiment, " \
                    "Metasploist will be used for testing, which consists of Meterpreter script and getsystem, " \
                    "that will utilize several alternative methods to attempt to acquire system level privilege on the target machine. "
-PHPMYADMIN_RCE_DESC = ""
+PHPMYADMIN_RCE_DESC = "Affected versions of phpMyAdmin are 4.8.0 and 4.8.1. The LFI vulnerability comes from an LFI precursor and an" \
+                      "improper test for whitelisted pages found in index.php file of phpMyAdmin. Attackers are able to exploit this, " \
+                      "and incude files on the server."
