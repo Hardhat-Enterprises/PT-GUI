@@ -69,6 +69,22 @@ namespace eval ttk::theme::azure-dark {
                 } 
             }
         }
+        
+        ttk::style layout Dropdown.TButton {
+            DropdownButton.button -children {
+                DropdownButton.padding -children {
+                    DropdownButton.label -side left -expand true
+                } 
+            }
+        }
+
+	ttk::style layout Rocket.TButton {
+            RocketButton.button -children {
+                RocketButton.padding -children {
+                    RocketButton.label -side left -expand true
+                } 
+            }
+        }
 
         ttk::style layout TCheckbutton {
             Checkbutton.button -children {
@@ -255,15 +271,38 @@ namespace eval ttk::theme::azure-dark {
             ] -width 15 -sticky e
 
         # AccentButton
-        ttk::style configure Accent.TButton -padding {8 4 8 4} -width -10 -anchor center
+        ttk::style configure Accent.TButton -padding {8 4 8 4} -width -10 -anchor c
 
         ttk::style element create AccentButton.button image \
-            [list $I(rect-accent) \
-            	{selected disabled} $I(rect-accent-hover) \
-                disabled $I(rect-accent-hover) \
-                pressed $I(rect-accent) \
-                selected $I(rect-accent) \
-                active $I(rect-accent-hover) \
+            [list $I(rect-accent-idle-dark) \
+            	{selected disabled} $I(rect-accent-hover-dark) \
+                disabled $I(rect-accent-idle-dark) \
+                selected $I(rect-accent-press-dark) \
+                pressed $I(rect-accent-press-dark) \
+                active $I(rect-accent-hover-dark) \
+            ] -border 4 -sticky ewns
+            
+        # DropdownButton
+        ttk::style configure Dropdown.TButton -padding {8 4 8 4} -width -10 -anchor w
+
+        ttk::style element create DropdownButton.button image \
+            [list $I(rect-accent-idle-dark) \
+            	{selected disabled} $I(rect-accent-hover-dark) \
+                disabled $I(rect-accent-idle-dark) \
+                selected $I(rect-accent-press-dark) \
+                pressed $I(rect-accent-press-dark) \
+                active $I(rect-accent-hover-dark) \
+            ] -border 4 -sticky ewns
+            
+        # RocketButton
+        ttk::style configure Rocket.TButton -padding {8 4 8 4} -width -10 -anchor center
+        ttk::style element create RocketButton.button image \
+            [list $I(rocket-idle-dark) \
+            	{selected disabled} $I(rocket-hover-dark) \
+                disabled $I(rocket-idle-dark) \
+                selected $I(rocket-press-dark) \
+                pressed $I(rocket-press-dark) \
+                active $I(rocket-hover-dark) \
             ] -border 4 -sticky ewns
 
         # Checkbutton
@@ -343,10 +382,10 @@ namespace eval ttk::theme::azure-dark {
             -sticky ns
 
         ttk::style element create Vertical.Scrollbar.thumb \
-            image [list $I(vert-accent) \
-                disabled  $I(vert-basic) \
-                pressed $I(vert-hover) \
-                active $I(vert-hover) \
+            image [list $I(vert-accent-dark) \
+                disabled  $I(vert-basic-dark) \
+                pressed $I(vert-hover-dark) \
+                active $I(vert-hover-dark) \
             ] -sticky ns
 
         # Scale
