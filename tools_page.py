@@ -31,14 +31,14 @@ class ToolsPage(tk.Frame):
         title_label = tk.Label(self, text="Tools", bg='white', fg='#92CEFF',
                                anchor="c", font=framefont)
         title_label.place(rely=0.06, relheight=0.12, relwidth=1)
-        
+
         # extra frame for spacing, pushes all subsequent content below nav bar and
         # title label using the pady field
         frameextra = Label(self, anchor='c')
         frameextra.pack(pady=54.49)
         # displays navbar at top of app screen
         display_nav_bar(self, controller)
-        
+
 	# creates blue bar as canvas below nav bar
         title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
@@ -138,7 +138,7 @@ class ToolsPage(tk.Frame):
             		text=title, style='Dropdown.TButton',
             		command=lambda : hide_on_title(titleidx, self.hideButtons[titleidx])))
             self.hideButtons[len(self.hideButtons)-1].pack(expand=TRUE, fill='x', padx=5)
-            
+
         ## toggles visibility of tools under a title
         def toggle_tools(titleidx, namebutton, hidden):
             ## using namebutton.configure, visual indicators for hidden/not hidden can be added here
@@ -146,7 +146,7 @@ class ToolsPage(tk.Frame):
             ## calculates target indexes for all components under given title
             idxFrom = idxTo = 0
             for idx, val in enumerate(self.titleChildrenNumber):
-                if (idx < titleidx):
+                if idx < titleidx:
                     idxFrom += (val)
                     idxTo += (val)
                 else:
