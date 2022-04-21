@@ -71,8 +71,8 @@ def display_nav_bar(frame, controller):
      relwidth=btn_width)
     btn_num += 1
 
-    dark_mode_switch.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
-                            relwidth=btn_width)
+    dark_mode_switch.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01,
+     relheight=0.06, relwidth=btn_width)
     btn_num += 1
 
 
