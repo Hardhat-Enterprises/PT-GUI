@@ -76,18 +76,62 @@
              
   <div class="section" id="attack-vectors-and-walkthroughs">
 <h1>Attack Vectors and walkthroughs<a class="headerlink" href="#attack-vectors-and-walkthroughs" title="Permalink to this headline">¶</a></h1>
-<p>&lt;br&gt;</p>
 <div class="section" id="reverse-tcp-shell">
 <h2>Reverse TCP Shell<a class="headerlink" href="#reverse-tcp-shell" title="Permalink to this headline">¶</a></h2>
-<p>Coming Soon</p>
+<ol class="arabic simple">
+<li><p><strong>What software/OS/Protocol it targets ?</strong></p></li>
+</ol>
+<p>This attack targets Windows OS and the TCP protocol.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>What it does ?</strong></p></li>
+</ol>
+<p>It will create a reverse connection from a machine you are attempting to attack, for example if you’re on a Windows 10 computer and I send you this file, if you run it this will create a live session for the attacker, giving them access to your computer through the listening which is run via the app but is a command line tool from Metasploit.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>How it works ?</strong></p></li>
+</ol>
+<p>It creates a payload and saves it into a Windows Executable Format which will send a connection request to a specified IP address, if on that IP address there is something expecting this request it can allow it to connect and therefore give an attacker access to the machine where the payload was ran.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>How to use it ?</strong></p></li>
+</ol>
+<p>Fill the input field with required data, there is auto IP detection if the current machine is the one you will be using to connect to the victim, and default port configuration unless you’d prefer to use another. Save the file and send it to the victim machine. Open the listening from step 2 and run the file on the victim windows computer.</p>
 </div>
 <div class="section" id="directory-traversal-idor">
 <h2>Directory Traversal &amp; IDOR<a class="headerlink" href="#directory-traversal-idor" title="Permalink to this headline">¶</a></h2>
-<p>Coming Soon</p>
+<ol class="arabic simple">
+<li><p><strong>What software/OS/Protocol it targets ?</strong></p></li>
+</ol>
+<p>This attacks webpages which mostly use the HTTP and HTTPS protocols and can be ran on most operating systems, generally on Linux webservers like Apache2.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>What it does ?</strong></p></li>
+</ol>
+<p>The Directory Traversal Fuzzer takes a websites URL as input and will search that website using keywords for other paths which may not be publicly known. It will automate the manual typing of a URL with a common path name at the end to try and fuzz for hidden directories. Once found it will give a list of the successfully found pages.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>How it works ?</strong></p></li>
+</ol>
+<p>This works by making requests to a webpage via curl or some other means at a specified URL, then iterates over a dictionary of words that are likely to be in a webpage. If the response code is 200 meaning the path returned a webpage you will see it in the list of valid directories.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>How to use it ?</strong></p></li>
+</ol>
+<p>Input the URL and you can save it as a target to quickly enter in other fields, then run the fuzzer.</p>
 </div>
 <div class="section" id="unpatched-vulnerabilities-and-exploits">
 <h2>Unpatched Vulnerabilities and Exploits<a class="headerlink" href="#unpatched-vulnerabilities-and-exploits" title="Permalink to this headline">¶</a></h2>
-<p>Coming Soon</p>
+<ol class="arabic simple">
+<li><p><strong>What software/OS/Protocol it targets ?</strong></p></li>
+</ol>
+<p>All operating systems and can detect most port information</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>What it does ?</strong></p></li>
+</ol>
+<p>Provides a graphical interface for NMAP which has a few options in terms of the scan types, however you can’t combine them. After identifying potential vulnerable ports or protocols on a target you can move on to the VulnExploit tool which lets you search for Metasploit exploits and use them. Following through each option given a vulnerable system you will be able to open a remote session on a victim machine.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>How it works ?</strong></p></li>
+</ol>
+<p>It works by scanning a target IP using NMAP and is searching for vulnerabilities. The identified vulnerable services or ports on a machine are then used by the attacker and input into the second tool which is essentially using Metasploit in more simplistic terms to make the process easier and more systematic. Once you have discovered an exploit for a vulnerability you just need to like in Metasploit use the module and set the parameters, in remote access cases this could be a combination of a local and remote ip address/port.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>How to use it ?</strong></p></li>
+</ol>
+<p>Run the NMAP tool and select the option under Scan Type that best suits your situation, you can also adjust the speed which in summary will either be more thorough or less depending on your choice, T5 being the fastest and least thorough. More information can be found here <a class="reference external" href="https://nmap.org/book/performance-timing-templates.html">https://nmap.org/book/performance-timing-templates.html</a>. Once the scan is complete and you have some useful results, searching for these in the next step by selecting the first option, and following through until you execute the exploit, if one doesn’t work you can try other potential vulnerabilities discovered by NMAP.</p>
 </div>
 <div class="section" id="web-application-attacks-automated-xss-and-sql-injection-attack">
 <h2>Web Application Attacks: Automated XSS and SQL Injection Attack<a class="headerlink" href="#web-application-attacks-automated-xss-and-sql-injection-attack" title="Permalink to this headline">¶</a></h2>
@@ -95,15 +139,60 @@
 </div>
 <div class="section" id="nfs-privilege-escalation">
 <h2>NFS privilege Escalation<a class="headerlink" href="#nfs-privilege-escalation" title="Permalink to this headline">¶</a></h2>
-<p>Coming Soon</p>
+<ol class="arabic simple">
+<li><p><strong>What software/OS/Protocol it targets ?</strong></p></li>
+</ol>
+<p>This exploit targets the Linux Operating System.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>What it does ?</strong></p></li>
+</ol>
+<p>NFS Privilege Escalation can grant a user who has access to a Network File Share (NFS) root privileges.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>How it works ?</strong></p></li>
+</ol>
+<p>This works by exploiting a misconfiguration in the implementation of NFS, you can place a binary on the NFS share location. Specifically, we’re looking for a share that has no_root_squash option enabled and using an enumeration tool like LinPEAS makes this process easier although you can manually identify this information looking through /etc/exports. Copying /bin/bash into the /tmp location of the share and then executing it to gain root access</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>How to use it ?</strong></p></li>
+</ol>
+<p>Following the guide, you need to access the NFS location and search for some SSH keys, then access the machine create a folder in /tmp for example /tmp/test then copy in the /bin/bash file to this location and mounting it to the NFS share. Go back to your attack machine with root privileges copy the file to your local machine, edit the permissions and put it back to the share, log in to it again via SSH and run “./bash -p” in the shared location providing root privileges.</p>
 </div>
 <div class="section" id="apache-web-server-exploit">
 <h2>Apache Web Server Exploit<a class="headerlink" href="#apache-web-server-exploit" title="Permalink to this headline">¶</a></h2>
-<p>Coming Soon</p>
+<ol class="arabic simple">
+<li><p><strong>What software/OS/Protocol it targets ?</strong></p></li>
+</ol>
+<p>Any operating system running Apache2.4.49 or Apache2.4.50</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>What it does ?</strong></p></li>
+</ol>
+<p>This is a path traversal attack that gives access to the remote machine without the requirement of user input, simply having this version of Apache2 and having it running makes you vulnerable to this attack.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>How it works ?</strong></p></li>
+</ol>
+<p>It works by exploiting a URL encoding vulnerability that allows accessing files outside of the Apache2 webservers home directory, this also allows the execution of commands also, in our case we are running a reverse shell giving remote root privilege access</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>How to use it ?</strong></p></li>
+</ol>
+<p>Simply determine the version of Apache2 using NMAP or navigating to the website location and identifying the version if its easily found. Once determined launch a listener in advance on a port you will be using to connect back to then run the script and input the required fields such as IP, port, version. This will automatically run and provide a shell.</p>
 </div>
 <div class="section" id="authentication-bypass-attack">
 <h2>Authentication Bypass Attack<a class="headerlink" href="#authentication-bypass-attack" title="Permalink to this headline">¶</a></h2>
-<p>Coming Soon</p>
+<ol class="arabic simple">
+<li><p><strong>What software/OS/Protocol it targets ?</strong></p></li>
+</ol>
+<p>Most Windows versions, in our example we’re using Windows XP</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>What it does ?</strong></p></li>
+</ol>
+<p>This exploit is a privilege escalation and remote access type that attempts to become System on the Windows OS after gaining initial access. This does not work on all machines, it is recommended to test for it when exploiting a Windows machine.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>How it works ?</strong></p></li>
+</ol>
+<p>The Metasploit module exploit/windows/browser/ms10_002_aurora works by exploiting a flaw in Internet Explorers memory. Only Internet Explorer 6 can currently be exploited according to rapid7. The next stop is gaining privilege access which Metasploit has a built-in module that will try various methods to gain System Authority on a Windows machine.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>How to use it ?</strong></p></li>
+</ol>
+<p>After a NMAP scan find an appropriate method to gain initial access and select the module filling in required fields, once access has been obtained you can either move the session to meterpreter or make this your initial connection by selecting it as your listener, then typing the command “getsystem” in a meterpreter session will attempt to elevate privileges.</p>
 </div>
 </div>
 
