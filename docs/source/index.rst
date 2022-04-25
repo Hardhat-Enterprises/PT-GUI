@@ -2,8 +2,8 @@ Welcome to the Deakin Detonator Toolkit documentation!
 ======================================================
 
 .. toctree::
-:maxdepth: 2
-:caption: Contents:
+  :maxdepth: 2
+  :caption: Contents:
 
 attack_vector
 tools
