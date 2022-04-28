@@ -15,7 +15,8 @@
         <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Attack Vectors and walkthroughs" href="attack_vector.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,11 +37,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Welcome to the Deakin Detonator Toolkit documentation!</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="attack_vector.html">Attack Vectors and walkthroughs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tool Descriptions and Walkthroughs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#recon-tools">Recon Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#enumeration-tools">Enumeration Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#execution-tools">Execution Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#initial-access-tools">Initial Access Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#payloads">Payloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#resource-development-tools">Resource Development Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#help">Help</a></li>
 </ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -68,17 +77,68 @@
   <div class="section" id="welcome-to-the-deakin-detonator-toolkit-documentation">
 <h1>Welcome to the Deakin Detonator Toolkit documentation!<a class="headerlink" href="#welcome-to-the-deakin-detonator-toolkit-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="attack_vector.html">Attack Vectors and walkthroughs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attack_vector.html#reverse-tcp-shell">Reverse TCP Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack_vector.html#directory-traversal-idor">Directory Traversal &amp; IDOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack_vector.html#unpatched-vulnerabilities-and-exploits">Unpatched Vulnerabilities and Exploits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack_vector.html#web-application-attacks-automated-xss-and-sql-injection-attack">Web Application Attacks: Automated XSS and SQL Injection Attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack_vector.html#nfs-privilege-escalation">NFS privilege Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack_vector.html#apache-web-server-exploit">Apache Web Server Exploit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack_vector.html#authentication-bypass-attack">Authentication Bypass Attack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tool Descriptions and Walkthroughs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#recon-tools">Recon Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#port-scanner">Port Scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#nmap">Nmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#banner-grabber">Banner Grabber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#shodan-reconnaissance">Shodan Reconnaissance:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#enumeration-tools">Enumeration Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#sniffer">Sniffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#mac-changer">MAC Changer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#image-metadata-extractor">Image Metadata Extractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#hash-analyzer">Hash Analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#http-header-analyzer">HTTP Header Analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#snmp-check">SNMP Check</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#execution-tools">Execution Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#vulnexploit">VulnExploit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#msfconsole-listener">Msfconsole Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#mimt-dns-spoof">Mimt + Dns Spoof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#ftp-brute-forcer">FTP Brute Forcer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#wordlist-generator">Wordlist generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#icmp-ping-flooder">ICMP Ping Flooder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#tcp-syn-flooder">TCP SYN Flooder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#email-bomber">Email Bomber</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#initial-access-tools">Initial Access Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#ssh-bruteforce">SSH Bruteforce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#password-hash-cracker">Password Hash Cracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#zip-file-brute-forcer">ZIP File Brute Forcer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#payloads">Payloads</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#msfvenom-payload-generator">Msfvenom Payload Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#resource-development-tools">Resource Development Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#notepad">Notepad</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html#help">Help</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#command-prompt">Command Prompt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#example-new-page">Example New Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#api-key-management">API Key Management</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">maxdepth</dt>
-<dd class="field-odd"><p>2</p>
-</dd>
-<dt class="field-even">caption</dt>
-<dd class="field-even"><p>Contents:</p>
-</dd>
-</dl>
-<p>attack_vector
-tools</p>
 <p>Deakin Detonator Toolkit (DDT) is a toolkit that aims to simplify the penetration testing experience and workflow.
 The toolkit was initially started as a Command Line Interface (CLI) toolkit with a few minor tools.
 This Trimester, DDT has been further developed to now have a Graphical User Interface (GUI) with several new attack vectors and tools added.</p>
@@ -87,7 +147,9 @@ This Trimester, DDT has been further developed to now have a Graphical User Inte
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="attack_vector.html" class="btn btn-neutral float-right" title="Attack Vectors and walkthroughs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
