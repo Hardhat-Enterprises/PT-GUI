@@ -66,7 +66,22 @@ Run the NMAP tool and select the option under Scan Type that best suits your sit
 
 Web Application Attacks: Automated XSS and SQL Injection Attack
 **************************************************************************
-Coming Soon
+1)	**What software/OS/Protocol it targets ?**
+
+This attacks webpages and SQL databases.
+
+2)	**What it does ?**
+
+The tool which automates XSS can provide remote access to a machine hosting a website or run arbitrary commands via the SQLi attack providing usernames and passwords if not encrypted.
+
+3)	**How it works ?**
+
+The automated XSS will attempt various known methods to perform some cross-site scripting and will display when an intended response code is returned, similarly with the SQLinjection attack this will display the data from the database to the attacker.
+
+4)	**How to use it ?**
+
+Input the information required into the fields and run the program.
+
 
 
 NFS privilege Escalation
