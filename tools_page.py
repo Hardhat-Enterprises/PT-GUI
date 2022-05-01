@@ -218,10 +218,12 @@ class ToolsPage(tk.Frame):
         create_title("Reconnaissance Tools")
         create_tool("Port Scanner",
                     lambda: controller.show_frame("PortScan"), PORT_SCANNER_DESC)
-        create_tool("Nmap", lambda: load_nmap_tool(), NMAP_SCANNER_DESC)
+        create_tool("Nmap", 
+		    lambda: load_nmap_tool(), NMAP_SCANNER_DESC)
         create_tool("Banner Grabber",
-                    lambda: controller.show_frame("BannerGrab"),
-                    BANNER_GRABBER_DESC)
+                    lambda: controller.show_frame("BannerGrab"), BANNER_GRABBER_DESC)
+        create_tool("Shodan", 
+		    lambda: frame_it(controller.frames["ShodanScript"]), SHODAN_DESC)
 
         create_title("Enumeration Tools")
 
@@ -285,6 +287,8 @@ class ToolsPage(tk.Frame):
         create_tool("Command Prompt", lambda: load_terminal(), CMD_DESC)
         create_tool("Example New Page",
                     lambda: controller.show_frame("ExampleNewPage"), "Example new page")
+        create_tool("API Key Handler",
+                    lambda: controller.show_frame("API_Keys"), API_DESC)
 
     def show_hint(self, desc):
         """
