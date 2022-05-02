@@ -224,7 +224,8 @@ class ToolsPage(tk.Frame):
                     lambda: controller.show_frame("BannerGrab"),
                     BANNER_GRABBER_DESC)
         create_tool("Shodan", 
-		    lambda: frame_it(controller.frames["ShodanScript"]), SHODAN_DESC)
+		    lambda: controller.show_frame("ShodanScript"), 
+		    SHODAN_DESC)
 
         create_title("Enumeration Tools")
 
