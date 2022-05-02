@@ -40,6 +40,8 @@ API_DESC = "In order to utilse any of the API based tools within the Deakon Deto
             " an API key which is used to identify and authenticate an application or user. This is tool lets the user set the API" \
             " keys as environment variables. This can be expand as tools are introduced."
 
+SNMP_CHECK_DESC = "GUI Wrapper for 'snmp-check' CLI tool." ## placeholder, from Jordyn Newnham
+
 SNIFFER_DESC = "A packet sniffer is essentially a tool that helps monitor network traffic and troubleshoot a network." \
                " It captures and analyzes data packets flowing through a specific network. Using a sniffer, it's " \
                "possible to capture almost any information — for example, which websites that a user visits, what is" \
