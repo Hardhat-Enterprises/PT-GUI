@@ -32,8 +32,13 @@ BANNER_GRABBER_DESC = "Banner Grabbing is a technique that helps in gaining info
                       " can exploit it. The tool here takes the victim IP address and the port number from the user" \
                       " to perform banner grabbing."
 
-SHODAN_DESC = "Placeholder"
+SHODAN_DESC = "Shodan allows Penetration testers to search on devices connected to internet and obtain information like open ports," \
+                " services, and if there are any CVE's associated with an identified services. This kind of information is especially" \
+                " important for a pentester, particularly if the information is obtained through passive means."
 
+API_DESC = "In order to utilse any of the API based tools within the Deakon Detonator Toolkit, the end user is required to provide" \
+            " an API key which is used to identify and authenticate an application or user. This is tool lets the user set the API" \
+            " keys as environment variables. This can be expand as tools are introduced."
 
 SNIFFER_DESC = "A packet sniffer is essentially a tool that helps monitor network traffic and troubleshoot a network." \
                " It captures and analyzes data packets flowing through a specific network. Using a sniffer, it's " \
