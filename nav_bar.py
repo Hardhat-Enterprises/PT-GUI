@@ -43,36 +43,36 @@ def display_nav_bar(frame, controller):
     DARK_MODE_TOGGLE = 0
     dark_mode_switch = ttk.Checkbutton(frame, text="Dark mode", style="Switch.TCheckbutton",
                                        command=lambda: change_theme(controller),
-                                        variable=DARK_MODE_TOGGLE)
+                                       variable=DARK_MODE_TOGGLE)
 
     # this code block places all the buttons in the correct order
     # btn_num is used to correctly space out the buttons on the right side of the nav_bar
     # and must be incremented every time a button is added to the right side of the nav bar
-    button_home.place(rely=0.01, relx=0.02, relheight=0.06, relwidth=btn_width)
-    button_references.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01,
+    button_home.place(rely=0.0107, relx=0.01, relheight=0.06, relwidth=0.055)
+    button_references.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01,
      relheight=0.06,
                             relwidth=btn_width)
 
     btn_num += 1
-    button_walkthroughs.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01,
+    button_walkthroughs.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01,
      relheight=0.06,
                               relwidth=btn_width)
 
     btn_num += 1
-    button_tools.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
+    button_tools.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
      relwidth=btn_width)
 
     btn_num += 1
-    button_vectors.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
+    button_vectors.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
      relwidth=btn_width)
 
     btn_num += 1
-    button_about.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
+    button_about.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
      relwidth=btn_width)
     btn_num += 1
 
-    dark_mode_switch.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
-                            relwidth=btn_width)
+    dark_mode_switch.place(rely=0.0107, relx=1 - btn_width * btn_num - btn_num * 0.01,
+     relheight=0.06, relwidth=btn_width)
     btn_num += 1
 
 

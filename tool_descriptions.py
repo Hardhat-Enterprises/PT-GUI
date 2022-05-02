@@ -32,6 +32,11 @@ BANNER_GRABBER_DESC = "Banner Grabbing is a technique that helps in gaining info
                       " can exploit it. The tool here takes the victim IP address and the port number from the user" \
                       " to perform banner grabbing."
 
+SHODAN_DESC = "Placeholder"
+API_DESC = "Placeholder"
+SNMP_CHECK_DESC = "GUI Wrapper for 'snmp-check' CLI tool. - Jordyn Newnham"
+
+
 SNIFFER_DESC = "A packet sniffer is essentially a tool that helps monitor network traffic and troubleshoot a network." \
                " It captures and analyzes data packets flowing through a specific network. Using a sniffer, it's " \
                "possible to capture almost any information — for example, which websites that a user visits, what is" \
@@ -145,3 +150,10 @@ TCP_SYN_FLOOD_DESC = "This tool is used to attack web servers by continuously se
                      "The program also randomizes the user's host IP address, anonymizing each attack. " \
                      "This application can be used in conjunction with other tools, such as NMap to scan the web server for open ports, " \
                      "or Wireshark to monitor the packet transfer activity."
+
+EMAIL_BOMBER_DESC = "This tool is used to attack email accounts by sending spoofed email messages to a victim's inbox. " \
+                    "This is known as a Distributed Spam Distraction attack and operates as a smoke-screen to distract the victim from viewing importing messages, " \
+                    "and can also potentially flood the victim's web server depending on the number of messages being sent. " \
+                    "It allows users to set the target destination, sender information, subject and message details, with the option of stopping, restarting or redirecting the attack. " \
+                    "For future developments, the tool could also be used as a conduit for sending payloads to a victim via email. " \
+                    "NOTE: To use a Gmail account as a sender the Less Secure App Access must be turned OFF or the application will not login to the account. This can be found in Account settings > Security. "
