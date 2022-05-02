@@ -34,6 +34,7 @@ BANNER_GRABBER_DESC = "Banner Grabbing is a technique that helps in gaining info
 
 SHODAN_DESC = "Placeholder"
 API_DESC = "Placeholder"
+SNMP_CHECK_DESC = "GUI Wrapper for 'snmp-check' CLI tool. - Jordyn Newnham"
 
 
 SNIFFER_DESC = "A packet sniffer is essentially a tool that helps monitor network traffic and troubleshoot a network." \
