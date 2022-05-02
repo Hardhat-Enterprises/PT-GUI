@@ -156,20 +156,21 @@ class ToolsPage(tk.Frame):
             ## tooltype%4: 0=tool_canvas, 1=toolname_label, 2=navbutton, 3=infobutton
             tooltype = 0
 
-            ## in the range of items below the target title at titleidx: hide or unhide
-            for n in range(idxFrom, idxTo):
+            ## in the range of items below the target title at titleidx: hide or unhide...
+	    ## works backwards to display properly
+            for n in range(idxTo-4, idxFrom-1, -1):
                 if ((tooltype%4 == 0) and not hidden):
                     self.toolsList[n].pack_forget()
                     namebutton.configure(command=lambda : show_on_title(titleidx,namebutton))
 
                 elif (tooltype%4 == 0 and hidden):
-                    pack_widget_left(self.toolsList[n+1])
-                    pack_widget_right(self.toolsList[n+2])
-                    pack_widget_right(self.toolsList[n+3])
+                    pack_widget_left(self.toolsList[n-3])
+                    pack_widget_right(self.toolsList[n-2])
+                    pack_widget_right(self.toolsList[n-1])
                     self.toolsList[n].pack(after=namebutton, expand=TRUE, fill='x', padx=90, pady=8)
                     namebutton.configure(command=lambda : hide_on_title(titleidx,namebutton))
 
-                tooltype += 1
+                tooltype -= 1
         ##shows tools under a title
         def show_on_title(titleidx, namebutton):
             toggle_tools(titleidx, namebutton, True)
@@ -222,6 +223,9 @@ class ToolsPage(tk.Frame):
         create_tool("Banner Grabber",
                     lambda: controller.show_frame("BannerGrab"),
                     BANNER_GRABBER_DESC)
+        create_tool("Shodan", 
+		    lambda: controller.show_frame("ShodanScript"), 
+		    SHODAN_DESC)
 
         create_title("Enumeration Tools")
 
@@ -238,7 +242,8 @@ class ToolsPage(tk.Frame):
         create_tool("HTTP Header Analyzer",
                     lambda: controller.show_frame("HTTPheaders"),
                     HTTP_ANALYZER_DESC)
-
+        create_tool("SNMP Check", lambda: controller.show_frame("SNMPCheck"), SNMP_CHECK_DESC)
+	
         create_title("Execution Tools")
         create_tool("VulnExploit", lambda: load_vulnexploit_tool(),
                     VULN_EXPLOIT_DESC)
@@ -285,6 +290,8 @@ class ToolsPage(tk.Frame):
         create_tool("Command Prompt", lambda: load_terminal(), CMD_DESC)
         create_tool("Example New Page",
                     lambda: controller.show_frame("ExampleNewPage"), "Example new page")
+        create_tool("API Key Handler",
+                    lambda: controller.show_frame("API_Keys"), API_DESC)
 
     def show_hint(self, desc):
         """
