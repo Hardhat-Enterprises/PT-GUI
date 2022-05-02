@@ -156,20 +156,21 @@ class ToolsPage(tk.Frame):
             ## tooltype%4: 0=tool_canvas, 1=toolname_label, 2=navbutton, 3=infobutton
             tooltype = 0
 
-            ## in the range of items below the target title at titleidx: hide or unhide
-            for n in range(idxFrom, idxTo):
+            ## in the range of items below the target title at titleidx: hide or unhide...
+	    ## works backwards to display properly
+            for n in range(idxTo-4, idxFrom-1, -1):
                 if ((tooltype%4 == 0) and not hidden):
                     self.toolsList[n].pack_forget()
                     namebutton.configure(command=lambda : show_on_title(titleidx,namebutton))
 
                 elif (tooltype%4 == 0 and hidden):
-                    pack_widget_left(self.toolsList[n+1])
-                    pack_widget_right(self.toolsList[n+2])
-                    pack_widget_right(self.toolsList[n+3])
+                    pack_widget_left(self.toolsList[n-3])
+                    pack_widget_right(self.toolsList[n-2])
+                    pack_widget_right(self.toolsList[n-1])
                     self.toolsList[n].pack(after=namebutton, expand=TRUE, fill='x', padx=90, pady=8)
                     namebutton.configure(command=lambda : hide_on_title(titleidx,namebutton))
 
-                tooltype += 1
+                tooltype -= 1
         ##shows tools under a title
         def show_on_title(titleidx, namebutton):
             toggle_tools(titleidx, namebutton, True)
