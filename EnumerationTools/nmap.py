@@ -77,18 +77,21 @@ class NMAP(tk.Frame):
         self.place_widget_center(console)
 
     def start_button_action(self, ip: str, port: str, sudo_password: str, console: Console):
+        # Set env var to contain sudo password temporarily.
         os.environ["SUDO_PASSWORD"] = sudo_password
 
         command = f"""
-        if [ $EUID -ne 0 ]; then
+        if ! [ $(id -u) = 0 ]; then
             printf '$SUDO_PASSWORD\n' | sudo -S nmap -O -P0 -sTUV -top-ports {port} -oA target {ip} --stats-every 5s
         else
             nmap -O -P0 -sTUV -top-ports {port} -oA target {ip} --stats-every 5s
         fi
         """
 
-        # Start process
-        process = Popen(command, stdout=PIPE, universal_newlines=True, shell=True)
+        process = Popen(command, stdout=PIPE, stdin=PIPE, universal_newlines=True, shell=True)
+
+        # Reset env var.
+        os.environ["SUDO_PASSWORD"] = ""
 
         # Print all output from stdout to tkinter.
         for line in process.stdout:
