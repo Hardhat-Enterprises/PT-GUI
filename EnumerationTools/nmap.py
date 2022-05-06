@@ -1,3 +1,4 @@
+import os
 from subprocess import Popen, PIPE
 from tkinter import font as tkfont
 
@@ -12,7 +13,7 @@ class NMAP(tk.Frame):
 
     # Below are some basic class variables that are used for controlling positioning of elements.
     screen_base_x = .5
-    screen_base_y = .2
+    screen_base_y = .1
     incremental_y = .05
 
     def __init__(self, parent, controller):
@@ -71,12 +72,20 @@ class NMAP(tk.Frame):
         )
         self.place_widget_center(console_output_label)
 
-        self.screen_base_y *= 1.3
+        self.screen_base_y *= 1.5
 
         self.place_widget_center(console)
 
     def start_button_action(self, ip: str, port: str, sudo_password: str, console: Console):
-        command = f"printf '{sudo_password}\n' | sudo -S nmap -O -P0 -sTUV -top-ports {port} -oA target {ip} --stats-every 5s"
+        os.environ["SUDO_PASSWORD"] = sudo_password
+
+        command = f"""
+        if [ $EUID -ne 0 ]; then
+            printf '$SUDO_PASSWORD\n' | sudo -S nmap -O -P0 -sTUV -top-ports {port} -oA target {ip} --stats-every 5s
+        else
+            nmap -O -P0 -sTUV -top-ports {port} -oA target {ip} --stats-every 5s
+        fi
+        """
 
         # Start process
         process = Popen(command, stdout=PIPE, universal_newlines=True, shell=True)
