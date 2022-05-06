@@ -1,6 +1,7 @@
 FROM kalilinux/kali-rolling
 
-RUN apt update && apt install -y git python3 python3-pip python3-tk
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install -y kali-linux-headless git python3 python3-pip python3-tk
 
 WORKDIR /app
 RUN git clone https://github.com/taysmith99/PT-GUI.git

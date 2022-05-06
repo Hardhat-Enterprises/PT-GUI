@@ -1,7 +1,11 @@
 version: '3.3'
 services:
     pt-gui:
-        build: .
+        build:
+          context: .
+          # Comment this out and use the below when developing
+          dockerfile: Dockerfile
+          #dockerfile: dev.Dockerfile
         environment:
             - DISPLAY=$DISPLAY
         volumes:
