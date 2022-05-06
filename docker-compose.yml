@@ -1,8 +1,0 @@
-version: '3.3'
-services:
-    pt-gui:
-        build: .
-        environment:
-            - DISPLAY=$DISPLAY
-        volumes:
-            - '/tmp/.X11-unix:/tmp/.X11-unix:rw'
