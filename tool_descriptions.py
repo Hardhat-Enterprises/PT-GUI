@@ -162,3 +162,9 @@ EMAIL_BOMBER_DESC = "This tool is used to attack email accounts by sending spoof
                     "It allows users to set the target destination, sender information, subject and message details, with the option of stopping, restarting or redirecting the attack. " \
                     "For future developments, the tool could also be used as a conduit for sending payloads to a victim via email. " \
                     "NOTE: To use a Gmail account as a sender the Less Secure App Access must be turned OFF or the application will not login to the account. This can be found in Account settings > Security. "
+
+STEGANOGRAPHY_DESC = "This applion allows a user to embed and retrieve text within images.  " \
+                    "The program duplicates an image and rewrites the Least Significant Bits of the binary data, " \
+                    "The program is then used to detect if an image file has embedded text, if so will retrieve and display to screen, and if not will state so. " \
+                    "NOTE: The program will accept any image filetype to be uploaded, however MUST be saved as a .PNG file. " 
+                    
