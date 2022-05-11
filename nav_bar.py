@@ -83,6 +83,7 @@ def display_nav_bar(frame, controller):
 
     quicksearch = []
     searchterms = search.searchterms
+    pagelinks = search.pagelinks
 
 
     def clean_quicksearch():
@@ -95,7 +96,8 @@ def display_nav_bar(frame, controller):
         for idx, entry in enumerate(searchterms):
             if(len(input) <= len(entry)):
                 if(entry[0:len(input)].lower() == input.lower()): #if the first (however many characters) matches a search term (case insensitive)
-                    quicksearch.append(ttk.Button(frame,text=entry, style="Accent.TButton")) #make a quicksearch button
+                    tempidx = idx
+                    quicksearch.append(ttk.Button(frame,text=entry, style="Accent.TButton", command = lambda: [search_field.delete(0, 'end'), controller.show_frame(pagelinks[tempidx]), clean_quicksearch()])) #make a quicksearch button
                     quicksearch[len(quicksearch)-1].place(rely=0.04 + (len(quicksearch)*0.04), relx=1 - btn_width * btn_num - btn_num * 0.01) #place it under search bar
 
 
