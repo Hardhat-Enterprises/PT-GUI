@@ -10,6 +10,7 @@ from EnumerationTools.ImageMetaDataExtractor import IMDExtractor
 from EnumerationTools.MacChanger import MacChange
 from EnumerationTools.TestSniffer import TestSniff
 from EnumerationTools.hash_analyzer import HashAn
+from EnumerationTools.snmp_check import SNMPCheck
 from ExecutionTools.FTPBruteForce import FTPBruteForce
 from ExecutionTools.ICMPPingFlooder import ICMP
 from ExecutionTools.MsfconsoleListener import MsfListener
@@ -18,12 +19,15 @@ from Fuzzers.DirectoryTraversalFuzzer import DTFuzz
 from InitialAccessTools.PasswordHashCracker import PHCracker
 from InitialAccessTools.ZipBruteForce import ZipBF
 from InitialAccessTools.sshbrute import SshBrute
+from InitialAccessTools.ExampleNewPage import ExampleNewPage
 from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
 from ReconnaissanceTools.BannerGrabbing import BannerGrab
 from ReconnaissanceTools.PortScanner import PortScan
+from ReconnaissanceTools.ShodanAPI import ShodanScript
 from references_page import ReferencesPage
 from start_page import StartPage
 from Tools.Notepad import *
+from Tools.API_Keys import API_Keys
 from tools_page import ToolsPage
 from vectors_page import VectorsPage
 from walkthroughs_page import WalkthroughClass
@@ -62,7 +66,9 @@ class GUIApp(tk.Tk):
                   BannerGrab, MsfPayloadGen, MsfListener, MimtDnsSpoof,
                   DTFuzz, FTPBruteForce, IMDExtractor, AttackVectorSeven,
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
-                  SshBrute, HashAn, PHCracker, ZipBF, ICMP, HTTPheaders, WalkthroughClass):
+                  SshBrute, HashAn, PHCracker, ExampleNewPage,
+                  ZipBF, ICMP, HTTPheaders, WalkthroughClass,
+                  API_Keys, ShodanScript, SNMPCheck):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame
