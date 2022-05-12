@@ -97,9 +97,8 @@ def display_nav_bar(frame, controller):
             if(len(input) <= len(entry)):
                 if(entry[0:len(input)].lower() == input.lower()): #if the first (however many characters) matches a search term (case insensitive)
                     tempidx = idx
-                    quicksearch.append(ttk.Button(frame,text=entry, style="Accent.TButton", command = lambda: [search_field.delete(0, 'end'), controller.show_frame(pagelinks[tempidx]), clean_quicksearch()])) #make a quicksearch button
+                    quicksearch.append(ttk.Button(frame,text=entry, style="Accent.TButton", command = lambda i=tempidx: [search_field.delete(0, 'end'), controller.show_frame(pagelinks[i]), clean_quicksearch()])) #make a quicksearch button
                     quicksearch[len(quicksearch)-1].place(rely=0.04 + (len(quicksearch)*0.04), relx=1 - btn_width * btn_num - btn_num * 0.01) #place it under search bar
-
 
     def search_event(event):
         #previous suggestions are removed
