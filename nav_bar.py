@@ -4,7 +4,7 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
-from search_bar import search
+from search_function import *
 
 # Global variable for dark mode toggle status.
 DARK_MODE_TOGGLE = 0
@@ -17,6 +17,8 @@ def display_nav_bar(frame, controller):
     """
     # defines nav_bar a new canvas on the passed frame
     nav_bar = Canvas(frame)  ##FDFDFD
+    search_canvas = Canvas(frame)
+
     # places nav bar at the top of the frame
     nav_bar.place(relx=0, relheight=0.08, relwidth=1)
 
@@ -28,17 +30,17 @@ def display_nav_bar(frame, controller):
     btn_num = 1
     # defines the buttons that will appear in the navigation bar
     button_home = ttk.Button(frame, text="Home", style="Accent.TButton",
-                             command=lambda: controller.show_frame("StartPage"))
+                             command=lambda: [search_leave(search_canvas), controller.show_frame("StartPage")])
     button_vectors = ttk.Button(frame, text="Attack Vectors", style="Accent.TButton",
-                                command=lambda: controller.show_frame("VectorsPage"))
+                                command=lambda: [search_leave(search_canvas), controller.show_frame("VectorsPage")])
     button_about = ttk.Button(frame, text="About", style="Accent.TButton",
-                              command=lambda: controller.show_frame("AboutPage"))
+                              command=lambda: [search_leave(search_canvas), controller.show_frame("AboutPage")])
     button_tools = ttk.Button(frame, text="Tools", style="Accent.TButton",
-                              command=lambda: controller.show_frame("ToolsPage"))
+                              command=lambda: [search_leave(search_canvas), controller.show_frame("ToolsPage")])
     button_walkthroughs = ttk.Button(frame, text="Walkthroughs", style="Accent.TButton",
-                                     command=lambda: controller.show_frame("WalkthroughClass"))
+                                     command=lambda: [search_leave(search_canvas), controller.show_frame("WalkthroughClass")])
     button_references = ttk.Button(frame, text="References", style="Accent.TButton",
-                                   command=lambda: controller.show_frame("ReferencesPage"))
+                                   command=lambda: [search_leave(search_canvas), controller.show_frame("ReferencesPage")])
     # Dark mode switch global to ensure state is retained.
     global DARK_MODE_TOGGLE
     DARK_MODE_TOGGLE = 0
@@ -76,42 +78,14 @@ def display_nav_bar(frame, controller):
                             relwidth=btn_width)
     btn_num += 1
     
+    ###################################################################################################################
     stringvar = tk.StringVar(frame)
     search_field = Entry(frame, textvariable=stringvar, text="Search")
     search_field.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06, relwidth=btn_width)
 
-
-    quicksearch = []
-    searchterms = search.searchterms
-    pagelinks = search.pagelinks
-
-
-    def clean_quicksearch():
-        for term in quicksearch:
-            term.place_forget()
-        while (len(quicksearch) > 0):
-            quicksearch.pop()
-
-    def search_check(input):
-        for idx, entry in enumerate(searchterms):
-            if(len(input) <= len(entry)):
-                if(entry[0:len(input)].lower() == input.lower()): #if the first (however many characters) matches a search term (case insensitive)
-                    tempidx = idx
-                    quicksearch.append(ttk.Button(frame,text=entry, style="Accent.TButton", command = lambda i=tempidx: [search_field.delete(0, 'end'), controller.show_frame(pagelinks[i]), clean_quicksearch()])) #make a quicksearch button
-                    quicksearch[len(quicksearch)-1].place(rely=0.04 + (len(quicksearch)*0.04), relx=1 - btn_width * btn_num - btn_num * 0.01) #place it under search bar
-
-    def search_event(event):
-        #previous suggestions are removed
-        clean_quicksearch()
-        
-        #gets string of the user input
-        input = search_field.get()
-        if(len(input)>0):
-            search_check(input) #searches
-
     #whenever the user has released a key press (e.g. any changes to the searchbar)... do search event
-    search_field.bind("<KeyRelease>",search_event)
-
+    search_field.bind("<KeyRelease>",lambda event, search_field = search_field: search_event(event, search_field, frame, search_canvas, controller))
+    search_field.bind("<Return>",lambda event, search_field = search_field: build_search(event, search_field, search_canvas, controller))
 
 
 def change_theme(controller):
