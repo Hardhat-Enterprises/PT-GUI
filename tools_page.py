@@ -223,8 +223,8 @@ class ToolsPage(tk.Frame):
         create_tool("Banner Grabber",
                     lambda: controller.show_frame("BannerGrab"),
                     BANNER_GRABBER_DESC)
-        create_tool("Shodan", 
-		    lambda: controller.show_frame("ShodanScript"), 
+        create_tool("Shodan",
+		    lambda: controller.show_frame("ShodanScript"),
 		    SHODAN_DESC)
 
         create_title("Enumeration Tools")
@@ -243,7 +243,7 @@ class ToolsPage(tk.Frame):
                     lambda: controller.show_frame("HTTPheaders"),
                     HTTP_ANALYZER_DESC)
         create_tool("SNMP Check", lambda: controller.show_frame("SNMPCheck"), SNMP_CHECK_DESC)
-	
+
         create_title("Execution Tools")
         create_tool("VulnExploit", lambda: load_vulnexploit_tool(),
                     VULN_EXPLOIT_DESC)
