@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import font as tkfont
+from nav_bar import * #DarkNight Mode
 
 
 class StartPage(tk.Frame):
@@ -13,11 +14,13 @@ class StartPage(tk.Frame):
         self.controller = controller
         # sets font for titles
         tkfont.Font(family='Calibri', size=40, weight="bold")
+        display_nav_bar(self, controller) #DarkNight Mode
 
         # creates new image variable from bkg.png, used for background on title screen
         self.image = tk.PhotoImage(file="resources/landingpagebkgBLUE.png")
         image_canvas = tk.Canvas(self, bg='#232536')
         image_canvas.place(rely=0, relx=0, relwidth=1, relheight=0.4)
+        image_canvas.place(rely=0.048, relx=0, relwidth=1, relheight=0.4) #DarkNight Mode
 
         title = tk.Label(self, text="Deakin Detonator Toolkit", bg='#232536', fg='white',
                          font=('Calibri', 42, 'bold'))
@@ -42,7 +45,7 @@ class StartPage(tk.Frame):
                                       font=('Calibri', 20, 'bold'),
                                       command=lambda: controller.show_frame(onclick_page),
                                       borderwidth=2, relief="flat", width=10)
-            option_button.pack(anchor=CENTER, side=LEFT, fill=BOTH, expand=True)
+            option_button.pack(anchor=CENTER, side=BOTTOM, fill=BOTH, expand=True) #Change side=LEFT to side=BOTTOM
 
         # option_button.grid(sticky="nsew")
 
