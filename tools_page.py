@@ -111,6 +111,18 @@ class ToolsPage(tk.Frame):
             _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
             os.chdir("../")
 
+        def open_emailbomberGUI():
+            os.chdir("./Tools")
+            cmd = "python3 emailbomberGUI.py"
+            _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
+            os.chdir("../")
+
+        def open_steganographyGUI():
+            os.chdir("./Tools")
+            cmd = "python3 steganographyGUI.py"
+            _ = Popen(cmd, stdout=PIPE, universal_newlines=True, shell=True)
+            os.chdir("../")
+
         def load_vulnexploit_tool():
             os.chdir("./Tools")
             cmd = 'exo-open --launch TerminalEmulator'
@@ -263,7 +275,10 @@ class ToolsPage(tk.Frame):
                     PHCRACKER_DESC)
         create_tool("TCP SYN Flooder", lambda: open_synfloodGUI(),
                     TCP_SYN_FLOOD_DESC)
-
+        create_tool("Email Bomber", lambda: open_emailbomberGUI(),
+                    EMAIL_BOMBER_DESC)
+        create_tool("Steganography Tool", lambda: open_steganographyGUI(),
+                    STEGANOGRAPHY_DESC)
         create_title("Fuzzers")
         create_tool("Directory Traversal Fuzzer",
                     lambda: controller.show_frame("DTFuzz"),
