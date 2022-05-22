@@ -49,14 +49,13 @@ class AttackVectorFour(tk.Frame):
                 "\n\nStep 1: \n\n"
                 "Attack Vector 4 being maintaining"
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step1frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=350)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            XSSButton = tk.Button(step1frame, text="SQL injection Tool", bg="#E7E7E7", fg="black", font=highlightFont,
+            XSSButton = tk.Button(step1frame, text="SQL injection Tool", style='Accent.TButton',
                                   command=load_sqli, relief='flat').place(rely=0.5, relx=0.02, relheight=0.05,
                                                                           relwidth=0.1)
-            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7",
-                                       fg="black", font=highlightFont, command=load_terminal,
+            terminalButton = ttk.Button(step1frame, text="Terminal", style='Accent.TButton', command=load_terminal,
                                        relief='flat').place(rely=0.5, relx=0.14,
                                                             relheight=0.05, relwidth=0.1)
 
@@ -73,12 +72,20 @@ class AttackVectorFour(tk.Frame):
         #    terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
         #                                 command=load_terminal, relief='flat').place(rely=0.6, relx=0.14, relheight=0.05, relwidth=0.1)
         #
-        # creates blue bar as canvas below nav bar housing label containing title of page
-        title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
-        title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Web Application Attacks: Automated XSS and SQLiInjection attack",
-                               bg='#64C1DA', anchor="w", font=framefont)
-        title_label.place(rely=0.08, relx=0.03, relheight=0.12, relwidth=1)
+ 
+        tkfont.Font(family='OpenSans', size=13)
+        framefont = tkfont.Font(family='Arial Rounded MT Bold', size=28, weight='bold')
+
+        title_label = tk.Label(self, text="Web Application Attacks: Automated XSS and SQLiInjection attack", bg='white', fg='#92CEFF', anchor="c", font=framefont)
+        title_label.place(rely=0.06, relheight=0.12, relwidth=1)
+        
+        # creates blue bar as canvas below nav bar
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
+
+        # creates blue bar as canvas below title
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.155, relheight=0.004, relwidth=1)
 
         allscreenframe = tk.Label(main_frame, bg='white')
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
