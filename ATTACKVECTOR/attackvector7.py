@@ -7,12 +7,10 @@ from tkinter import font as tkfont  # python 3
 
 from tkinter import font as tkfont
 from tkinter import *
-from tkinter import font, messagebox
-import random, requests, os, sys
-import PySimpleGUI as sg
+from tkinter import font
+import sys
 from nav_bar import *
-from subprocess import call, Popen, PIPE
-import os
+from subprocess import Popen, PIPE
 
 
 class AttackVectorSeven(tk.Frame):
@@ -27,9 +25,9 @@ class AttackVectorSeven(tk.Frame):
         highlightFont = font.Font(family='OpenSans', name='appHighlightFont7', size=18)
 
         def load_terminal():
-            p1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE, universal_newlines=True, shell=True).stdout
+            p_1 = Popen("exo-open --launch TerminalEmulator", stdout=PIPE,universal_newlines=True, shell=True).stdout
 
-        def change_to_Step1():
+        def change_to_step1():
             text = (
                 "\nStep 1: NFS enumeration\n\n"
                 "o   Find what port nfs is running on (usually on port 2049) by using 'nmap target IP'.\n\n"
@@ -40,9 +38,9 @@ class AttackVectorSeven(tk.Frame):
             )
             step1frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
-            step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)            
+            step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
 
-        def change_to_Step2():
+        def change_to_step2():
             text = (
                 "\nStep 2: Exploiting NFS\n\n"
                 "o   Access the mounted directory, and search for the ssh directory inside it(or .ssh).\n\n"
@@ -54,7 +52,7 @@ class AttackVectorSeven(tk.Frame):
                                     aspect=300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
 
-        def change_to_Step3():
+        def change_to_step3():
             text = (
                 "\nStep 3: Privilege escalation\n\n"
                 "o   As you now have access to the NFS server, make a copy of the /bin/bash to the mounted path. This command will copy it to your current path[cp /bin/bash .]\n\n"
@@ -71,7 +69,7 @@ class AttackVectorSeven(tk.Frame):
         title_label = tk.Label(self, text="NFS Privilege Escalation", bg='white', fg='#92CEFF',
                                anchor="c", font=framefont)
         title_label.place(rely=0.06, relheight=0.12, relwidth=1)
-        
+
         # creates blue bar as canvas below nav bar
         title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
         title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
@@ -87,17 +85,17 @@ class AttackVectorSeven(tk.Frame):
                                    anchor='nw')
 
         sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
-        step1btn = ttk.Button(main_frame, text="Step 1", 
-                             command=change_to_Step1, style='Accent.TButton').place(rely=0.3, 
+        step1btn = ttk.Button(main_frame, text="Step 1",
+                             command=change_to_Step1, style='Accent.TButton').place(rely=0.3,
                              relx=0.02, relheight=0.05, relwidth=0.1)
-        step2btn = ttk.Button(main_frame, text="Step 2", 
-                             command=change_to_Step2, style='Accent.TButton').place(rely=0.4, 
+        step2btn = ttk.Button(main_frame, text="Step 2",
+                             command=change_to_Step2, style='Accent.TButton').place(rely=0.4,
                              relx=0.02, relheight=0.05, relwidth=0.1)
-        step3btn = ttk.Button(main_frame, text="Step 3", 
-                             command=change_to_Step3, style='Accent.TButton').place(rely=0.5, 
+        step3btn = ttk.Button(main_frame, text="Step 3",
+                             command=change_to_Step3, style='Accent.TButton').place(rely=0.5,
                              relx=0.02, relheight=0.05, relwidth=0.1)
-        terminalButton = ttk.Button(main_frame, text="Open Terminal", 
-                             command=load_terminal, style='Rocket.TButton').place(rely=0.64, 
+        terminalButton = ttk.Button(main_frame, text="Open Terminal",
+                             command=load_terminal, style='Rocket.TButton').place(rely=0.64,
                              relx=0.02, relheight=0.05, relwidth=0.1)
 
         display_nav_bar(self, controller)
