@@ -199,7 +199,7 @@ class ToolsPage(tk.Frame):
 
             navbutton = nav_button(tool_canvas, command)
             info_button = ttk.Button(tool_canvas, image=info_image,
-                                     command=lambda: self.show_hint(desc), 
+                                     command=lambda: self.show_hint(desc),
                                      style='Accent.TButton')
             pack_widget_right(info_button)
             tool_canvas.pack(expand=TRUE, fill='x', padx=90, pady=8)

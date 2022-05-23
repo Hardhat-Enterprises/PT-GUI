@@ -89,7 +89,7 @@ class VectorsPage(tk.Frame):
             # creates new canvas to hold vector information/execute widgets
             vector_canvas = tk.Canvas(scrollable_frame, height=0)
 
-            vectorname_label = ttk.Label(vector_canvas, text=name, 
+            vectorname_label = ttk.Label(vector_canvas, text=name,
             				font='controller.btn_font2 12 italic')
             pack_widget_left(vectorname_label)
 
@@ -146,3 +146,4 @@ class VectorsPage(tk.Frame):
         """
         wraplength = event.width - 100  # the 8 is for padding (makes it look nicer)
         event.widget.configure(wraplength=wraplength)
+        
