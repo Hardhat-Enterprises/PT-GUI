@@ -1,4 +1,4 @@
-## ATTACK VECTOR 2 PAGE ##
+## ATTACK VECTOR 7 PAGE ##
 
 import tkinter as tk  # python 3
 from tkinter import font as tkfont  # python 3
@@ -86,13 +86,13 @@ class AttackVectorSeven(tk.Frame):
 
         sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
         step1btn = ttk.Button(main_frame, text="Step 1",
-                             command=change_to_Step1, style='Accent.TButton').place(rely=0.3,
+                             command=change_to_step1, style='Accent.TButton').place(rely=0.3,
                              relx=0.02, relheight=0.05, relwidth=0.1)
         step2btn = ttk.Button(main_frame, text="Step 2",
-                             command=change_to_Step2, style='Accent.TButton').place(rely=0.4,
+                             command=change_to_step2, style='Accent.TButton').place(rely=0.4,
                              relx=0.02, relheight=0.05, relwidth=0.1)
         step3btn = ttk.Button(main_frame, text="Step 3",
-                             command=change_to_Step3, style='Accent.TButton').place(rely=0.5,
+                             command=change_to_step3, style='Accent.TButton').place(rely=0.5,
                              relx=0.02, relheight=0.05, relwidth=0.1)
         terminalButton = ttk.Button(main_frame, text="Open Terminal",
                              command=load_terminal, style='Rocket.TButton').place(rely=0.64,
