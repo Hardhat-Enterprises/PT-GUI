@@ -95,10 +95,12 @@ class AboutPage(tk.Frame):
 
         paragraph_one = ttk.Label(
             frame1, text="	About The Deakin Detonator Toolkit: "
-            "\n \n     In the simplest definition, Deakin Detonator Toolkit (DDT) is a penetration testing "
+            "\n \n     In the simplest definition, Deakin Detonator Toolkit (DDT) is a"
+            " penetration testing "
             "\n environment developed by Deakin "
             "University Capstone students under the Hardhat "
-            "\n Project. Originally designed as a Command Line Interface with limited testingabilities, "
+            "\n Project. Originally designed as a Command Line Interface with limited"
+            "testing abilities, "
             "\n the toolkit has evolved in recent years"
             "to become the established Graphical  User "
             "\n Interface capable of hosting and deploying Attack Vectors and various tools to "
@@ -108,25 +110,33 @@ class AboutPage(tk.Frame):
         paragraph_two = ttk.Label(
             frame2,
             text="About Attack Vectors:		"
-            "\n        The DTT features several student-developed Attack Vector scenarios that allow users of the toolkit to become"
-            "\n        familiar with various cyber-attacks. Featuring scenarios such as Web application vulnerabilities and user"
-            "\n        privilege bypass attacks, the DTT allows a stable and secure environment to perform ethical hacking, while the"
-            "\n        continued expansion of the toolkit’s software capabilities will allow for more intricate cyber-attacks to be investigated.",
+            "\n        The DTT features several student-developed Attack Vector scenarios that "
+            "allow users of the toolkit to become"
+            "\n        familiar with various cyber-attacks. Featuring scenarios such as Web "
+            "application vulnerabilities and user"
+            "\n        privilege bypass attacks, the DTT allows a stable and secure environment"
+            " to perform ethical hacking, while the"
+            "\n        continued expansion of the toolkit’s software capabilities will allow for "
+            "more intricate cyber-attacks to be investigated.",
             font=('Calibri', 14), justify=LEFT, width=150)
 
         paragraph_three = ttk.Label(
             frame3,
             text="About DTT Vectors:		   "
-            "\n        The DTT Tools database features an extensive range of exploitation, execution, access, and software tools to "
-            "\n        allow DTT users the necessary support in performing ethical hacking tasks. The tools included show an insight"
-            "\n        into various cybersecurity prevention and detection techniques to allow users to perform penetration-testing "
+            "\n        The DTT Tools database features an extensive range of exploitation, "
+            "execution, access, and software tools to "
+            "\n        allow DTT users the necessary support in performing ethical hacking tasks."
+           " The tools included show an insight"
+            "\n        into various cybersecurity prevention and detection techniques to allow "
+            "users to perform penetration-testing "
             "\n        tasks and become well equipped against cyber-attacks.",
             font=('Calibri', 14), justify=LEFT, width=150)
 
         paragraph_four = Label(
             frame4,
             text="									 	"
-            "\n		Contact: \nCompany: Hardhat Enterprises - Mail:Keshav Sood: keshav.sood@deakin.edu.au"
+            "\n		Contact: \nCompany: Hardhat Enterprises - "
+            "Mail:Keshav Sood: keshav.sood@deakin.edu.au"
             "\nProject: Taylor Smith - Mail:smithtaylor@deakin.edu.au",
             font=(
                 'Calibri',
