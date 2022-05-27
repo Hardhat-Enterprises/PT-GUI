@@ -9,4 +9,4 @@ scapy == 2.4.5
 tqdm == 4.63.0
 pylint == 2.12.2
 shodan == 1.27.0
-rsa == 0.4.8
+rsa == 4.8
