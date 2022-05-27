@@ -30,17 +30,23 @@ def display_nav_bar(frame, controller):
     btn_num = 1
     # defines the buttons that will appear in the navigation bar
     button_home = ttk.Button(frame, text="Home", style="Accent.TButton",
-                             command=lambda: [search_leave(search_canvas), controller.show_frame("StartPage")])
+                             command=lambda: [search_leave(search_canvas),
+                             controller.show_frame("StartPage")])
     button_vectors = ttk.Button(frame, text="Attack Vectors", style="Accent.TButton",
-                                command=lambda: [search_leave(search_canvas), controller.show_frame("VectorsPage")])
+                                command=lambda: [search_leave(search_canvas),
+                                controller.show_frame("VectorsPage")])
     button_about = ttk.Button(frame, text="About", style="Accent.TButton",
-                              command=lambda: [search_leave(search_canvas), controller.show_frame("AboutPage")])
+                              command=lambda: [search_leave(search_canvas),
+                              controller.show_frame("AboutPage")])
     button_tools = ttk.Button(frame, text="Tools", style="Accent.TButton",
-                              command=lambda: [search_leave(search_canvas), controller.show_frame("ToolsPage")])
+                              command=lambda: [search_leave(search_canvas),
+                              controller.show_frame("ToolsPage")])
     button_walkthroughs = ttk.Button(frame, text="Walkthroughs", style="Accent.TButton",
-                                     command=lambda: [search_leave(search_canvas), controller.show_frame("WalkthroughClass")])
+                                     command=lambda: [search_leave(search_canvas),
+                                     controller.show_frame("WalkthroughClass")])
     button_references = ttk.Button(frame, text="References", style="Accent.TButton",
-                                   command=lambda: [search_leave(search_canvas), controller.show_frame("ReferencesPage")])
+                                   command=lambda: [search_leave(search_canvas),
+                                   controller.show_frame("ReferencesPage")])
     # Dark mode switch global to ensure state is retained.
     global DARK_MODE_TOGGLE
     DARK_MODE_TOGGLE = 0
@@ -53,39 +59,44 @@ def display_nav_bar(frame, controller):
     # and must be incremented every time a button is added to the right side of the nav bar
     button_home.place(rely=0.01, relx=0.01, relheight=0.06, relwidth=0.055)
     button_references.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01,
-     relheight=0.06,
+    relheight=0.06,
                             relwidth=btn_width)
 
     btn_num += 1
     button_walkthroughs.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01,
-     relheight=0.06,
+    relheight=0.06,
                               relwidth=btn_width)
 
     btn_num += 1
     button_tools.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
-     relwidth=btn_width)
+    relwidth=btn_width)
 
     btn_num += 1
     button_vectors.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
-     relwidth=btn_width)
+    relwidth=btn_width)
 
     btn_num += 1
     button_about.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
-     relwidth=btn_width)
+    relwidth=btn_width)
     btn_num += 1
 
-    dark_mode_switch.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
+    dark_mode_switch.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num*0.01,relheight=0.06,
                             relwidth=btn_width)
     btn_num += 1
-    
-    ###################################################################################################################
+
     stringvar = tk.StringVar(frame)
     search_field = Entry(frame, textvariable=stringvar, text="Search")
-    search_field.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06, relwidth=btn_width)
+    search_field.place(rely=0.01, relx=1 - btn_width * btn_num - btn_num * 0.01, relheight=0.06,
+                      relwidth=btn_width)
 
-    #whenever the user has released a key press (e.g. any changes to the searchbar)... do search event
-    search_field.bind("<KeyRelease>",lambda event, search_field = search_field: search_event(event, search_field, frame, search_canvas, controller))
-    search_field.bind("<Return>",lambda event, search_field = search_field: build_search(event, search_field, search_canvas, controller))
+    #whenever the user has released a key press (e.g. any changes to the searchbar)...
+    #do search event
+    search_field.bind("<KeyRelease>",lambda event,
+                      search_field=search_field: search_event(search_field,frame,search_canvas,
+                                                               controller))
+    search_field.bind("<Return>",lambda event,
+                      search_field = search_field: build_search(search_field, search_canvas,
+                                                                controller))
 
 
 def change_theme(controller):
