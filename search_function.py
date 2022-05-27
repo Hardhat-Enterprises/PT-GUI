@@ -84,10 +84,18 @@ class Search:
         "ToolsPage", "Command Prompt", "API_Keys",
         # Walkthroughs
         "WalkthroughClass"]
-    def GetSearchTerms():
-        return SearchTerms
+    def get_search_terms(self):
+        """
+        for pylint, but also returns SearchTerms.
+        """
+        return self.SearchTerms
+    def get_page_links(self):
+        """
+        for pylint, but also returns PageLinks.
+        """
+        return self.PageLinks
 
-searchlists = Search
+SearchLists = Search
 quicksearch = []
 quicksearch2 = []
 
@@ -97,7 +105,7 @@ def build_search(search_field, search_canvas, controller):
     builds a search page on a canvas based on input from entry
     """
     search_canvas.place(relx=0, rely=0.08, relheight=0.92, relwidth=1)
-    search_canvas.tk.call('raise', search_canvas._w)
+    search_canvas.tk.call('raise', search_canvas)
     uinput = search_field.get()
 
     shodanframe = tk.Label(
@@ -124,15 +132,15 @@ def clean_quicksearch():
         quicksearch2.pop()
 
 
-def search_check(input, search_field, frame, search_canvas, controller):
+def search_check(uinput, search_field, frame, search_canvas, controller):
     """
     builds a search page on a canvas based on input from entry
     """
-    for idx, entry in enumerate(searchlists.SearchTerms):
-        if len(input) <= len(entry):
+    for idx, entry in enumerate(SearchLists.SearchTerms):
+        if len(uinput) <= len(entry):
             # if the first (however many characters) matches a search term
             # (case insensitive)
-            if entry[0:len(input)].lower() == input.lower():
+            if entry[0:len(uinput)].lower() == uinput.lower():
                 tempidx = idx
                 quicksearch.append(
                     ttk.Button(
@@ -145,7 +153,7 @@ def search_check(input, search_field, frame, search_canvas, controller):
                                 'end'),
                             search_leave(search_canvas),
                             controller.show_frame(
-                                searchlists.PageLinks[i]),
+                                SearchLists.PageLinks[i]),
                             clean_quicksearch()]))  # make a quicksearch button
                 quicksearch[len(quicksearch) -
                             1].place(rely=0.04 +
@@ -155,10 +163,10 @@ def search_check(input, search_field, frame, search_canvas, controller):
                                      7 -
                                      7 *
                                      0.01)  # place it under search bar
-            elif len(input) > 1:
+            elif len(uinput) > 1:
                 tempidx = idx
-                for inc in range(len(entry) - len(input)):
-                    if entry[inc + 1:inc + 1 + len(input)].lower() == input.lower():
+                for inc in range(len(entry) - len(uinput)):
+                    if entry[inc + 1:inc + 1 + len(uinput)].lower() == uinput.lower():
                         quicksearch2.append(
                             ttk.Button(
                                 frame,
@@ -170,7 +178,7 @@ def search_check(input, search_field, frame, search_canvas, controller):
                                         'end'),
                                     search_leave(search_canvas),
                                     controller.show_frame(
-                                        searchlists.PageLinks[i]),
+                                        SearchLists.PageLinks[i]),
                                     clean_quicksearch()]))  # make a quicksearch button
     for idx, entry in enumerate(quicksearch2):
         quicksearch2[idx].place(rely=0.04 +
@@ -193,10 +201,10 @@ def search_event(search_field, frame, search_canvas, controller):
     clean_quicksearch()
 
     # gets string of the user input
-    input = search_field.get()
-    if len(input) > 0:
+    uinput = search_field.get()
+    if len(uinput) > 0:
         search_check(
-            input,
+            uinput,
             search_field,
             frame,
             search_canvas,
