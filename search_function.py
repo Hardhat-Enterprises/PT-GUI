@@ -6,31 +6,47 @@ from tkinter import ttk
 import tkinter as tk
 
 
-class search:
-    searchterms = [  # pages
+class Search:
+    """
+    keeps search related info.
+    """
+    SearchTerms = [  # pages
         "Home", "About", "Attack Vectors", "Tools", "Walkthroughs", "References",
         # Attack Vectors
-        "Reverse TCP Shell", "Directory Traversal & IDOR", "Unpatched Vulnerabilities and Exploits",
-        "Web Application Attacks: Automated XSS and SQLinjection attack", "NFS Privilege Escalation",
-        "Apache Webserver Exploit", "Authentication Bypass Attack",
+        "Reverse TCP Shell", "Directory Traversal & IDOR","Unpatched Vulnerabilities and Exploits",
+        "Web Application Attacks: Automated XSS and SQLinjection attack","NFS Privilege Escalation",
+        "Apache Webserver Exploit","Authentication Bypass Attack",
         # Tools
-        "Reconnaissance Tools", "Port Scanner", "Nmap", "Banner Grabber", "Shodan",  # Recon
-        "Enumeration Tools", "Sniffer", "Mac Changer", "Image Metadata Extractor", "Hash Analyzer", "HTTP Header Analyzer", "SNMP Checker"  # Enumeration
-        "Execution Tools", "VulnExploit", "Msfconsole Listener", "Mimt + Dns Spoof",  # Execution 1
-        "FPT Brute Forcer", "Wordlist generator", "ICMP Ping Flooder", "TCP SYN Flooder",  # Execution 2
-        "Fuzzers", "Directory Traversal Fuzzer",  # Fuzzers
-        "Initial Access Tools", "SSH Bruteforce", "Password Hash Cracker", "ZIP File Brute Forcer",  # Initial Access
-        "Payloads", "Msfvenom Payload Generator",  # Payloads
-        "Resource Development Tools", "Notepad",  # Resource Dev
-        "Cryptography Tools", "Encryption", "Encoding", "Hashing",  # Cryptography Tools
-        "Help", "Command Prompt", "API Key Handler",  # Help
-        # Walkthroughs
+        #   Recon
+        "Reconnaissance Tools", "Port Scanner", "Nmap", "Banner Grabber", "Shodan",
+        #   Enumeration1
+        "Enumeration Tools","Sniffer","Mac Changer","Image Metadata Extractor","Hash Analyzer",
+        #   Enumeration2
+        "HTTP Header Analyzer", "SNMP Checker"
+        #   Execution 1
+        "Execution Tools", "VulnExploit", "Msfconsole Listener", "Mimt + Dns Spoof",
+        #   Execution 2
+        "FPT Brute Forcer","Wordlist generator","ICMP Ping Flooder","TCP SYN Flooder",
+        #   Fuzzers
+        "Fuzzers", "Directory Traversal Fuzzer",
+        #   Initial Access
+        "Initial Access Tools","SSH Bruteforce","Password Hash Cracker","ZIP File Brute Forcer",
+        #   Payloads
+        "Payloads", "Msfvenom Payload Generator",
+        #   Resource Dev
+        "Resource Development Tools", "Notepad",
+        #   Cryptography Tools
+        "Cryptography Tools", "Encryption", "Encoding", "Hashing",
+        #   Help
+        "Help", "Command Prompt", "API Key Handler",
+        #   Walkthroughs
         "Buffer Overflow"]
 
-    searchlinks = [  # pages
+    SearchLinks = [  # pages
         "Page", "Page", "Page", "Page", "Page", "Page",
         # Attack Vectors
-        "Attack Vector", "Attack Vector", "Attack Vector", "Attack Vector", "Attack Vector", "Attack Vector", "Attack Vector",
+        "Attack Vector", "Attack Vector", "Attack Vector", "Attack Vector",
+        "Attack Vector", "Attack Vector", "Attack Vector",
         # Tools
         "Page", "Tool", "Tool", "Tool", "Tool",
         "Page", "Tool", "Tool", "Tool", "Tool", "Tool", "Tool",
@@ -44,8 +60,8 @@ class search:
         # Walkthroughs
         "Walkthrough"]
 
-    pagelinks = [  # pages
-        "StartPage", "AboutPage", "VectorsPage", "ToolsPage", "WalkthroughClass", "ReferencesPage",
+    PageLinks = [  # pages
+        "StartPage","AboutPage","VectorsPage","ToolsPage","WalkthroughClass","ReferencesPage",
         # Attack Vectors
         "AttackVectorOne", "AttackVectorTwo", "AttackVectorThree",
         "AttackVectorFour", "AttackVectorSeven",
@@ -53,7 +69,8 @@ class search:
         # Tools
         # Recon... nmap redirects to tools page
         "ToolsPage", "PortScan", "ToolsPage", "BannerGrab", "ShodanScript",
-        "ToolsPage", "TestSniff", "MacChange", "IMDExtractor", "HashAn", "HTTPheaders", "SNMPCheck"  # Enumeration
+        # Enumeration
+        "ToolsPage","TestSniff","MacChange","IMDExtractor","HashAn","HTTPheaders","SNMPCheck"
         # Execution 1... vulnexploit redirects to tools page
         "ToolsPage", "ToolsPage", "MsfListener", "MimtDnsSpoof",
         # Execution 2... wordlist and tcp/syn flood redirects to tools page
@@ -67,45 +84,55 @@ class search:
         "ToolsPage", "Command Prompt", "API_Keys",
         # Walkthroughs
         "WalkthroughClass"]
+    def GetSearchTerms():
+        return SearchTerms
 
-
-searchlists = search
+searchlists = Search
 quicksearch = []
 quicksearch2 = []
 
 
-def build_search(event, search_field, search_canvas, controller):
+def build_search(search_field, search_canvas, controller):
+    """
+    builds a search page on a canvas based on input from entry
+    """
     search_canvas.place(relx=0, rely=0.08, relheight=0.92, relwidth=1)
     search_canvas.tk.call('raise', search_canvas._w)
-    input = search_field.get()
+    uinput = search_field.get()
 
     shodanframe = tk.Label(
         search_canvas,
-        text=input,
+        text=uinput,
         bg='#3B5262',
         fg='white',
         anchor="c")
     shodanframe.place(rely=0.08, relheight=0.12, relwidth=1)
-
+    if uinput == "Home":
+        controller.show_frame("StartPage")
 
 def clean_quicksearch():
+    """
+    cleans quicksearch
+    """
     for term in quicksearch:
         term.place_forget()
-    while (len(quicksearch) > 0):
+    while len(quicksearch) > 0:
         quicksearch.pop()
     for term in quicksearch2:
         term.place_forget()
-    while (len(quicksearch2) > 0):
+    while len(quicksearch2) > 0:
         quicksearch2.pop()
 
 
 def search_check(input, search_field, frame, search_canvas, controller):
-    lowest = 0
-    for idx, entry in enumerate(searchlists.searchterms):
-        if(len(input) <= len(entry)):
+    """
+    builds a search page on a canvas based on input from entry
+    """
+    for idx, entry in enumerate(searchlists.SearchTerms):
+        if len(input) <= len(entry):
             # if the first (however many characters) matches a search term
             # (case insensitive)
-            if(entry[0:len(input)].lower() == input.lower()):
+            if entry[0:len(input)].lower() == input.lower():
                 tempidx = idx
                 quicksearch.append(
                     ttk.Button(
@@ -118,7 +145,7 @@ def search_check(input, search_field, frame, search_canvas, controller):
                                 'end'),
                             search_leave(search_canvas),
                             controller.show_frame(
-                                searchlists.pagelinks[i]),
+                                searchlists.PageLinks[i]),
                             clean_quicksearch()]))  # make a quicksearch button
                 quicksearch[len(quicksearch) -
                             1].place(rely=0.04 +
@@ -128,10 +155,10 @@ def search_check(input, search_field, frame, search_canvas, controller):
                                      7 -
                                      7 *
                                      0.01)  # place it under search bar
-            elif(len(input) > 1):
+            elif len(input) > 1:
                 tempidx = idx
-                for x in range(len(entry) - len(input)):
-                    if(entry[x + 1:x + 1 + len(input)].lower() == input.lower()):
+                for inc in range(len(entry) - len(input)):
+                    if entry[inc + 1:inc + 1 + len(input)].lower() == input.lower():
                         quicksearch2.append(
                             ttk.Button(
                                 frame,
@@ -143,7 +170,7 @@ def search_check(input, search_field, frame, search_canvas, controller):
                                         'end'),
                                     search_leave(search_canvas),
                                     controller.show_frame(
-                                        searchlists.pagelinks[i]),
+                                        searchlists.PageLinks[i]),
                                     clean_quicksearch()]))  # make a quicksearch button
     for idx, entry in enumerate(quicksearch2):
         quicksearch2[idx].place(rely=0.04 +
@@ -158,13 +185,16 @@ def search_check(input, search_field, frame, search_canvas, controller):
                                 0.01)  # place it under search bar
 
 
-def search_event(event, search_field, frame, search_canvas, controller):
+def search_event(search_field, frame, search_canvas, controller):
+    """
+    starts a quicksearch
+    """
     # previous suggestions are removed
     clean_quicksearch()
 
     # gets string of the user input
     input = search_field.get()
-    if(len(input) > 0):
+    if len(input) > 0:
         search_check(
             input,
             search_field,
@@ -176,5 +206,8 @@ def search_event(event, search_field, frame, search_canvas, controller):
 
 
 def search_leave(search_canvas):
+    """
+    exits a search_page
+    """
     search_canvas.place_forget()
     search_canvas.delete("all")
