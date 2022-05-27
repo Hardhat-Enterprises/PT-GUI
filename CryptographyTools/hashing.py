@@ -104,7 +104,7 @@ class Hashing(tk.Frame):
 
             if(inputtext != ""):
                 TextOut.delete("1.0",END)
-                output = hashlib.SHA1(inputtext.encode('utf-8')).hexdigest()
+                output = hashlib.sha1(inputtext.encode('utf-8')).hexdigest()
                 TextOut.insert(END, output)
 
         hashButton.config(command=lambda: doSHA1(TextIn, TextOut))
