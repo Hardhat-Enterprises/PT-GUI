@@ -162,3 +162,10 @@ EMAIL_BOMBER_DESC = "This tool is used to attack email accounts by sending spoof
                     "It allows users to set the target destination, sender information, subject and message details, with the option of stopping, restarting or redirecting the attack. " \
                     "For future developments, the tool could also be used as a conduit for sending payloads to a victim via email. " \
                     "NOTE: To use a Gmail account as a sender the Less Secure App Access must be turned OFF or the application will not login to the account. This can be found in Account settings > Security. "
+
+RSA_ENCRYPTION_DESC = "This tool uses the RSA algorithm to encrypt and decrypt strings. It allows for creation of a new pair of keys: private and public. " \
+"The user may choose to use generated keys and share the public key or use the keys of their own by putting them inside CryptographyTools folder. "
+
+ENCODING_DESC = "This tool features two encoders: binary and base64. The user can encode strings of data by choosing the option they like. "
+
+HASH_DESC = "This tool features two hashing algorithms: SHA1 and MD5. The user can hash strings of data by choosing the option they like. "
