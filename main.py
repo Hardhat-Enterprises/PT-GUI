@@ -1,3 +1,6 @@
+# pylint: disable=invalid-name
+# pylint: disable=global-variable-undefined
+
 from ATTACKVECTOR.attackvector1 import AttackVectorOne
 from ATTACKVECTOR.attackvector2 import AttackVectorTwo
 from ATTACKVECTOR.attackvector3 import AttackVectorThree
