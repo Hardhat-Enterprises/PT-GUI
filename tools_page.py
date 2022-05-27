@@ -199,7 +199,7 @@ class ToolsPage(tk.Frame):
 
             navbutton = nav_button(tool_canvas, command)
             info_button = ttk.Button(tool_canvas, image=info_image,
-                                     command=lambda: self.show_hint(desc), 
+                                     command=lambda: self.show_hint(desc),
                                      style='Accent.TButton')
             pack_widget_right(info_button)
             tool_canvas.pack(expand=TRUE, fill='x', padx=90, pady=8)
@@ -288,7 +288,8 @@ class ToolsPage(tk.Frame):
         create_tool("Notepad", lambda: open_notepad(), NOTEPAD_DESC)
 
         create_title("Cryptography Tools")
-        create_tool("RSA Encryption", lambda: controller.show_frame("RSAEncryption"), RSA_ENCRYPTION_DESC)
+        create_tool("RSA Encryption", lambda: controller.show_frame("RSAEncryption"),
+        RSA_ENCRYPTION_DESC)
         create_tool("Encoding",
                     lambda: controller.show_frame("Encoding"), ENCODING_DESC)
         create_tool("Hashing",
