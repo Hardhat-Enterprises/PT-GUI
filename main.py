@@ -5,6 +5,7 @@ from ATTACKVECTOR.attackvector4 import AttackVectorFour
 from ATTACKVECTOR.attackvector7 import AttackVectorSeven
 from ATTACKVECTOR.attackvector8 import AttackVectorEight
 from ATTACKVECTOR.attackvector9 import AttackVectorNine
+from ATTACKVECTOR.attackvector11 import AttackVectorEleven
 from EnumerationTools.HTTPheaders import HTTPheaders
 from EnumerationTools.ImageMetaDataExtractor import IMDExtractor
 from EnumerationTools.MacChanger import MacChange
@@ -66,7 +67,7 @@ class GUIApp(tk.Tk):
                   BannerGrab, MsfPayloadGen, MsfListener, MimtDnsSpoof,
                   DTFuzz, FTPBruteForce, IMDExtractor, AttackVectorSeven,
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
-                  SshBrute, HashAn, PHCracker, ExampleNewPage,
+                  AttackVectorEleven, SshBrute, HashAn, PHCracker, ExampleNewPage,
                   ZipBF, ICMP, HTTPheaders, WalkthroughClass,
                   API_Keys, ShodanScript, SNMPCheck):
             # sets page_name variable equal to current object's name
