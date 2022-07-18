@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import font as tkfont
 
 
+
 class StartPage(tk.Frame):
     """
     Start page.
@@ -13,21 +14,26 @@ class StartPage(tk.Frame):
         self.controller = controller
         # sets font for titles
         tkfont.Font(family='Calibri', size=40, weight="bold")
-
-        # creates new image variable from bkg.png, used for background on title screen
-        self.image = tk.PhotoImage(file="resources/landingpagebkgBLUE.png")
+	
+        # creates new image variable for logo and colour used for background on title screen
+        self.image = tk.PhotoImage(file="resources/DDT_Logo_BW_Small.png")
         image_canvas = tk.Canvas(self, bg='#232536')
         image_canvas.place(rely=0, relx=0, relwidth=1, relheight=0.4)
-
+	
+	
         title = tk.Label(self, text="Deakin Detonator Toolkit", bg='#232536', fg='white',
                          font=('Calibri', 42, 'bold'))
-        subtitle = tk.Label(self, text="Network Recovery Tools Red Team", bg='#232536', fg='white',
-                            font=('Calibri', 17, 'bold'))
-
         title.pack(side=TOP, anchor=CENTER, pady=50)
-        subtitle.pack(side=TOP, anchor=CENTER, pady=10)
 
-        # image_canvas.create_image(0, 0, image=self.image, anchor="nw")
+	#Display Logo
+
+
+        width = tk.Canvas(self).winfo_width()
+        image_canvas.create_image(width/2, 300, image=self.image, anchor="center")
+
+
+
+        
 
         # creates and places new white canvas on which the menu buttons are placed
         options_canvas = tk.Canvas(self, bg="white")
