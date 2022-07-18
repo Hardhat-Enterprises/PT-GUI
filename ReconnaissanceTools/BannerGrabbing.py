@@ -19,18 +19,24 @@ class BannerGrab(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        abtframefont = tkfont.Font(family='Calibri', size=33, weight="bold")
+        #created title
+        tkfont.Font(family='OpenSans', size=13)
+        framefont = tkfont.Font(family='Arial Rounded MT Bold', size=28, weight='bold')
+        title_label = tk.Label(self, text="Banner Grabber", bg='white', fg='#92CEFF',
+                               anchor="c", font=framefont)
+        title_label.place(rely=0.06, relheight=0.12, relwidth=1)
+
+        #creates blue bar as canvas below nav bar
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
         display_nav_bar(self, controller)
-        aboutframe = tk.Label(self, text="    Banner Grabber", bg='#3B5262', fg='white', anchor="c", font=abtframefont)
-        aboutframe.place(rely=0.08, relheight=0.12, relwidth=1)
 
-        allscreenframe = tk.Label(self, bg='white')
-        allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
+        #creates blue bar as canvas below title
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.155, relheight=0.004, relwidth=1)
 
-        label = Label(self, text=" Enter Target IP Address:", font=('Calibri', 14), bg='#4D6C84', fg='white',
-                      anchor='c').place(rely=0.38, relx=0.16, relheight=0.08, relwidth=0.22)
-        label = Label(self, text=" Enter Port Number:", font=('Calibri', 14), bg='#4D6C84', fg='white',
-                      anchor='c').place(rely=0.48, relx=0.16, relheight=0.08, relwidth=0.22)
+        label = ttk.Label(self, text=" Enter Target IP Address:", font=('Calibri', 14), style='Dropdown.TButton').place(rely=0.38, relx=0.16, relheight=0.08, relwidth=0.22)
+        label = ttk.Label(self, text=" Enter Port Number:", font=('Calibri', 14), style='Dropdown.TButton').place(rely=0.48, relx=0.16, relheight=0.08, relwidth=0.22)
 
         # Set input box for interface Entry
         self.entry = Entry(self, font=('Calibri', 13), )
@@ -41,7 +47,7 @@ class BannerGrab(tk.Frame):
         self.entry2.place(rely=0.48, relx=0.36, relheight=0.08, relwidth=0.3)
 
         # Start button
-        Button(self, text="Start", font=('Calibri', 14), bg='#4D6C84', fg='white', anchor='c',
+        ttk.Button(self, text="Start", style='Accent.TButton',
                command=self.mainprog).place(rely=0.43, relx=0.7, relheight=0.08, relwidth=0.08)
 
     def mainprog(self):
