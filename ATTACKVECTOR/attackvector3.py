@@ -53,14 +53,14 @@ class AttackVectorThree(tk.Frame):
                 "o   Open a new terminal and enter the script below - changing IP to the IP of the target system.\n\n"
                 "               nmap -sV --script=Tools/Nmap_Gui/scipag_vulscan/vulscan.nse IP\n"
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step1frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=350)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            nmapButton = tk.Button(step1frame, text="Nmap Tool", bg="#E7E7E7", fg="black", font=highlightFont,
-                                   command=load_nmap_tool, relief='flat').place(rely=0.5, relx=0.02, relheight=0.05,
+            nmapButton = ttk.Button(step1frame, text="Nmap Tool", style='Accent.TButton',
+                                   command=load_nmap_tool).place(rely=0.4, relx=0.02, relheight=0.05,
                                                                                 relwidth=0.1)
-            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
-                                       command=load_terminal, relief='flat').place(rely=0.5, relx=0.14, relheight=0.05,
+            terminalButton = ttk.Button(step1frame, text="Terminal", style='Accent.TButton',
+                                       command=load_terminal).place(rely=0.4, relx=0.14, relheight=0.05,
                                                                                    relwidth=0.1)
 
         def change_to_Step2():
@@ -73,14 +73,14 @@ class AttackVectorThree(tk.Frame):
                 "o   Select 2 to find information about required fields of an exploit and paste a copied exploit from select 1.\n\n"
 
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step1frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            vulnButton = tk.Button(step1frame, text="VulnExploit", bg="#E7E7E7", fg="black", font=highlightFont,
-                                   command=load_vulnexploit_tool, relief='flat').place(rely=0.6, relx=0.02,
+            vulnButton = ttk.Button(step1frame, text="VulnExploit", style='Accent.TButton',
+                                   command=load_vulnexploit_tool).place(rely=0.4, relx=0.02,
                                                                                        relheight=0.05, relwidth=0.1)
-            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
-                                       command=load_terminal, relief='flat').place(rely=0.6, relx=0.14, relheight=0.05,
+            terminalButton = ttk.Button(step1frame, text="Terminal", style='Accent.TButton',
+                                       command=load_terminal).place(rely=0.4, relx=0.14, relheight=0.05,
                                                                                    relwidth=0.1)
 
         def change_to_Step3():
@@ -91,42 +91,49 @@ class AttackVectorThree(tk.Frame):
                 "o   Select 4 open session created by exploit\n\n"
                 "o   Select 5 to exit program\n\n"
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step1frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            vulnButton = tk.Button(step1frame, text="VulnExploit", bg="#E7E7E7", fg="black", font=highlightFont,
-                                   command=load_vulnexploit_tool, relief='flat').place(rely=0.6, relx=0.02,
+            vulnButton = ttk.Button(step1frame, text="VulnExploit", style='Accent.TButton',
+                                   command=load_vulnexploit_tool).place(rely=0.4, relx=0.02,
                                                                                        relheight=0.05, relwidth=0.1)
-            terminalButton = tk.Button(step1frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
-                                       command=load_terminal, relief='flat').place(rely=0.6, relx=0.14, relheight=0.05,
+            terminalButton = ttk.Button(step1frame, text="Terminal", style='Accent.TButton',
+                                       command=load_terminal).place(rely=0.4, relx=0.14, relheight=0.05,
                                                                                    relwidth=0.1)
+        
+        def create_step_button(step_num, command):
+            button = ttk.Button(main_frame, text="Step " + str(step_num),
+                               command=command, style='Accent.TButton').place(rely=0.20 + 0.1 * step_num, relx=0.04,
+                                                                     relheight=0.05, relwidth=0.1)
+        
+        tkfont.Font(family='OpenSans', size=13)
+        framefont = tkfont.Font(family='Arial Rounded MT Bold', size=28, weight='bold')
 
-        # creates blue bar as canvas below nav bar housing label containing title of page
-        title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
-        title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Unpatched Vulnerabilities and Exploits", bg='#4D6C84', fg='white',
-                               anchor="c", font=framefont)
-        title_label.place(rely=0.08, relheight=0.12, relwidth=1)
+        title_label = tk.Label(self, text="Unpatched Vulnerabilities and Exploits", bg='white', fg='#92CEFF', anchor="c", font=framefont)
+        title_label.place(rely=0.06, relheight=0.12, relwidth=1)
+        
+        # creates blue bar as canvas below nav bar
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
+
+        # creates blue bar as canvas below title
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.155, relheight=0.004, relwidth=1)
 
         allscreenframe = tk.Label(main_frame, bg='white')
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
 
-        sidescreenframe = tk.Label(main_frame, text="\n           Steps", bg='#E7E7E7', font=('Calibri', 20, 'bold'),
+        sidescreenframe = tk.Label(main_frame, text="\n           Steps:", bg='white', fg='#92CEFF', font=('Calibri', 20, 'bold'),
                                    anchor='nw')
         sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
 
         unpatched_label = tk.Label(main_frame, image=unpatchedvul)
         unpatched_label.place(rely=0.36, relx=0.4)
 
-        step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step1, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
-        step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step2, relief='flat').place(rely=0.4, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
-        step3btn = tk.Button(main_frame, text="Step 3", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step3, relief='flat').place(rely=0.5, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
+        create_step_button(1, change_to_Step1)
+        create_step_button(2, change_to_Step2)
+        create_step_button(3, change_to_Step3)
+        
         # step4btn = tk.Button(main_frame, text="Step 4", bg="#E7E7E7", fg="black", font=highlightFont, command=change_to_Step4, relief='flat').place(rely=0.6, relx=0.02, relheight=0.05, relwidth=0.1)
 
         display_nav_bar(self, controller)

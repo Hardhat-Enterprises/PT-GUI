@@ -45,11 +45,10 @@ class AttackVectorNine(tk.Frame):
                 "     ipconfig\n"
 
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step1frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            hintButton = tk.Button(step1frame, text="Hint", bg="#154c79", fg="white", font=highlightFont, command=hint,
-                                   relief='flat').place(rely=0.02, relx=0.3, relheight=0.05, relwidth=0.04)
+            hintButton = ttk.Button(step1frame, text="Hint", style='Accent.TButton', command=hint).place(rely=0.2, relx=0.02, relheight=0.05, relwidth=0.1)
 
         def change_to_Step2():
             text = (
@@ -67,11 +66,11 @@ class AttackVectorNine(tk.Frame):
                 "o   Set URIPATH /\n\n"
 
             )
-            step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step2frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
             step2frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
-            terminalButton = tk.Button(step2frame, text="Terminal", bg="#E7E7E7", fg="black", font=highlightFont,
-                                       command=load_terminal, relief='flat').place(rely=0.65, relx=0.02, relheight=0.05,
+            terminalButton = ttk.Button(step2frame, text="Terminal", style='Accent.TButton',
+                                       command=load_terminal).place(rely=0.5, relx=0.02, relheight=0.05,
                                                                                    relwidth=0.1)
 
         def change_to_Step3():
@@ -88,33 +87,40 @@ class AttackVectorNine(tk.Frame):
                 "     ps\n\n"
 
             )
-            step3frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step3frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
             step3frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
+            
+        def create_step_button(step_num, command):
+            button = ttk.Button(main_frame, text="Step " + str(step_num), style='Accent.TButton',
+                               command=command).place(rely=0.25 + 0.1 * step_num, relx=0.04,
+                                                                     relheight=0.05, relwidth=0.1)
 
-        # creates blue bar as canvas below nav bar housing label containing title of page
-        title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
-        title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Authentication Bypass", bg='#4D6C84', fg='white', anchor="c", font=framefont)
-        title_label.place(rely=0.08, relheight=0.12, relwidth=1)
+        tkfont.Font(family='OpenSans', size=13)
+        framefont = tkfont.Font(family='Arial Rounded MT Bold', size=28, weight='bold')
+
+        title_label = tk.Label(self, text="Authentication Bypass", bg='white', fg='#92CEFF', anchor="c", font=framefont)
+        title_label.place(rely=0.06, relheight=0.12, relwidth=1)
+        
+        # creates blue bar as canvas below nav bar
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
+
+        # creates blue bar as canvas below title
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.155, relheight=0.004, relwidth=1)
 
         allscreenframe = tk.Label(main_frame, bg='white')
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
 
-        sidescreenframe = tk.Label(main_frame, text="\n            Steps", bg='#E7E7E7', font=('Calibri', 20),
+        sidescreenframe = tk.Label(main_frame, text="\n            Steps:", bg='white', fg='#92CEFF', font='calibri 20 bold',
                                    anchor='nw')
-        sidescreenframe.place(rely=0.2, relheight=1, relwidth=0.2)
+        sidescreenframe.place(rely=0.25, relheight=1, relwidth=0.2)
 
-        step1btn = tk.Button(main_frame, text="Step 1", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step1, relief='flat').place(rely=0.3, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
-        step2btn = tk.Button(main_frame, text="Step 2", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step2, relief='flat').place(rely=0.4, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
-        step3btn = tk.Button(main_frame, text="Step 3", bg="#E7E7E7", fg="black", font=highlightFont,
-                             command=change_to_Step3, relief='flat').place(rely=0.5, relx=0.02, relheight=0.05,
-                                                                           relwidth=0.1)
-
+        create_step_button(1, change_to_Step1)
+        create_step_button(2, change_to_Step2)
+        create_step_button(3, change_to_Step3)
+        
         priv_escalation_label = tk.Label(main_frame, image=priv_escalation)
         priv_escalation_label.place(rely=0.36, relx=0.4)
 
