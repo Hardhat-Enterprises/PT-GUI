@@ -8,6 +8,9 @@ from ATTACKVECTOR.attackvector4 import AttackVectorFour
 from ATTACKVECTOR.attackvector7 import AttackVectorSeven
 from ATTACKVECTOR.attackvector8 import AttackVectorEight
 from ATTACKVECTOR.attackvector9 import AttackVectorNine
+from CryptographyTools.rsaencryption import RSAEncryption
+from CryptographyTools.encoding import Encoding
+from CryptographyTools.hashing import Hashing
 from EnumerationTools.HTTPheaders import HTTPheaders
 from EnumerationTools.ImageMetaDataExtractor import IMDExtractor
 from EnumerationTools.MacChanger import MacChange
@@ -74,7 +77,8 @@ class GUIApp(tk.Tk):
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
                   SshBrute, HashAn, PHCracker, ExampleNewPage,
                   ZipBF, ICMP, HTTPheaders, WalkthroughClass,
-                  API_Keys, ShodanScript, ShodanCVE, ShodanDomain, SNMPCheck, NMAP):
+                  API_Keys, ShodanScript, ShodanCVE, ShodanDomain,
+                  SNMPCheck, NMAP, Encoding, Hashing):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame

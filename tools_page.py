@@ -35,7 +35,7 @@ class ToolsPage(tk.Frame):
         # extra frame for spacing, pushes all subsequent content below nav bar and
         # title label using the pady field
         frameextra = Label(self, anchor='c')
-        frameextra.pack(pady=54.49)
+        frameextra.pack(pady=62)
         # displays navbar at top of app screen
         display_nav_bar(self, controller)
 
@@ -199,7 +199,8 @@ class ToolsPage(tk.Frame):
 
             navbutton = nav_button(tool_canvas, command)
             info_button = ttk.Button(tool_canvas, image=info_image,
-                                     command=lambda: self.show_hint(desc), style='Accent.TButton')
+                                     command=lambda: self.show_hint(desc),
+                                     style='Accent.TButton')
             pack_widget_right(info_button)
             tool_canvas.pack(expand=TRUE, fill='x', padx=90, pady=8)
             self.toolsList.append(tool_canvas)
@@ -287,6 +288,14 @@ class ToolsPage(tk.Frame):
         create_title("Resource Development Tools")
         create_tool("Notepad", lambda: open_notepad(), NOTEPAD_DESC)
 
+        create_title("Cryptography Tools")
+        create_tool("RSA Encryption", lambda: controller.show_frame("RSAEncryption"),
+        RSA_ENCRYPTION_DESC)
+        create_tool("Encoding",
+                    lambda: controller.show_frame("Encoding"), ENCODING_DESC)
+        create_tool("Hashing",
+                    lambda: controller.show_frame("Hashing"), HASH_DESC)
+
         create_title("Help")
         create_tool("Command Prompt", lambda: load_terminal(), CMD_DESC)
         create_tool("Example New Page",
@@ -298,9 +307,9 @@ class ToolsPage(tk.Frame):
         """
         Show hint function.
         """
-        desc_label = ttk.Label(self, text=desc + "\n\n\n\nClick to dismiss", borderwidth=8,
-                               relief=RAISED, font=("Calibri", 15))
-        desc_label.place(rely=0.125, relx=0.25, relheight=0.75, relwidth=0.5)
+        desc_label = ttk.Label(self, text=desc + "\n\n\nClick to dismiss", borderwidth=8,
+                               relief=RAISED, font=("OpenSans", 14))
+        desc_label.place(rely=0.180, relx=0.43, relheight=0.75, relwidth=0.5)
         desc_label.bind("<Button-1>", lambda _: desc_label.place_forget())
 
         # binds the labels configure action to execute the set_label_wrap function
