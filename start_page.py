@@ -45,7 +45,7 @@ class StartPage(tk.Frame):
                                       font=('Calibri', 20, 'bold'),
                                       command=lambda: controller.show_frame(onclick_page),
                                       borderwidth=2, relief="flat", width=10)
-            option_button.pack(anchor=CENTER, side=BOTTOM, fill=BOTH, expand=True) #Change side=LEFT to side=BOTTOM
+            option_button.pack(anchor=CENTER, side=BOTTOM, fill=BOTH, expand=True)
 
         # option_button.grid(sticky="nsew")
 
