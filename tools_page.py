@@ -220,6 +220,7 @@ class ToolsPage(tk.Frame):
         create_tool("Port Scanner",
                     lambda: controller.show_frame("PortScan"), PORT_SCANNER_DESC)
         create_tool("Nmap", lambda: load_nmap_tool(), NMAP_SCANNER_DESC)
+        create_tool("Nmap improved", lambda: controller.show_frame("NMAP"), NMAP_SCANNER_DESC)
         create_tool("Banner Grabber",
                     lambda: controller.show_frame("BannerGrab"),
                     BANNER_GRABBER_DESC)
