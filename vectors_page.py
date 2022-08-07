@@ -124,6 +124,13 @@ class VectorsPage(tk.Frame):
                              NFS_PRIV_ESC_DESC)
         create_attack_vector("Apache Webserver Exploit", "AttackVectorEight",
                              APACHE_DESC)
+
+        create_attack_vector("Authentication Bypass Attack", "Thanh Bao Chau Le",
+                             "AttackVectorNine",
+                             AUTH_BYPASS_DESC)
+        create_attack_vector("phpMyAdmin 4.8.1 RCE Attack", "Alton Liew", "AttackVectorEleven",
+                             PHPMYADMIN_RCE_DESC)
+
         create_attack_vector("Authentication Bypass Attack",
                              "AttackVectorNine", AUTH_BYPASS_DESC)
 
