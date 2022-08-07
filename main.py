@@ -1,3 +1,6 @@
+# pylint: disable=invalid-name
+# pylint: disable=global-variable-undefined
+
 from ATTACKVECTOR.attackvector1 import AttackVectorOne
 from ATTACKVECTOR.attackvector2 import AttackVectorTwo
 from ATTACKVECTOR.attackvector3 import AttackVectorThree
@@ -6,11 +9,15 @@ from ATTACKVECTOR.attackvector7 import AttackVectorSeven
 from ATTACKVECTOR.attackvector8 import AttackVectorEight
 from ATTACKVECTOR.attackvector9 import AttackVectorNine
 from ATTACKVECTOR.attackvector11 import AttackVectorEleven
+from CryptographyTools.rsaencryption import RSAEncryption
+from CryptographyTools.encoding import Encoding
+from CryptographyTools.hashing import Hashing
 from EnumerationTools.HTTPheaders import HTTPheaders
 from EnumerationTools.ImageMetaDataExtractor import IMDExtractor
 from EnumerationTools.MacChanger import MacChange
 from EnumerationTools.TestSniffer import TestSniff
 from EnumerationTools.hash_analyzer import HashAn
+from EnumerationTools.nmap import NMAP
 from EnumerationTools.snmp_check import SNMPCheck
 from ExecutionTools.FTPBruteForce import FTPBruteForce
 from ExecutionTools.ICMPPingFlooder import ICMP
@@ -25,6 +32,8 @@ from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
 from ReconnaissanceTools.BannerGrabbing import BannerGrab
 from ReconnaissanceTools.PortScanner import PortScan
 from ReconnaissanceTools.ShodanAPI import ShodanScript
+from ReconnaissanceTools.ShodanCVE import ShodanCVE
+from ReconnaissanceTools.ShodanDomain import ShodanDomain
 from references_page import ReferencesPage
 from start_page import StartPage
 from Tools.Notepad import *
@@ -69,7 +78,8 @@ class GUIApp(tk.Tk):
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
                   AttackVectorEleven, SshBrute, HashAn, PHCracker, ExampleNewPage,
                   ZipBF, ICMP, HTTPheaders, WalkthroughClass,
-                  API_Keys, ShodanScript, SNMPCheck):
+                  API_Keys, ShodanScript, ShodanCVE, ShodanDomain,
+                  SNMPCheck, NMAP, Encoding, Hashing):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame

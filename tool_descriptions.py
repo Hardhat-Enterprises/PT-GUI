@@ -32,8 +32,15 @@ BANNER_GRABBER_DESC = "Banner Grabbing is a technique that helps in gaining info
                       " can exploit it. The tool here takes the victim IP address and the port number from the user" \
                       " to perform banner grabbing."
 
-SHODAN_DESC = "Placeholder"
+SHODAN_DESC = "Shodan allows Penetration testers to search on devices connected to internet and obtain information like open ports," \
+                " services, and if there are any CVE's associated with an identified services. This kind of information is especially" \
+                " important for a pentester, particularly if the information is obtained through passive means."
 
+API_DESC = "In order to utilse any of the API based tools within the Deakon Detonator Toolkit, the end user is required to provide" \
+            " an API key which is used to identify and authenticate an application or user. This is tool lets the user set the API" \
+            " keys as environment variables. This can be expand as tools are introduced."
+
+SNMP_CHECK_DESC = "GUI Wrapper for 'snmp-check' CLI tool." ## placeholder, from Jordyn Newnham
 
 SNIFFER_DESC = "A packet sniffer is essentially a tool that helps monitor network traffic and troubleshoot a network." \
                " It captures and analyzes data packets flowing through a specific network. Using a sniffer, it's " \
@@ -155,3 +162,10 @@ EMAIL_BOMBER_DESC = "This tool is used to attack email accounts by sending spoof
                     "It allows users to set the target destination, sender information, subject and message details, with the option of stopping, restarting or redirecting the attack. " \
                     "For future developments, the tool could also be used as a conduit for sending payloads to a victim via email. " \
                     "NOTE: To use a Gmail account as a sender the Less Secure App Access must be turned OFF or the application will not login to the account. This can be found in Account settings > Security. "
+
+RSA_ENCRYPTION_DESC = "This tool uses the RSA algorithm to encrypt and decrypt strings. It allows for creation of a new pair of keys: private and public. " \
+"The user may choose to use generated keys and share the public key or use the keys of their own by putting them inside CryptographyTools folder. "
+
+ENCODING_DESC = "This tool features two encoders: binary and base64. The user can encode strings of data by choosing the option they like. "
+
+HASH_DESC = "This tool features two hashing algorithms: SHA1 and MD5. The user can hash strings of data by choosing the option they like. "

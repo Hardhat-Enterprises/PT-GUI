@@ -35,7 +35,7 @@ class ToolsPage(tk.Frame):
         # extra frame for spacing, pushes all subsequent content below nav bar and
         # title label using the pady field
         frameextra = Label(self, anchor='c')
-        frameextra.pack(pady=54.49)
+        frameextra.pack(pady=62)
         # displays navbar at top of app screen
         display_nav_bar(self, controller)
 
@@ -156,20 +156,21 @@ class ToolsPage(tk.Frame):
             ## tooltype%4: 0=tool_canvas, 1=toolname_label, 2=navbutton, 3=infobutton
             tooltype = 0
 
-            ## in the range of items below the target title at titleidx: hide or unhide
-            for n in range(idxFrom, idxTo):
+            ## in the range of items below the target title at titleidx: hide or unhide...
+	    ## works backwards to display properly
+            for n in range(idxTo-4, idxFrom-1, -1):
                 if ((tooltype%4 == 0) and not hidden):
                     self.toolsList[n].pack_forget()
                     namebutton.configure(command=lambda : show_on_title(titleidx,namebutton))
 
                 elif (tooltype%4 == 0 and hidden):
-                    pack_widget_left(self.toolsList[n+1])
-                    pack_widget_right(self.toolsList[n+2])
-                    pack_widget_right(self.toolsList[n+3])
+                    pack_widget_left(self.toolsList[n-3])
+                    pack_widget_right(self.toolsList[n-2])
+                    pack_widget_right(self.toolsList[n-1])
                     self.toolsList[n].pack(after=namebutton, expand=TRUE, fill='x', padx=90, pady=8)
                     namebutton.configure(command=lambda : hide_on_title(titleidx,namebutton))
 
-                tooltype += 1
+                tooltype -= 1
         ##shows tools under a title
         def show_on_title(titleidx, namebutton):
             toggle_tools(titleidx, namebutton, True)
@@ -198,7 +199,8 @@ class ToolsPage(tk.Frame):
 
             navbutton = nav_button(tool_canvas, command)
             info_button = ttk.Button(tool_canvas, image=info_image,
-                                     command=lambda: self.show_hint(desc), style='Accent.TButton')
+                                     command=lambda: self.show_hint(desc),
+                                     style='Accent.TButton')
             pack_widget_right(info_button)
             tool_canvas.pack(expand=TRUE, fill='x', padx=90, pady=8)
             self.toolsList.append(tool_canvas)
@@ -219,9 +221,13 @@ class ToolsPage(tk.Frame):
         create_tool("Port Scanner",
                     lambda: controller.show_frame("PortScan"), PORT_SCANNER_DESC)
         create_tool("Nmap", lambda: load_nmap_tool(), NMAP_SCANNER_DESC)
+        create_tool("Nmap improved", lambda: controller.show_frame("NMAP"), NMAP_SCANNER_DESC)
         create_tool("Banner Grabber",
                     lambda: controller.show_frame("BannerGrab"),
                     BANNER_GRABBER_DESC)
+        create_tool("Shodan",
+		    lambda: controller.show_frame("ShodanScript"),
+		    SHODAN_DESC)
 
         create_title("Enumeration Tools")
 
@@ -238,6 +244,7 @@ class ToolsPage(tk.Frame):
         create_tool("HTTP Header Analyzer",
                     lambda: controller.show_frame("HTTPheaders"),
                     HTTP_ANALYZER_DESC)
+        create_tool("SNMP Check", lambda: controller.show_frame("SNMPCheck"), SNMP_CHECK_DESC)
 
         create_title("Execution Tools")
         create_tool("VulnExploit", lambda: load_vulnexploit_tool(),
@@ -281,18 +288,28 @@ class ToolsPage(tk.Frame):
         create_title("Resource Development Tools")
         create_tool("Notepad", lambda: open_notepad(), NOTEPAD_DESC)
 
+        create_title("Cryptography Tools")
+        create_tool("RSA Encryption", lambda: controller.show_frame("RSAEncryption"),
+        RSA_ENCRYPTION_DESC)
+        create_tool("Encoding",
+                    lambda: controller.show_frame("Encoding"), ENCODING_DESC)
+        create_tool("Hashing",
+                    lambda: controller.show_frame("Hashing"), HASH_DESC)
+
         create_title("Help")
         create_tool("Command Prompt", lambda: load_terminal(), CMD_DESC)
         create_tool("Example New Page",
                     lambda: controller.show_frame("ExampleNewPage"), "Example new page")
+        create_tool("API Key Handler",
+                    lambda: controller.show_frame("API_Keys"), API_DESC)
 
     def show_hint(self, desc):
         """
         Show hint function.
         """
-        desc_label = ttk.Label(self, text=desc + "\n\n\n\nClick to dismiss", borderwidth=8,
-                               relief=RAISED, font=("Calibri", 15))
-        desc_label.place(rely=0.125, relx=0.25, relheight=0.75, relwidth=0.5)
+        desc_label = ttk.Label(self, text=desc + "\n\n\nClick to dismiss", borderwidth=8,
+                               relief=RAISED, font=("OpenSans", 14))
+        desc_label.place(rely=0.180, relx=0.43, relheight=0.75, relwidth=0.5)
         desc_label.bind("<Button-1>", lambda _: desc_label.place_forget())
 
         # binds the labels configure action to execute the set_label_wrap function
