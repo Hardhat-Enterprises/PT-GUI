@@ -210,6 +210,10 @@ class WalkthroughClass(tk.Frame):
                            "resources/Videos/Buffer_Overflow_resized.mkv",
                            BUF_OVERFLOW_DESC)
 
+        create_walkthrough("Shodan Passive Reconnaissance", "Andrew Jaeger",
+                           "resources/Videos/SHODAN_API.mkv",
+                           SHODAN_DESC)
+
         # used for spacing purposes, extends width of walkthrough listing to look nicer
         tk.Label(scrollable_frame,
                  text="                                                                      "

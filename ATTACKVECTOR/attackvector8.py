@@ -49,14 +49,12 @@ class AttackVectorEight(tk.Frame):
             p1 = Popen([cmd + ' nc -lvnp 4444'], stdout=PIPE, shell=True)
 
         def run_listener_button(frame):
-            tk.Button(frame, text="Launch Listener", bg="#E7E7E7", fg="black", font=highlightFont,
-                      command=load_listener,
-                      relief='flat').place(rely=0.47, relx=0.02, relheight=0.05, relwidth=0.18)
+            ttk.Button(frame, text="Launch Listener",  style='Accent.TButton',
+                      command=load_listener).place(rely=0.38, relx=0.02, relheight=0.05, relwidth=0.1)
 
         def run_exploit_button(frame):
-            tk.Button(frame, text="Launch Exploit", bg="#E7E7E7", fg="black", font=highlightFont,
-                      command=load_exploit,
-                      relief='flat').place(rely=0.68, relx=0.02, relheight=0.05, relwidth=0.1)
+            ttk.Button(frame, text="Launch Exploit", style='Accent.TButton',
+                      command=load_exploit).place(rely=0.38, relx=0.02, relheight=0.05, relwidth=0.1)
 
         global apacheexploit
         apacheexploit = tk.PhotoImage(file='resources/apacheexploit.png')
@@ -68,11 +66,11 @@ class AttackVectorEight(tk.Frame):
                 "o   Attackers could map a URL to files outside of the local document root\n\n"
                 "o   If these files are not protected with incorrect configuration, these files can be leaked.\n\n"
                 "o   This addtionally lead to the exploitation of the Apache CGI scripts.\n\n"
-                "o   Before heading to the next step, click the button to launch a terminal and launch a listening post on port 4444.\n"
+                "o   Before heading to the next step, click the button to launch a terminal and launch a listening post on port 4444.\n\n"
                 "o   Note: You can launch your own listening post on another port manually and proceed to the next step.\n"
 
             )
-            step1frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step1frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
             step1frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
             run_listener_button(step1frame)
@@ -89,30 +87,34 @@ class AttackVectorEight(tk.Frame):
                 "     swap windows to the previous terminal to verify this.\n\n"
 
             )
-            step2frame = tk.Message(main_frame, text=text, fg='black', bg='white', font=('Calibri', 20), anchor='nw',
+            step2frame = tk.Message(main_frame, text=text, font=('OpenSans', 14), anchor='nw',
                                     aspect=300)
             step2frame.place(rely=0.2, relx=0.2, relheight=1, relwidth=1)
             run_exploit_button(step2frame)
 
         def create_step_button(step_num, command):
-            button = tk.Button(main_frame, text="Step " + str(step_num), bg="#E7E7E7", fg="black", font=highlightFont,
-                               command=command, relief='flat').place(rely=0.3 + 0.1 * step_num, relx=0.02,
+            button = ttk.Button(main_frame, text="Step " + str(step_num), style='Accent.TButton',
+                               command=command).place(rely=0.25 + 0.1 * step_num, relx=0.04,
                                                                      relheight=0.05, relwidth=0.1)
+        
+        tkfont.Font(family='OpenSans', size=13)
+        framefont = tkfont.Font(family='Arial Rounded MT Bold', size=28, weight='bold')
 
-        # creates blue bar as canvas below nav bar housing label containing title of page
-        title_canvas = tk.Canvas(self, bg='#64C1DA', highlightthickness=0)
-        title_canvas.place(rely=0.08, relheight=0.12, relwidth=1)
-        title_label = tk.Label(self, text="Apache Webserver Exploit", bg='#4D6C84', fg='white', anchor="c",
-                               font=framefont)
-        title_label.place(rely=0.08, relheight=0.12, relwidth=1)
+        title_label = tk.Label(self, text="Apache Webserver Exploit", bg='white', fg='#92CEFF', anchor="c", font=framefont)
+        title_label.place(rely=0.06, relheight=0.12, relwidth=1)
+        
+        # creates blue bar as canvas below nav bar
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.08, relheight=0.004, relwidth=1)
+
+        # creates blue bar as canvas below title
+        title_canvas = tk.Canvas(self, bg='#c8e6ff', highlightthickness=0)
+        title_canvas.place(rely=0.155, relheight=0.004, relwidth=1)
 
         allscreenframe = tk.Label(main_frame, bg='white')
         allscreenframe.place(rely=0.2, relheight=1, relwidth=1)
 
-        side_label = tk.Label(main_frame, text="", bg='#E7E7E7', font='calibri 20 bold', anchor='nw')
-        side_label.place(rely=0.2, relheight=1, relwidth=0.2) \
-
-        sidescreenframe = tk.Label(main_frame, text="\n         Steps", bg='#E7E7E7', font='calibri 20 bold',
+        sidescreenframe = tk.Label(main_frame, text="\n         Steps:", bg='white', fg='#92CEFF', font='calibri 20 bold',
                                    anchor='nw')
         sidescreenframe.place(rely=0.25, relheight=1, relwidth=0.2)
 

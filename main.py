@@ -16,6 +16,7 @@ from EnumerationTools.ImageMetaDataExtractor import IMDExtractor
 from EnumerationTools.MacChanger import MacChange
 from EnumerationTools.TestSniffer import TestSniff
 from EnumerationTools.hash_analyzer import HashAn
+from EnumerationTools.nmap import NMAP
 from EnumerationTools.snmp_check import SNMPCheck
 from ExecutionTools.FTPBruteForce import FTPBruteForce
 from ExecutionTools.ICMPPingFlooder import ICMP
@@ -30,6 +31,8 @@ from Payload.MsfvenomPayloadGenerator import MsfPayloadGen
 from ReconnaissanceTools.BannerGrabbing import BannerGrab
 from ReconnaissanceTools.PortScanner import PortScan
 from ReconnaissanceTools.ShodanAPI import ShodanScript
+from ReconnaissanceTools.ShodanCVE import ShodanCVE
+from ReconnaissanceTools.ShodanDomain import ShodanDomain
 from references_page import ReferencesPage
 from start_page import StartPage
 from Tools.Notepad import *
@@ -74,8 +77,8 @@ class GUIApp(tk.Tk):
                   AttackVectorEight, AttackVectorNine, AttackVectorFour,
                   SshBrute, HashAn, PHCracker, ExampleNewPage,
                   ZipBF, ICMP, HTTPheaders, WalkthroughClass,
-                  API_Keys, ShodanScript, SNMPCheck, RSAEncryption, Encoding,
-                  Hashing):
+                  API_Keys, ShodanScript, ShodanCVE, ShodanDomain,
+                  SNMPCheck, NMAP, Encoding, Hashing):
             # sets page_name variable equal to current object's name
             page_name = F.__name__
             # creates new frame
